@@ -5,6 +5,7 @@ module.exports = {
         node: true
     },
     "extends": [
+        "plugin:nuxt/recommended",
         "eslint:recommended",
         "plugin:vue/vue3-essential"
     ],
@@ -17,8 +18,8 @@ module.exports = {
         }
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        parser: "@babel/eslint-parser",
+        requireConfigFile: false
     },
     "plugins": [
         "vue"
