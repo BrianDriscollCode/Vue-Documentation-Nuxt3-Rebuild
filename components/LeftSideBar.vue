@@ -37,7 +37,7 @@
         </li>
         <li class="navItem">
           <NuxtLink to="/documentation/fundamentals/basic-routing" class="leftSideLink">
-            Basic Routing
+            <del>Basic Routing</del>
           </NuxtLink>
         </li>
         <li class="navItem">

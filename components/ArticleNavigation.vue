@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         convertText(htmlId) {
-            const newId = htmlId.trim().replace(/\s/g, "");
+            const newId = htmlId.trim().replace(/\s/g, "-").replace(/\./, "").replace(/:/, "").toLowerCase();
             console.log(newId);
             return "#" + newId;
         }
