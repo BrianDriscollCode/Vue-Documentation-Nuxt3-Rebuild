@@ -5,6 +5,7 @@
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
             <input value="  in development">
+			<button @click="printData"> Print Data </button>
           </div>
 
           <div class="top_navigation">
@@ -36,10 +37,17 @@
     </section>
   </template>
 
-<script>
-export default {
-    name: "TopBar"
-};
+<script setup>
+import { useContentStore } from "~~/stores/contentStore";
+
+const contentStore = useContentStore();
+contentStore.getContent();
+
+function printData() {
+    console.log(contentStore.content);
+    contentStore.getContent();
+}
+
 </script>
 
   <style>
