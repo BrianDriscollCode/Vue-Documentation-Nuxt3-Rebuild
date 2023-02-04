@@ -39,14 +39,43 @@
 
 <script setup>
 import { useContentStore } from "~~/stores/contentStore";
+import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 
 const contentStore = useContentStore();
 contentStore.getContent();
 
-function printData() {
-    console.log(contentStore.content);
-    contentStore.getContent();
+let allContent = await useAsyncData("documentation", () => queryContent().find());
+allContent = allContent.data._rawValue;
+
+let allHeaders = [];
+let pages= [];
+
+for (let i = 0; i < allContent.length; i++) {
+    if (allContent[i].body?.children !== undefined) {
+        pages[i] = allContent[i].body?.children;
+    }
 }
+
+for (let i = 0; i < pages.length; i++) {
+    //console.log(pages[i]);
+    for (let n = 0; n < pages[i].length; n++) {
+        //console.log(pages[i][n]);
+        if (
+            pages[i][n].tag == "h1" ||
+			pages[i][n].tag == "h2" ||
+			pages[i][n].tag == "h3"
+        )
+        {
+            allHeaders.push(pages[i][n]);
+        }
+    }
+}
+
+function printData() {
+    console.log(allHeaders);
+}
+
+
 
 </script>
 
