@@ -17,8 +17,8 @@
 
 <script setup>
 import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
-import ArticleNavigation from "../../../components/ArticleNavigation.vue";
-import FooterBar from "../../../components/FooterBar.vue";
+import ArticleNavigation from "~/components/ArticleNavigation.vue";
+import FooterBar from "~/components/FooterBar.vue";
 
 definePageMeta({
     layout: "documentation"

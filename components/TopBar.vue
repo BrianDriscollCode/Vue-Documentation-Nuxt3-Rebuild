@@ -4,7 +4,7 @@
         <div class="topBar">
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
-            <input value="  in development">
+            <input value="in development" @click="$emit('isModalTrue')">
 			<button @click="printData"> Print Data </button>
           </div>
 
@@ -74,8 +74,6 @@ for (let i = 0; i < pages.length; i++) {
 function printData() {
     console.log(allHeaders);
 }
-
-
 
 </script>
 
