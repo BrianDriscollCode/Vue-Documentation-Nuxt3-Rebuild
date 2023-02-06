@@ -2,13 +2,24 @@
 	<div class="returnContainer">
 		<h3> Search </h3>
 		<ul>
-			<li> Item </li>
-			<li> Item </li>
-			<li> Item </li>
-			<li> Item </li>
+			<li :v-for="item in contentObject"> {{ item }} </li>
 		</ul>
 	</div>
 </template>
+
+<script>
+export default {
+    name: "searchModal",
+    data() {
+        return {
+
+        };
+    },
+    props: {
+        contentObject: Object
+    }
+};
+</script>
 
 <style scoped>
 

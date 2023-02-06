@@ -1,7 +1,7 @@
 <template>
     <div class="documentationContainer">
         <div class="modalBackground" v-if="showModal" @click.self="toggleModal">
-            <SearchModal />
+            <SearchModal :contentObject="contentObject"/>
         </div>
 		<div class="colorBackground" v-if="showModal" >
         </div>
@@ -34,12 +34,14 @@ export default {
     },
     data() {
         return {
-            showModal: false
+            showModal: false,
+            contentObject: {}
         };
     },
     methods: {
-        toggleModal() {
+        toggleModal(content) {
             this.showModal = !this.showModal;
+            this.contentObject = content;
         }
     }
 };

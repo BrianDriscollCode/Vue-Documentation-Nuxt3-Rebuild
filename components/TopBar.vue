@@ -4,7 +4,10 @@
         <div class="topBar">
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
-            <input value="in development" @click="$emit('isModalTrue')">
+            <input
+                @keyup="event => changeValue(event.target.value)"
+				@click="$emit('isModalTrue', contentObject)"
+			>
 			<button @click="printData"> Print Data </button>
           </div>
 
@@ -38,42 +41,59 @@
   </template>
 
 <script setup>
-import { useContentStore } from "~~/stores/contentStore";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
+// import { ref } from "vue";
 
-const contentStore = useContentStore();
-contentStore.getContent();
+let searchInput = "";
 
 let allContent = await useAsyncData("documentation", () => queryContent().find());
 allContent = allContent.data._rawValue;
 
-let allHeaders = [];
 let pages= [];
 
-for (let i = 0; i < allContent.length; i++) {
-    if (allContent[i].body?.children !== undefined) {
-        pages[i] = allContent[i].body?.children;
-    }
-}
-
-for (let i = 0; i < pages.length; i++) {
-    //console.log(pages[i]);
-    for (let n = 0; n < pages[i].length; n++) {
-        //console.log(pages[i][n]);
-        if (
-            pages[i][n].tag == "h1" ||
-			pages[i][n].tag == "h2" ||
-			pages[i][n].tag == "h3"
-        )
-        {
-            allHeaders.push(pages[i][n]);
+//Traverse content object and clean up data into simpler object
+for (let item in allContent) {
+    let contentObject = {
+        title: "",
+        description: "",
+        path: "",
+        children: []
+    };
+    if (allContent[item]._path != undefined) {
+        contentObject.title = allContent[item].title;
+        contentObject.description = allContent[item].description;
+        contentObject.path = allContent[item]._path;
+        for (let child in allContent[item].body.children) {
+            //console.log(allContent[item].body.children[child]);
+            if (
+                allContent[item].body.children[child].tag == "h1" ||
+				allContent[item].body.children[child].tag == "h2" ||
+				allContent[item].body.children[child].tag == "h3"
+            )
+            {
+                contentObject.children.push(allContent[item].body.children[child]);
+            }
         }
+        pages.push(contentObject);
     }
 }
+console.log(pages);
+
 
 function printData() {
-    console.log(allHeaders);
+    console.log("allHeaders");
+    console.log(searchInput);
 }
+
+function changeValue(value) {
+    searchInput = value;
+    console.log(searchInput);
+}
+
+// watch(searchInput, (currentValue, oldValue) => {
+//     console.log(currentValue);
+//     console.log(oldValue);
+// });
 
 </script>
 
