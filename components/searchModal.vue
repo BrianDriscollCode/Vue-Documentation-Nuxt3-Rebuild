@@ -1,9 +1,15 @@
 <template>
 	<div class="returnContainer">
 		<h3> Search </h3>
+		<p> {{ searchInput }} </p>
 		<ul>
-			<li :v-for="item in contentObject"> {{ item }} </li>
+			<!-- <li :v-for="item in pages" :key="item.title">{{ item.title }}</li> -->
+			<!-- <li :v-for="item in pages"> {{ item }} </li> -->
+			<li v-for="(item, index) in this.headers" :key="index">
+                {{ item.header }}
+            </li>
 		</ul>
+		<button @click="showContent"> show content </button>
 	</div>
 </template>
 
@@ -16,7 +22,18 @@ export default {
         };
     },
     props: {
-        contentObject: Object
+        headers: Object,
+        searchInput: String
+    },
+    methods: {
+        showContent() {
+            console.log(this.headers);
+        }
+    },
+    computed: {
+        // currentSearchArray: function() {
+
+        // }
     }
 };
 </script>

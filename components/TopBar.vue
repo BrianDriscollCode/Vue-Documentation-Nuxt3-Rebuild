@@ -6,7 +6,7 @@
             <label class="searchLabel"> Search: </label>
             <input
                 @keyup="event => changeValue(event.target.value)"
-				@click="$emit('isModalTrue', contentObject)"
+				@click="$emit('isModalTrue', allHeaders)"
 			>
 			<button @click="printData"> Print Data </button>
           </div>
@@ -42,6 +42,7 @@
 
 <script setup>
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
+import { defineEmits } from "vue";
 // import { ref } from "vue";
 
 let searchInput = "";
@@ -50,6 +51,7 @@ let allContent = await useAsyncData("documentation", () => queryContent().find()
 allContent = allContent.data._rawValue;
 
 let pages= [];
+let allHeaders = [];
 
 //Traverse content object and clean up data into simpler object
 for (let item in allContent) {
@@ -77,17 +79,36 @@ for (let item in allContent) {
         pages.push(contentObject);
     }
 }
-console.log(pages);
 
+//Change object into even simpler object because I'm dumb
+for (let page in pages) {
+    for (let ch in pages[page].children) {
+        let contentObject = {
+            header: "",
+            path: "",
+            page: "",
+        };
+        contentObject.header = pages[page].children[ch].children[0].value;
+        contentObject.path = pages[page].path;
+        contentObject.page = pages[page].title;
+        allHeaders.push(contentObject);
+    }
+}
+
+console.log(allHeaders);
 
 function printData() {
     console.log("allHeaders");
-    console.log(searchInput);
+    console.log(pages);
 }
+
+const emit = defineEmits(["currentSearchInput"]);
 
 function changeValue(value) {
     searchInput = value;
-    console.log(searchInput);
+    console.log(searchInput, " -changeValue");
+    //this.$emit("currentSearchInput", searchInput);
+    emit("currentSearchInput", searchInput);
 }
 
 // watch(searchInput, (currentValue, oldValue) => {
