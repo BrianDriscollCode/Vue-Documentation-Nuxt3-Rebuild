@@ -108,7 +108,7 @@ function changeValue(value) {
     searchInput = value;
     console.log(searchInput, " -changeValue");
     //this.$emit("currentSearchInput", searchInput);
-    emit("currentSearchInput", searchInput);
+    // emit("currentSearchInput", searchInput);
 }
 
 // watch(searchInput, (currentValue, oldValue) => {

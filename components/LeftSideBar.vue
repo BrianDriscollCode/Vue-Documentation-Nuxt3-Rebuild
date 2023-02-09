@@ -1,7 +1,7 @@
 <template>
     <section class="leftSideBarContainer">
       <div class="navTitleContainer">
-        <img src="../assets/vue_logo.png" width="40px" height="40px">
+        <img src="vue_logo.png" width="40px" height="40px">
         <p class="navTitle">
           <NuxtLink to="/" class="sideBarTitle">
             Vue Reference

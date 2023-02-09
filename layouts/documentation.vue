@@ -1,7 +1,7 @@
 <template>
     <div class="documentationContainer">
         <div class="modalBackground" v-if="showModal" @click.self="toggleModal">
-            <SearchModal :headers="headers" :searchInput="searchInput"/>
+            <SearchModal :headers="headers"/>
         </div>
 		<div class="colorBackground" v-if="showModal" >
         </div>
@@ -13,7 +13,6 @@
         <TopBar
             class="topBar"
             v-on:isModalTrue="toggleModal"
-            v-on:currentSearchInput="changeInput"
         />
 
         <div class="content">
@@ -46,10 +45,6 @@ export default {
             console.log("toggle modal");
             this.showModal = !this.showModal;
             this.headers = calledHeaders;
-        },
-        changeInput(input) {
-            this.searchInput = input;
-            console.log("change search input");
         }
     }
 };
