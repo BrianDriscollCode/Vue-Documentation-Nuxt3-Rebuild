@@ -2,7 +2,7 @@
 	<div class="returnContainer">
 		<h3> Search </h3>
 		<div class="searchInputContainer">
-			<input ref="input" class="searchInput" v-model="searchText" />
+			<input ref="input" class="searchInput" v-model="searchText" @input="updateSearchText" />
 		</div>
 		<p> {{ searchText }}</p>
 		<ul class="searchList">
@@ -19,16 +19,18 @@
                 </nuxt-link>
 			</li>
 		</ul>
-		<button @click="$emit('focusInput')"> show content </button>
 	</div>
 </template>
 
 <script setup>
-import { defineEmits, onMounted, ref, defineProps} from "vue";
+import { defineEmits, onMounted, onBeforeUpdate, ref, defineProps} from "vue";
 
 const input = ref(null);
 const emit = defineEmits(["setInput"]);
 const props = defineProps(["headers"]);
+
+let filteredHeaders = filterHeaders();
+let searchText = ref("making");
 
 function filterHeaders() {
     let tempArray = [];
@@ -41,20 +43,27 @@ function filterHeaders() {
     // tempArray = props.headers.filter(word => word.match(searchText));
     return tempArray;
 }
-console.log(props);
-let filteredHeaders = filterHeaders();
+
+function updateSearchText(event) {
+    searchText.value = event.target.value;
+}
+
+onBeforeUpdate(() => {
+    let tempNewArray = props.headers.filter(word => word.header.toLowerCase().includes(searchText.value.toLowerCase()));
+    let tempOutputArray = [];
+
+    for (let i = 0; i < 6; i++) {
+        if (tempNewArray[i] !== undefined) {
+            tempOutputArray[i] = tempNewArray[i];
+        }
+    }
+    filteredHeaders = tempOutputArray;
+});
 
 onMounted(() => {
     emit("setInput", input);
     console.log("onMount", input);
-
-    let tempArray = props.headers.filter(word => word.header.includes("A"));
-    console.log(tempArray, props.headers);
 });
-
-
-
-let searchText = ref("A Quick");
 
 </script>
 
