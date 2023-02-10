@@ -4,7 +4,6 @@
             <SearchModal
                 :headers="headers"
 				v-on:setInput="setInput"
-				v-on:focusInput="focusInput"
 			/>
         </div>
 		<div class="colorBackground" v-if="showModal" >
@@ -17,7 +16,6 @@
         <TopBar
             class="topBar"
             v-on:isModalTrue="toggleModal"
-            v-on:currentSearchInput="changeInput"
         />
 
         <div class="content">
@@ -56,9 +54,6 @@ function setInput(input) {
     modalInput = input;
 }
 
-function focusInput() {
-    modalInput.value.focus();
-}
 
 function showInput() {
     console.log(modalInput);

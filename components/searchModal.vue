@@ -2,8 +2,9 @@
 	<div class="returnContainer">
 		<h3> Search </h3>
 		<div class="searchInputContainer">
-			<input value="" ref="input" class="searchInput"/>
+			<input ref="input" class="searchInput" v-model="searchText" />
 		</div>
+		<p> {{ searchText }}</p>
 		<ul class="searchList">
 			<li
                 v-for="(item, index) in filteredHeaders"
@@ -23,30 +24,37 @@
 </template>
 
 <script setup>
-import { defineEmits, onMounted, ref, defineProps } from "vue";
+import { defineEmits, onMounted, ref, defineProps} from "vue";
 
-let searchInput = "";
 const input = ref(null);
 const emit = defineEmits(["setInput"]);
 const props = defineProps(["headers"]);
 
 function filterHeaders() {
     let tempArray = [];
-    for (let i = 0; i < 10; i += 2) {
-        tempArray.push(props.headers[i]);
-    }
-
+    // for (let item in props.headers) {
+    //     //let isMatch = false;
+    //     //tempArray.push(props.headers[item]);
+    //     props.headers[item].filter(word => word.match(searchText));
+    // 	console.log("test");
+    // }
+    // tempArray = props.headers.filter(word => word.match(searchText));
     return tempArray;
 }
-
+console.log(props);
 let filteredHeaders = filterHeaders();
 
 onMounted(() => {
     emit("setInput", input);
     console.log("onMount", input);
+
+    let tempArray = props.headers.filter(word => word.header.includes("A"));
+    console.log(tempArray, props.headers);
 });
 
-console.log(searchInput);
+
+
+let searchText = ref("A Quick");
 
 </script>
 

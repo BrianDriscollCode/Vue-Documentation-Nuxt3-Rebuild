@@ -5,10 +5,8 @@
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
             <input
-                @keyup="event => changeValue(event.target.value)"
 				@click="$emit('isModalTrue', allHeaders)"
 			>
-			<button @click="printData"> Print Data </button>
           </div>
 
           <div class="top_navigation">
@@ -42,10 +40,6 @@
 
 <script setup>
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
-import { defineEmits } from "vue";
-// import { ref } from "vue";
-
-let searchInput = "";
 
 let allContent = await useAsyncData("documentation", () => queryContent().find());
 allContent = allContent.data._rawValue;
@@ -94,28 +88,6 @@ for (let page in pages) {
         allHeaders.push(contentObject);
     }
 }
-
-console.log(allHeaders);
-
-function printData() {
-    console.log("allHeaders");
-    console.log(pages);
-}
-
-const emit = defineEmits(["currentSearchInput"]);
-
-function changeValue(value) {
-    searchInput = value;
-    console.log(searchInput, " -changeValue");
-    //this.$emit("currentSearchInput", searchInput);
-    emit("currentSearchInput", searchInput);
-}
-
-// watch(searchInput, (currentValue, oldValue) => {
-//     console.log(currentValue);
-//     console.log(oldValue);
-// });
-
 </script>
 
   <style>
