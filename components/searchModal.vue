@@ -30,7 +30,7 @@ const emit = defineEmits(["setInput"]);
 const props = defineProps(["headers"]);
 
 let filteredHeaders = filterHeaders();
-let searchText = ref("making");
+let searchText = ref("");
 
 function filterHeaders() {
     let tempArray = [];
