@@ -4,7 +4,6 @@
 		<div class="searchInputContainer">
 			<input ref="input" class="searchInput" v-model="searchText" @input="updateSearchText" />
 		</div>
-		<p> {{ searchText }}</p>
 		<ul class="searchList">
 			<li
                 v-for="(item, index) in filteredHeaders"
