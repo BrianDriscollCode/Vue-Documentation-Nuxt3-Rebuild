@@ -1,15 +1,12 @@
 <template>
 	<div class="returnContainer">
 		<h3> Search </h3>
-		<input value="test" ref="input"/>
+		<div class="searchInputContainer">
+			<input value="" ref="input" class="searchInput"/>
+		</div>
 		<ul class="searchList">
-			<!-- <li :v-for="item in pages" :key="item.title">{{ item.title }}</li> -->
-			<!-- <li :v-for="item in pages"> {{ item }} </li> -->
-			<!-- <li v-for="(item, index) in this.tempArray" :key="index">
-                {{ item.header }}
-            </li> -->
 			<li
-                v-for="(item, index) in this.currentSearchArray"
+                v-for="(item, index) in filteredHeaders"
 				:key="index"
                 class="searchButton"
 			>
@@ -21,38 +18,36 @@
                 </nuxt-link>
 			</li>
 		</ul>
-		<button @click="showContent"> show content </button>
+		<button @click="$emit('focusInput')"> show content </button>
 	</div>
 </template>
 
-<script>
-export default {
-    name: "searchModal",
-    data() {
-        return {
-            searchInput: ""
-        };
-    },
-    props: {
-        headers: Object,
-    },
-    methods: {
-        showContent() {
-            console.log(this.headers);
-            console.log(this.currentSearchArray);
-        }
-    },
-    computed: {
-        currentSearchArray: function() {
-            let tempArray = [];
-            for (let i = 0; i < 10; i += 2) {
-                tempArray.push(this.headers[i]);
-            }
+<script setup>
+import { defineEmits, onMounted, ref, defineProps } from "vue";
 
-            return tempArray;
-        }
+let searchInput = "";
+const input = ref(null);
+const emit = defineEmits(["setInput"]);
+const props = defineProps(["headers"]);
+
+function filterHeaders() {
+    let tempArray = [];
+    for (let i = 0; i < 10; i += 2) {
+        tempArray.push(props.headers[i]);
     }
-};
+
+    return tempArray;
+}
+
+let filteredHeaders = filterHeaders();
+
+onMounted(() => {
+    emit("setInput", input);
+    console.log("onMount", input);
+});
+
+console.log(searchInput);
+
 </script>
 
 <style scoped>
@@ -70,12 +65,25 @@ export default {
     -moz-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
     box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
 }
+
+.searchInputContainer {
+	display: flex;
+	justify-content: center;
+}
+.searchInput {
+	height: 2.5em;
+	width: 100%;
+	font-size: 1.2em;
+	margin-bottom: 0.2em;
+}
 .searchList {
      padding-left: 0;
 }
 
 .searchButton {
 	background: rgb(173, 189, 218);
+	padding-top: 12px;
+	padding-bottom: 12px;
 	-webkit-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
     -moz-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
     box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);

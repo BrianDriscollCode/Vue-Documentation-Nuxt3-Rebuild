@@ -1,7 +1,11 @@
 <template>
     <div class="documentationContainer">
-        <div class="modalBackground" v-if="showModal" @click.self="toggleModal">
-            <SearchModal :headers="headers"/>
+        <div class="modalBackground" v-if="showModal" @click.self="toggleModalLocal">
+            <SearchModal
+                :headers="headers"
+				v-on:setInput="setInput"
+				v-on:focusInput="focusInput"
+			/>
         </div>
 		<div class="colorBackground" v-if="showModal" >
         </div>
@@ -13,41 +17,53 @@
         <TopBar
             class="topBar"
             v-on:isModalTrue="toggleModal"
+            v-on:currentSearchInput="changeInput"
         />
 
         <div class="content">
-          <!-- <TopBar /> -->
           <slot />
+          <button @click="showInput">  TEST ME </button>
         </div>
       </section>
     </div>
   </template>
 
-<script>
+<script setup>
 import LeftSideBar from "../components/leftSideBar.vue";
 import TopBar from "../components/topBar.vue";
 import SearchModal from "~/components/searchModal.vue";
+import { ref } from "vue";
 
-export default {
-    name: "DocumentationLayout",
-    components: {
-        LeftSideBar,
-        TopBar,
-        SearchModal
-    },
-    data() {
-        return {
-            showModal: false
-        };
-    },
-    methods: {
-        toggleModal(calledHeaders) {
-            console.log("toggle modal");
-            this.showModal = !this.showModal;
-            this.headers = calledHeaders;
-        }
-    }
-};
+let showModal = ref(false);
+let headers = [];
+let modalInput;
+
+function toggleModal(calledHeaders) {
+    showModal.value = true;
+    console.log("show modal", showModal);
+    headers = calledHeaders;
+    setTimeout(() => {
+        modalInput.value.focus();
+    }, 100);
+}
+
+function toggleModalLocal() {
+    showModal.value = false;
+}
+
+function setInput(input) {
+    console.log("run set input");
+    modalInput = input;
+}
+
+function focusInput() {
+    modalInput.value.focus();
+}
+
+function showInput() {
+    console.log(modalInput);
+}
+
 </script>
 
   <style scoped>
