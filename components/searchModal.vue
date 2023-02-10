@@ -28,26 +28,14 @@ const input = ref(null);
 const emit = defineEmits(["setInput"]);
 const props = defineProps(["headers"]);
 
-let filteredHeaders = filterHeaders();
+let filteredHeaders = [];
 let searchText = ref("");
-
-function filterHeaders() {
-    let tempArray = [];
-    // for (let item in props.headers) {
-    //     //let isMatch = false;
-    //     //tempArray.push(props.headers[item]);
-    //     props.headers[item].filter(word => word.match(searchText));
-    // 	console.log("test");
-    // }
-    // tempArray = props.headers.filter(word => word.match(searchText));
-    return tempArray;
-}
 
 function updateSearchText(event) {
     searchText.value = event.target.value;
 }
 
-onBeforeUpdate(() => {
+function updateSearchArrays() {
     let tempNewArray = props.headers.filter(word => word.header.toLowerCase().includes(searchText.value.toLowerCase()));
     let tempOutputArray = [];
 
@@ -57,11 +45,18 @@ onBeforeUpdate(() => {
         }
     }
     filteredHeaders = tempOutputArray;
+}
+
+updateSearchArrays();
+
+onBeforeUpdate(() => {
+    updateSearchArrays();
 });
 
 onMounted(() => {
     emit("setInput", input);
     console.log("onMount", input);
+    updateSearchArrays();
 });
 
 </script>

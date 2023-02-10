@@ -20,7 +20,6 @@
 
         <div class="content">
           <slot />
-          <button @click="showInput">  TEST ME </button>
         </div>
       </section>
     </div>
@@ -52,11 +51,6 @@ function toggleModalLocal() {
 function setInput(input) {
     console.log("run set input");
     modalInput = input;
-}
-
-
-function showInput() {
-    console.log(modalInput);
 }
 
 </script>
