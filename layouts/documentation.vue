@@ -27,7 +27,7 @@
   </template>
 
 <script setup>
-import LeftSideBar from "../components/leftSideBar.vue";
+import LeftSideBar from "../components/LeftSideBar.vue";
 import TopBar from "../components/topBar.vue";
 import SearchModal from "~/components/searchModal.vue";
 import { ref } from "vue";
