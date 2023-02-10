@@ -103,7 +103,7 @@ for (let page in pages) {
   }
 
   .topBar {
-    width: 100%;
+    width: 93.5%;
     display: flex;
     flex-direction: row;
     align-items: center;
