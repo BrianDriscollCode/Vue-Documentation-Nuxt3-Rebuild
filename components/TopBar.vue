@@ -1,7 +1,7 @@
 <template>
-    <section :class="windowWidth > 1135 ? 'topNavigationContainer': 'topNavigationContainerMax'">
-      <div :class="windowWidth > 1135 ? 'leftSection': 'leftSectionMax'">
-        <div :class="windowWidth > 1135 ? 'topBar': 'topBarMax'">
+    <section class="topNavigationContainer">
+      <div class="leftSection">
+        <div class="topBar">
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
             <input
@@ -110,7 +110,7 @@ height: 50px;
 background-color: #34445c;
 align-items: center;
 display: flex;
-position: fixed;
+position: none;
 flex-direction: row;
 transition: width 0.5s;
 }
@@ -154,6 +154,7 @@ margin-right: 2em;
 .navLink {
 color: white;
 text-decoration: none;
+z-index: 0
 }
 
 .rightSection {
@@ -172,5 +173,18 @@ margin-right: 2em;
 
 .searchLabel {
 color: white;
+}
+
+@media only screen and (max-width: 1135px) {
+    .topNavigationContainer {
+        width: 100%;
+		position: fixed;
+	}
+	.leftSection {
+        width: 100%;
+	}
+	.topBar {
+        width: 100%;
+	}
 }
 </style>

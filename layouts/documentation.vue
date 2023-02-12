@@ -9,20 +9,22 @@
         </div>
 		<div class="colorBackground" v-if="showModal" >
         </div>
-      <aside :class="windowWidth > 1135 ? 'leftSideBar': 'leftSideBarMin'">
+      <aside class="leftSideBar" :id="showSideBar ? 'showSideBar': ''">
         <LeftSideBar />
       </aside>
 
-      <section class="documentationView">
+      <section class="documentationView" :id="showSideBar ? 'backgroundGrey': ''" @click.self="turnOffSideBar">
         <TopBar
             class="topBarMain"
             v-on:isModalTrue="toggleModal"
+			:id="showSideBar ? 'backgroundGrey': ''"
+			@click="turnOffSideBar"
         />
-		<div :class="windowWidth < 1135 ? 'tempBar': 'tempBarInvis'">
-        Hamburger
+		<div class="tempBar">
+            <img src="~/assets/hamburger.png" class="hamburger" @click="useShowSideBar">
 		</div>
 
-        <div class="content">
+        <div class="content" @click="turnOffSideBar">
           <slot />
         </div>
       </section>
@@ -34,17 +36,13 @@
 import LeftSideBar from "../components/LeftSideBar.vue";
 import TopBar from "../components/TopBar.vue";
 import SearchModal from "~/components/searchModal.vue";
-//composable
-import useWindowSizeListener from "~~/plugins/windowSizeListener";
 //vue
 import { ref } from "vue";
 
 let showModal = ref(false);
 let headers = [];
 let modalInput;
-let windowWidth = useWindowSizeListener();
-
-
+let showSideBar = ref(false);
 
 function toggleModal(calledHeaders) {
     showModal.value = true;
@@ -62,6 +60,18 @@ function toggleModalOff() {
 function setInput(input) {
     console.log("run set input");
     modalInput = input;
+}
+
+function useShowSideBar() {
+    showSideBar.value = !showSideBar.value;
+    console.log("show side bar", showSideBar);
+}
+
+function turnOffSideBar () {
+    if (showSideBar.value === true) {
+        showSideBar.value = false;
+    }
+    console.log("turn off side bar");
 }
 
 </script>
@@ -87,6 +97,10 @@ function setInput(input) {
 	opacity: 0.3;
 	position: absolute;
   }
+
+  #backgroundGrey {
+	background-color: rgb(57, 57, 57);
+  }
   .documentationContainer {
     display: flex;
     width: 100%;
@@ -106,24 +120,28 @@ function setInput(input) {
 	width: 17%;
 	transition: width 0.5s;
   }
-  .leftSideBarMin {
-	background-color: rgb(244, 246, 254);
-    width: 0px;
-	transition: width 0.5s;
-	overflow: hidden;
-  }
 
-  .tempView {
-    display: block;
+  .tempBar {
+    display: none;
   }
-
-  .tempViewInvis {
-   display: none;
-}
 
   .documentationView {
     width: 82%;
     height: 100vh;
+  }
+
+  .hamburger {
+	width: 33px;
+	height: 33px;
+	background-color: rgb(202, 211, 253);;
+	padding: 1px 3px 1px 1px;
+	border-radius: 0 5px 5px 0;
+  }
+
+  #showSideBar {
+	width: 50%;
+	position: fixed;
+	z-index: 10;
   }
 
   /* Content */
@@ -135,6 +153,18 @@ function setInput(input) {
   @media only screen and (max-width: 1135px) {
 	.documentationView {
         width: 100%;
+    }
+	.leftSideBar {
+	background-color: rgb(244, 246, 254);
+    width: 0px;
+	transition: width 0.5s;
+	overflow: hidden;
+  }
+  .tempBar {
+    display: block;
+	height: 30px;
+	position: relative;
+	margin-top: 3.5em;
   }
 }
 
