@@ -9,5 +9,8 @@ export default defineNuxtConfig({
         highlight: {
             theme: "one-dark-pro"
         }
-    }
+    },
+    plugins: [
+        {src: "~/plugins/windowSizeListener", ssr: false}
+    ]
 });

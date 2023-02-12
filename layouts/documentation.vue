@@ -1,22 +1,26 @@
 <template>
     <div class="documentationContainer">
-        <div class="modalBackground" v-if="showModal" @click.self="toggleModalLocal">
+        <div class="modalBackground" v-if="showModal" @click.self="toggleModalOff">
             <SearchModal
                 :headers="headers"
 				v-on:setInput="setInput"
+				v-on:toggleModalOff="toggleModalOff"
 			/>
         </div>
 		<div class="colorBackground" v-if="showModal" >
         </div>
-      <aside class="leftSideBar">
+      <aside :class="windowWidth > 1135 ? 'leftSideBar': 'leftSideBarMin'">
         <LeftSideBar />
       </aside>
 
       <section class="documentationView">
         <TopBar
-            class="topBar"
+            class="topBarMain"
             v-on:isModalTrue="toggleModal"
         />
+		<div :class="windowWidth < 1135 ? 'tempBar': 'tempBarInvis'">
+        Hamburger
+		</div>
 
         <div class="content">
           <slot />
@@ -26,14 +30,21 @@
   </template>
 
 <script setup>
+//components
 import LeftSideBar from "../components/LeftSideBar.vue";
 import TopBar from "../components/TopBar.vue";
 import SearchModal from "~/components/searchModal.vue";
+//composable
+import useWindowSizeListener from "~~/plugins/windowSizeListener";
+//vue
 import { ref } from "vue";
 
 let showModal = ref(false);
 let headers = [];
 let modalInput;
+let windowWidth = useWindowSizeListener();
+
+
 
 function toggleModal(calledHeaders) {
     showModal.value = true;
@@ -44,7 +55,7 @@ function toggleModal(calledHeaders) {
     }, 100);
 }
 
-function toggleModalLocal() {
+function toggleModalOff() {
     showModal.value = false;
 }
 
@@ -84,16 +95,31 @@ function setInput(input) {
     background-color: rgb(255, 255, 255);
   }
 
-  .topBar {
+  .topBarMain {
 	z-index: 5;
   }
 
   /* Navigation */
 
   .leftSideBar {
-    background-color: rgb(248, 248, 255);
-    width: 18%;
+	background-color: rgb(244, 246, 254);
+	width: 17%;
+	transition: width 0.5s;
   }
+  .leftSideBarMin {
+	background-color: rgb(244, 246, 254);
+    width: 0px;
+	transition: width 0.5s;
+	overflow: hidden;
+  }
+
+  .tempView {
+    display: block;
+  }
+
+  .tempViewInvis {
+   display: none;
+}
 
   .documentationView {
     width: 82%;
@@ -105,5 +131,11 @@ function setInput(input) {
   .content {
     height: 100vh;
   }
+
+  @media only screen and (max-width: 1135px) {
+	.documentationView {
+        width: 100%;
+  }
+}
 
   </style>

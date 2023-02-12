@@ -1,7 +1,7 @@
 <template>
-    <section class="topNavigationContainer">
-      <div class="leftSection">
-        <div class="topBar">
+    <section :class="windowWidth > 1135 ? 'topNavigationContainer': 'topNavigationContainerMax'">
+      <div :class="windowWidth > 1135 ? 'leftSection': 'leftSectionMax'">
+        <div :class="windowWidth > 1135 ? 'topBar': 'topBarMax'">
           <div class="searchContainer">
             <label class="searchLabel"> Search: </label>
             <input
@@ -34,18 +34,20 @@
         </div>
       </div>
 
-      <div class="rightSection" />
+      <div :class="windowWidth > 1135 ? 'rightSection': 'rightSectionMin'" />
     </section>
   </template>
 
 <script setup>
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
+import useWindowSizeListener from "~~/plugins/windowSizeListener";
 
 let allContent = await useAsyncData("documentation", () => queryContent().find());
 allContent = allContent.data._rawValue;
 
 let pages= [];
 let allHeaders = [];
+let windowWidth = useWindowSizeListener();
 
 //Traverse content object and clean up data into simpler object
 for (let item in allContent) {
@@ -90,55 +92,85 @@ for (let page in pages) {
 }
 </script>
 
-  <style>
+<style scoped>
+.topNavigationContainer {
+width: 87%;
+height: 50px;
+background-color: #34445c;
+align-items: center;
+display: flex;
+position: fixed;
+flex-direction: row;
+transition: width 0.5s;
+}
 
-  .topNavigationContainer {
-    width: 87%;
-    height: 50px;
-    background-color: #34445c;
-    align-items: center;
-    display: flex;
-    position: fixed;
-    flex-direction: row;
-  }
+.topNavigationContainerMax {
+width: 100%;
+height: 50px;
+background-color: #34445c;
+align-items: center;
+display: flex;
+position: fixed;
+flex-direction: row;
+transition: width 0.5s;
+}
 
-  .topBar {
-    width: 93.5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+.topBar {
+width: 93.5%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+transition: width 0.5s;
+}
 
-  .leftSection {
-    width: 75%;
-    height: 50px;
-    display: flex;
-    align-items: center;
+.topBarMax {
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+transition: width 0.5s;
+}
 
-  }
+.leftSection {
+width: 75%;
+height: 50px;
+display: flex;
+align-items: center;
+}
+.leftSectionMax {
+width: 100%;
+height: 50px;
+display: flex;
+align-items: center;
+}
 
-  .navLinkContainer {
-    margin-left: .8em;
-    margin-right: 2em;
-  }
+.navLinkContainer {
+margin-left: .8em;
+margin-right: 2em;
+}
 
-  .navLink {
-    color: white;
-    text-decoration: none;
-  }
+.navLink {
+color: white;
+text-decoration: none;
+}
 
-  .rightSection {
-    width: 25%;
-    height: 50px;
-  }
+.rightSection {
+width: 25%;
+height: 50px;
+}
 
-  .searchContainer {
-    margin-left: 2em;
-    margin-right: 2em;
-  }
+.rightSectionMin {
+width: 0%;
+}
 
-  .searchLabel {
-    color: white;
-  }
-  </style>
+.searchContainer {
+margin-left: 2em;
+margin-right: 2em;
+}
+
+.searchLabel {
+color: white;
+}
+</style>

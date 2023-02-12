@@ -17,8 +17,8 @@
 
 <script setup>
 import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
-import ArticleNavigation from "../../components/ArticleNavigation.vue";
-import FooterBar from "../../components/FooterBar.vue";
+import ArticleNavigation from "~/components/ArticleNavigation.vue";
+import FooterBar from "~/components/FooterBar.vue";
 
 definePageMeta({
     layout: "documentation"
@@ -152,6 +152,15 @@ for (let i = 0; i < dataChildren.length; i++) {
 .articleNavigationContainer {
     /* background-color: chartreuse; */
     width: 25%;
+}
+
+@media only screen and (max-width: 1135px) {
+	.articleNavigationContainer {
+		display: none;
+	}
+    .mainContentContainer {
+		width: 80%;
+	}
 }
 
 @media only screen and (max-width: 1000px) {

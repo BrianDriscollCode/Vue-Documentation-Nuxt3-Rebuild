@@ -10,7 +10,7 @@
 				:key="index"
                 class="searchButton"
 			>
-                <nuxt-link :to="item.path" class="searchButtonLinkStyling">
+                <nuxt-link :to="item.path" class="searchButtonLinkStyling" @click="$emit('toggleModalOff')">
                     <div class="searchButtonContent">
                         <span> {{ item.header }} </span>
                         <span> {{ item.page }} - Page </span>

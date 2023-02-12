@@ -1,6 +1,9 @@
 <template>
-    <section class="leftSideBarContainer">
-      <div class="navTitleContainer">
+	<section class="leftSideBarContainer">
+      <div class="navMinimized" v-if="windowWidth < 1135">
+        <p> test </p>
+      </div>
+      <div class="navTitleContainer" v-if="windowWidth > 1135">
         <img src="/vue_logo.png" width="40px" height="40px">
         <p class="navTitle">
           <NuxtLink to="/" class="sideBarTitle">
@@ -9,7 +12,7 @@
         </p>
       </div>
 
-      <div>
+      <div v-if="windowWidth > 1135">
         <li class="navItem">
           <h3> Start Here </h3>
           <NuxtLink to="/documentation" class="leftSideLink">
@@ -23,7 +26,7 @@
         </li>
       </div>
 
-      <div>
+      <div v-if="windowWidth > 1135">
         <h3> Vue Fundamentals </h3>
         <li class="navItem">
           <NuxtLink to="/documentation/fundamentals/making-a-component" class="leftSideLink">
@@ -76,8 +79,8 @@
           </NuxtLink>
         </li>
       </div>
-  
-      <div>
+
+      <div v-if="windowWidth > 1135">
         <h3> Vue In-Depth </h3>
         <li class="navItem">
           <NuxtLink to="/documentation/intermediate/slots" class="leftSideLink">
@@ -120,8 +123,8 @@
           </NuxtLink>
         </li>
       </div>
-  
-      <div>
+
+      <div v-if="windowWidth > 1135">
         <h3> Reusability </h3>
         <li class="navItem">
           <NuxtLink to="documentation/composables" class="leftSideLink">
@@ -134,8 +137,8 @@
           </NuxtLink>
         </li>
       </div>
-  
-      <div>
+
+      <div v-if="windowWidth > 1135">
         <h3> Tooling and Pre-Built Components </h3>
         <li class="navItem">
           <NuxtLink to="documentation/custom-directives" class="leftSideLink">
@@ -168,8 +171,8 @@
           </NuxtLink>
         </li>
       </div>
-  
-      <div>
+
+      <div v-if="windowWidth > 1135">
         <h3> Composition API </h3>
         <li class="navItem">
           <NuxtLink to="documentation/composition-setup" class="leftSideLink">
@@ -202,8 +205,8 @@
           </NuxtLink>
         </li>
       </div>
-  
-      <div class="lastItemsContainer">
+
+      <div class="lastItemsContainer" v-if="windowWidth > 1135">
         <h3> Component Examples </h3>
         <li class="navItem">
           <NuxtLink to="documentation/banner" class="leftSideLink">
@@ -224,10 +227,13 @@
     </section>
   </template>
 
-<script>
-export default {
-    name: "LeftSideBar"
-};
+<script setup>
+import useWindowSizeListener from "~~/plugins/windowSizeListener";
+
+let windowWidth = useWindowSizeListener();
+
+
+
 </script>
 
   <style scoped>
@@ -238,18 +244,18 @@ export default {
     margin-top: 1em;
     margin-bottom: 3em;
   }
-  
+
   .sideBarTitle {
     text-decoration: none;
     color: #34445c;
   }
-  
+
   .navTitle {
     font-size: 16px;
     font-weight: 600;
     color: #34445c;
   }
-  
+
   h3 {
     font-size: 15px;
     font-weight: 700;
@@ -257,14 +263,15 @@ export default {
     margin-bottom: 0.5em;
     color: #34445c;
   }
-  
+
   .leftSideBarContainer {
     height: 100vh;
     padding: 0 1em 0 1em;
     overflow: scroll;
     overflow-x: hidden;
   }
-  
+
+
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -272,44 +279,43 @@ export default {
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
-  
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #888;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-  
+
   .navItem {
     list-style: none;
     list-style-type: none;
     padding: none;
   }
-  
+
   .leftSideLink {
     color:#4c6182;
     text-decoration: none;
   }
-  
+
   .leftSideLink:hover {
     color:#202a39;
     font-weight: 500;
     text-decoration: underline;
   }
-  
+
   li {
     font-size: 14px;
     line-height: 1.7em;
     color: #346c6a;
   }
-  
+
   .lastItemsContainer {
     margin-bottom: 6em;
   }
-  
+
   </style>
-  

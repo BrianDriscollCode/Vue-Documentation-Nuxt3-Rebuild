@@ -154,6 +154,15 @@ for (let i = 0; i < dataChildren.length; i++) {
     width: 25%;
 }
 
+@media only screen and (max-width: 1135px) {
+	.articleNavigationContainer {
+		display: none;
+	}
+    .mainContentContainer {
+		width: 80%;
+	}
+}
+
 @media only screen and (max-width: 1000px) {
 	:deep(img) {
 		width: 100%;
