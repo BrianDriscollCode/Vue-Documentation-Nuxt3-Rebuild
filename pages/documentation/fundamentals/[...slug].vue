@@ -44,6 +44,7 @@ for (let i = 0; i < dataChildren.length; i++) {
 </script>
 
 <style scoped>
+
 :deep(h1) {
     padding-top: 100px !important;
     margin-top: 0;
