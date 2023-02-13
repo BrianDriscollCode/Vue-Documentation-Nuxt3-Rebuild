@@ -42,7 +42,7 @@
         </li>
         <li class="navItem">
           <NuxtLink to="/documentation/fundamentals/basic-routing" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del>Basic Routing</del>
+            Basic Routing
           </NuxtLink>
         </li>
         <li class="navItem">

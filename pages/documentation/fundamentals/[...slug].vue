@@ -97,7 +97,7 @@ for (let i = 0; i < dataChildren.length; i++) {
 	display: block;
     margin-left: auto;
 	margin-right: auto;
-	width: 80%;
+	width: 60%;
 }
 .contentWrapper {
     margin: 0 auto 0 auto;
