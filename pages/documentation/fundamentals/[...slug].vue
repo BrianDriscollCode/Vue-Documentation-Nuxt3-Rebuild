@@ -69,7 +69,6 @@ for (let i = 0; i < dataChildren.length; i++) {
  justify-content: center;
  margin-left: auto;
  margin-right: auto;
- width: 100%;
  border-radius: 10px;
  overflow-x: auto;
 }
@@ -167,6 +166,12 @@ for (let i = 0; i < dataChildren.length; i++) {
 @media only screen and (max-width: 1000px) {
 	:deep(img) {
 		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.mainContentContainer {
+		width: 95%;
 	}
 }
 </style>

@@ -10,7 +10,7 @@
 		<div class="colorBackground" v-if="showModal" >
         </div>
       <aside class="leftSideBar" :id="showSideBar ? 'showSideBar': 'returnSideBar'">
-        <LeftSideBar />
+        <LeftSideBar v-on:turnOffSideBar="turnOffSideBar"/>
       </aside>
 
       <section class="documentationView" :id="showSideBar ? 'backgroundGrey': ''" @click.self="turnOffSideBar">
@@ -123,6 +123,7 @@ transition: width 0.5s;
 
 .tempBar {
 display: none;
+position: fixed;
 }
 
 .documentationView {
@@ -148,7 +149,8 @@ z-index: 10;
 width: 0px;
 transition: width 0.5s;
 overflow: hidden;
-display: fixed;
+position: fixed;
+z-index: 10;
 }
 
 /* Content */
@@ -166,7 +168,8 @@ background-color: rgb(244, 246, 254);
 width: 0px;
 transition: width 0.5s;
 overflow: hidden;
-display: fixed;
+position: fixed;
+z-index: 10;
 }
 .tempBar {
 display: block;
