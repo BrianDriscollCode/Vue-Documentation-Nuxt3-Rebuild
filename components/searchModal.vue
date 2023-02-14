@@ -12,8 +12,8 @@
 			>
                 <nuxt-link :to="item.path" class="searchButtonLinkStyling" @click="$emit('toggleModalOff')">
                     <div class="searchButtonContent">
-                        <span> {{ item.header }} </span>
-                        <span> {{ item.page }} - Page </span>
+                        <span class="itemHeader"> {{ item.header }} </span>
+                        <span class="itemPage"> {{ item.page }} - Page </span>
                     </div>
                 </nuxt-link>
 			</li>
@@ -120,4 +120,35 @@ onMounted(() => {
 	padding-right: 1.2em;
 }
 
+@media only screen and (max-width: 944px) {
+    .returnContainer {
+		width: 400px;
+		height: 500px;
+	}
+}
+
+
+@media only screen and (max-width: 500px) {
+    .returnContainer {
+		width: 80%;
+		height: 400px;
+	}
+
+	h3 {
+		margin-top: 0;
+	}
+	.searchInput {
+		height: 1.5em;
+		font-size: 0.7em;
+	}
+	.searchButton {
+		padding-top: 6px;
+		padding-bottom: 6px;
+		font-size: 0.8em;
+	}
+
+	.itemPage {
+		display: none;
+	}
+}
 </style>

@@ -1,46 +1,55 @@
 <template>
     <section class="topNavigationContainer">
-      <div class="leftSection">
-        <div class="topBar">
-          <div class="searchContainer">
-            <label class="searchLabel"> Search: </label>
-            <input
-				@click="$emit('isModalTrue', allHeaders)"
-			>
-          </div>
+        <div class="leftSection">
+            <div class="topBar">
+                <div class="searchContainer">
+                    <label class="searchLabel"> Search: </label>
+                    <input
+                        @click="$emit('isModalTrue', allHeaders)"
+                    >
+                </div>
+                <TopBarHamburger class="topHamburger" @click="toggleNavigation" :display="toggleNavigationMinimized" />
 
-          <div class="topNavigation">
-            <span class="navLinkContainer">
-              <Nuxt-link to="/" class="navLink">
-                Home
-              </Nuxt-link>
-            </span>
-            <span class="navLinkContainer">
-              <Nuxt-link to="/blog" class="navLink">
-                <del> Blog </del>
-              </Nuxt-link>
-            </span>
-            <span class="navLinkContainer">
-              <Nuxt-link to="free-course" class="navLink">
-                <del> Free Course </del>
-              </Nuxt-link>
-            </span>
-            <span class="navLinkContainer">
-              <Nuxt-link to="contact" class="navLink">
-                <del> Contact </del>
-              </Nuxt-link>
-            </span>
-          </div>
+				<NavigationMinimized
+                    :class="!toggleNavigationMinimized ? 'topNavigationMinimized': 'topNavigationMaximized'"
+                    :display="toggleNavigationMinimized"
+                />
+				<div class="topNavigation">
+					<span class="navLinkContainer">
+						<Nuxt-link to="/" class="navLink">
+							Home
+						</Nuxt-link>
+					</span>
+					<span class="navLinkContainer">
+						<Nuxt-link to="/blog" class="navLink">
+							<del> Blog </del>
+						</Nuxt-link>
+					</span>
+					<span class="navLinkContainer">
+						<Nuxt-link to="free-course" class="navLink">
+							<del> Free Course </del>
+						</Nuxt-link>
+					</span>
+					<span class="navLinkContainer">
+						<Nuxt-link to="contact" class="navLink">
+							<del> Contact </del>
+						</Nuxt-link>
+					</span>
+				</div>
+            </div>
         </div>
-      </div>
 
-      <div :class="windowWidth > 1135 ? 'rightSection': 'rightSectionMin'" />
+        <div :class="windowWidth > 1135 ? 'rightSection': 'rightSectionMin'"></div>
+
     </section>
   </template>
 
 <script setup>
+import { ref } from "vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 import useWindowSizeListener from "~~/plugins/windowSizeListener";
+import TopBarHamburger from "./TopBarHamburger.vue";
+import NavigationMinimized from "./NavigationMinimized.vue";
 
 let allContent = await useAsyncData("documentation", () => queryContent().find());
 allContent = allContent.data._rawValue;
@@ -90,6 +99,12 @@ for (let page in pages) {
         allHeaders.push(contentObject);
     }
 }
+
+let toggleNavigationMinimized = ref(false);
+
+function toggleNavigation() {
+    toggleNavigationMinimized.value = !toggleNavigationMinimized.value;
+}
 </script>
 
 <style scoped>
@@ -130,7 +145,7 @@ justify-content: space-between;
 }
 
 .leftSection {
-width: 75%;
+width: 100%;
 height: 50px;
 display: flex;
 align-items: center;
@@ -171,6 +186,29 @@ margin-right: 2em;
 color: white;
 }
 
+/* Toggle Navigation Minimized Menu */
+
+.topNavigationMinimized {
+	height: 0;
+	transition: height 0.5s;
+	top: 0;
+	display: block;
+}
+
+.topNavigationMaximized {
+	height: 70vh;
+	transition: height 0.5s;
+	top: 0;
+	display: block;
+}
+
+/* Top Teleport Hamburger */
+.topHamburger {
+	display: none;
+	position: absolute;
+	z-index: 6;
+}
+
 @media only screen and (max-width: 1135px) {
     .topNavigationContainer {
         width: 100%;
@@ -179,15 +217,16 @@ color: white;
 	.leftSection {
         width: 100%;
 	}
+    .rightSection {
+		width: 0;
+	}
 	.topBar {
         width: 100%;
 	}
 }
 
-@media only screen and (max-width: 800px) {
-    .topNavigation {
-        display:  none;
-	}
+@media only screen and (max-width: 944px) {
+
 
 	.leftSection {
 		width: 100%
@@ -197,9 +236,21 @@ color: white;
 		width: 0;
 	}
 
+	.topNavigation {
+		display: none;
+	}
+
 	.topBar {
 		display: flex;
 		justify-content: center;
 	}
+	.topHamburger {
+	display: block;
+	position: absolute;
+	z-index: 100;
+	right: .5em;
+	top: 8px;
+	border-radius: 5px;
+    }
 }
 </style>
