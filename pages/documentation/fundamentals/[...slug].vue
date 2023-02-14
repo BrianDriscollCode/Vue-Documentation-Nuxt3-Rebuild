@@ -155,6 +155,10 @@ for (let i = 0; i < dataChildren.length; i++) {
 }
 
 @media only screen and (max-width: 1135px) {
+    .mainContent {
+    width: 100%;
+    height: 100vh;
+    }
 	.articleNavigationContainer {
 		display: none;
 	}

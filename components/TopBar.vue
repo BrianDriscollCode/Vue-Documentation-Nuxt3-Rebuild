@@ -9,7 +9,7 @@
 			>
           </div>
 
-          <div class="top_navigation">
+          <div class="topNavigation">
             <span class="navLinkContainer">
               <Nuxt-link to="/" class="navLink">
                 Home
@@ -101,7 +101,6 @@ align-items: center;
 display: flex;
 position: fixed;
 flex-direction: row;
-transition: width 0.5s;
 }
 
 .topNavigationContainerMax {
@@ -112,7 +111,6 @@ align-items: center;
 display: flex;
 position: none;
 flex-direction: row;
-transition: width 0.5s;
 }
 
 .topBar {
@@ -121,7 +119,6 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-transition: width 0.5s;
 }
 
 .topBarMax {
@@ -130,7 +127,6 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-transition: width 0.5s;
 }
 
 .leftSection {
@@ -185,6 +181,25 @@ color: white;
 	}
 	.topBar {
         width: 100%;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+    .topNavigation {
+        display:  none;
+	}
+
+	.leftSection {
+		width: 100%
+	}
+
+	.rightSection{
+		width: 0;
+	}
+
+	.topBar {
+		display: flex;
+		justify-content: center;
 	}
 }
 </style>

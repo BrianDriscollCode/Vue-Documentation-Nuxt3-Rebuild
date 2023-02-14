@@ -160,23 +160,24 @@ height: 100vh;
 }
 
 @media only screen and (max-width: 1135px) {
-.documentationView {
-	width: 100%;
-}
-.leftSideBar {
-background-color: rgb(244, 246, 254);
-width: 0px;
-transition: width 0.5s;
-overflow: hidden;
-position: fixed;
-z-index: 10;
-}
-.tempBar {
-display: block;
-height: 30px;
-position: relative;
-margin-top: 3.5em;
-}
+	.documentationView {
+		width: 100%;
+	}
+
+	.leftSideBar {
+	background-color: rgb(244, 246, 254);
+	width: 0px;
+	transition: width 0.5s;
+	overflow: hidden;
+	position: fixed;
+	z-index: 10;
+	}
+
+	.tempBar {
+	display: block;
+	height: 30px;
+	margin-top: 3.5em;
+	}
 }
 
 </style>
