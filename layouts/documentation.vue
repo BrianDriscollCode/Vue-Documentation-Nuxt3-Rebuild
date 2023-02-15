@@ -33,9 +33,9 @@
 
 <script setup>
 //components
-import LeftSideBar from "../components/LeftSideBar.vue";
-import TopBar from "../components/TopBar.vue";
-import SearchModal from "~/components/searchModal.vue";
+import LeftSideBar from "../components/documentation/LeftSideBar.vue";
+import TopBar from "../components/documentation/TopBar.vue";
+import SearchModal from "~/components/documentation/searchModal.vue";
 //vue
 import { ref } from "vue";
 

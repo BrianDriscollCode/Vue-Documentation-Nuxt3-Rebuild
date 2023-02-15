@@ -17,8 +17,8 @@
 
 <script setup>
 import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
-import ArticleNavigation from "~/components/ArticleNavigation.vue";
-import FooterBar from "~/components/FooterBar.vue";
+import ArticleNavigation from "~/components/documentation/ArticleNavigation.vue";
+import FooterBar from "~/components/documentation/FooterBar.vue";
 
 definePageMeta({
     layout: "documentation"
@@ -44,6 +44,7 @@ for (let i = 0; i < dataChildren.length; i++) {
 </script>
 
 <style scoped>
+
 :deep(h1) {
     padding-top: 100px !important;
     margin-top: 0;
@@ -68,7 +69,6 @@ for (let i = 0; i < dataChildren.length; i++) {
  justify-content: center;
  margin-left: auto;
  margin-right: auto;
- width: 100%;
  border-radius: 10px;
  overflow-x: auto;
 }
@@ -97,7 +97,7 @@ for (let i = 0; i < dataChildren.length; i++) {
 	display: block;
     margin-left: auto;
 	margin-right: auto;
-	width: 80%;
+	width: 60%;
 }
 .contentWrapper {
     margin: 0 auto 0 auto;
@@ -155,6 +155,10 @@ for (let i = 0; i < dataChildren.length; i++) {
 }
 
 @media only screen and (max-width: 1135px) {
+    .mainContent {
+    width: 100%;
+    height: 100vh;
+    }
 	.articleNavigationContainer {
 		display: none;
 	}
@@ -166,6 +170,12 @@ for (let i = 0; i < dataChildren.length; i++) {
 @media only screen and (max-width: 1000px) {
 	:deep(img) {
 		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.mainContentContainer {
+		width: 95%;
 	}
 }
 </style>
