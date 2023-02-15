@@ -5,7 +5,7 @@
 
             <ul class="navigationList">
 				<li> <NuxtLink to="/" class="navLink"> Home </NuxtLink> </li>
-				<li> <NuxtLink to="/documentation" class="navLink"> <del>Documentation</del> </NuxtLink> </li>
+				<li> <NuxtLink to="/documentation" class="navLink"> Documentation </NuxtLink> </li>
 				<li> <NuxtLink to="/blog" class="navLink"> <del>Blog</del> </NuxtLink> </li>
 				<li> <NuxtLink to="/free-course" class="navLink"> <del>Free Course</del> </NuxtLink>  </li>
 				<li> <NuxtLink to="/contact" class="navLink"> <del>Contact</del> </NuxtLink> </li>
@@ -71,5 +71,14 @@
 	.searchButton {
 		width: 25px;
 		height: 25px;
+	}
+
+	@media only screen and (max-width: 1335px) {
+		.navigationWrapper {
+			width: 90%;
+		}
+	}
+
+	@media only screen and (max-width: 1135px) {
 	}
 </style>

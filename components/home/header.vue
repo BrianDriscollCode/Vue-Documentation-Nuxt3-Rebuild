@@ -1,6 +1,7 @@
 <template>
 	<div class="headerWrapper">
 		<div class="textContainer">
+			<span id="inDevelopment"> In development </span>
             <h1> An Intuitive Guide to the Vue <span id="ecosystem">Ecosystem</span></h1>
 			<h2> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
 			<div class="cta">
@@ -42,6 +43,12 @@
 	.textContainer h2 {
 		color: #d3d3d3;
 		font-weight: 300;
+	}
+
+	#inDevelopment {
+		border: solid 1px white;
+		padding: 0.3em;
+		border-radius: 5px;
 	}
 
 	.imageContainer {
@@ -94,5 +101,51 @@
 		text-decoration: none;
 		color: #00c69a;
 		padding-left: 2em;
+	}
+
+	@media only screen and (max-width: 1335px) {
+		.headerWrapper {
+			width: 90%;
+		}
+	}
+
+	/* @media only screen and (max-width: 1135px) {
+		.navigationWrapper {
+			width: 90%;
+		}
+
+		.textContainer {
+			width: 50%;
+		}
+
+		.imageContainer {
+			width: 50%;
+		}
+	} */
+
+	@media only screen and (max-width: 1135px) {
+		.imageContainer {
+			position: absolute;
+			width: 50%;
+			z-index: 2;
+			opacity: 0.1;
+			margin-bottom: 2em;
+		}
+		.textContainer {
+			text-align: center;
+			z-index: 3;
+			width: 80%;
+		}
+		.cta {
+			justify-content: center;
+		}
+
+		.textContainer h1 {
+			text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
+		}
+
+		.textContainer h2 {
+			font-weight: 500;
+		}
 	}
 </style>

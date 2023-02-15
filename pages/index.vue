@@ -8,6 +8,9 @@
             <div class="waterDroplet drop3"> </div>
 			<div class="waterDroplet drop4"> </div>
 		</div>
+		<div class="featuresContainer">
+            <h2> features </h2>
+		</div>
     </main>
 </template>
 
@@ -132,6 +135,16 @@ definePageMeta({
             top: 100%;
 			opacity: 0;
 		}
+	}
+
+	.featuresContainer {
+		z-index: 10;
+		background-color: bisque;
+		width: 100%;
+	}
+
+	.featuresContainer h2 {
+		margin-top: 0;
 	}
 </style>
 
