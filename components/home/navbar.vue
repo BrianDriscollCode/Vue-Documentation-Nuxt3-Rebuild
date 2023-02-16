@@ -1,5 +1,9 @@
 <template>
 	<div class="navigationContainer">
+        <NavigationMinimized
+                    :class="!toggleNavigationMinimized ? 'topNavigationMinimized': 'topNavigationMaximized'"
+                    :display="toggleNavigationMinimized"
+        />
 		<div class="navigationWrapper">
             <p> Vue<span id="logoName">Ref</span> </p>
 
@@ -12,12 +16,32 @@
             </ul>
 
 			<div class="searchButtonContainer">
-                <img src="~/assets/search.png" class="searchButton" />
+				<a href="https://twitter.com/BrianDrisBuilds">
+                    <img src="~/assets/twitter.png" class="twitter"/>
+				</a>
+				<a href="https://www.linkedin.com/in/brianrdriscoll/">
+                    <img src="~/assets/LinkedIn.png" class="linkedIn"/>
+				</a>
+				<div>
+                    <TopBarHamburger class="topHamburger" @click="toggleNavigation" :display="toggleNavigationMinimized" />
+				</div>
 			</div>
 
 		</div>
 	</div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import NavigationMinimized from "~/components/NavigationMinimized.vue";
+import TopBarHamburger from "../documentation/TopBarHamburger.vue";
+
+let toggleNavigationMinimized = ref(false);
+
+function toggleNavigation() {
+    toggleNavigationMinimized.value = !toggleNavigationMinimized.value;
+}
+</script>
 
 <style scoped>
     .navigationContainer {
@@ -68,10 +92,44 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.searchButton {
-		width: 25px;
-		height: 25px;
+	.twitter {
+		width: 20px;
+		height: 20px;
+		margin-right: 1em;
 	}
+
+	.linkedIn {
+		width: 22px;
+		height: 22px;
+		margin-right: 0em;
+	}
+
+	.hamburgerHome {
+		width: 33px;
+		height: 33px;
+		z-index: 100;
+		position: relative;
+	}
+
+	.topNavigationMinimized {
+        height: 0;
+        transition: height 0.5s;
+        top: 0;
+        display: block;
+    }
+
+	.topHamburger {
+        display: none;
+        position: absolute;
+        z-index: 6;
+	}
+
+.topNavigationMaximized {
+	height: 70vh;
+	transition: height 0.5s;
+	top: 0;
+	display: block;
+}
 
 	@media only screen and (max-width: 1335px) {
 		.navigationWrapper {
@@ -79,6 +137,28 @@
 		}
 	}
 
-	@media only screen and (max-width: 1135px) {
+	@media only screen and (max-width: 1000px) {
+        .navigationList {
+			display: none;
+		}
+		.hamburgerHome {
+			display: block;
+		}
+		.topHamburger {
+			display: block;
+			position: absolute;
+			z-index: 100;
+			right: .5em;
+			top: 8px;
+			border-radius: 5px;
+        }
+		.twitter {
+			margin-right: 1em;
+        }
+		.linkedIn {
+		width: 25px;
+		height: 25px;
+		margin-right: 1em;
+	}
 	}
 </style>

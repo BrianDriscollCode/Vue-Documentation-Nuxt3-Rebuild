@@ -7,6 +7,11 @@
 				</Nuxt-link>
 			</span>
 			<span :class="props.display ? 'navLinkContainerMax':'navLinkContainerMin'">
+				<Nuxt-link to="/documentation" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
+					Documentation
+				</Nuxt-link>
+			</span>
+			<span :class="props.display ? 'navLinkContainerMax':'navLinkContainerMin'">
 				<Nuxt-link to="/blog" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
 					Blog
 				</Nuxt-link>
@@ -37,7 +42,7 @@ const props = defineProps({
 
 <style scoped>
     .topNavigationMin {
-		background-color: #34445c;
+		background-color: #415572;
 		width: 100%;
 		z-index: 5;
 		position:absolute;
@@ -68,7 +73,6 @@ const props = defineProps({
 		text-align: center;
 		display: block;
 		height: 50px;
-		width: 100px;
 		transition: opacity 0.3s, height 0.3s;
 	}
 </style>

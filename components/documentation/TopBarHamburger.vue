@@ -18,5 +18,6 @@ const props = defineProps({
     .hamburgerImage {
 		width: 35px;
 		height: 35px;
+		z-index: 100;
 	}
 </style>

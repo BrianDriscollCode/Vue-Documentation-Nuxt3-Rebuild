@@ -14,6 +14,7 @@
                     :class="!toggleNavigationMinimized ? 'topNavigationMinimized': 'topNavigationMaximized'"
                     :display="toggleNavigationMinimized"
                 />
+
 				<div class="topNavigation">
 					<span class="navLinkContainer">
 						<Nuxt-link to="/" class="navLink">
@@ -49,7 +50,7 @@ import { ref } from "vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 import useWindowSizeListener from "~~/plugins/windowSizeListener";
 import TopBarHamburger from "./TopBarHamburger.vue";
-import NavigationMinimized from "./NavigationMinimized.vue";
+import NavigationMinimized from "../NavigationMinimized.vue";
 
 let allContent = await useAsyncData("documentation", () => queryContent().find());
 allContent = allContent.data._rawValue;

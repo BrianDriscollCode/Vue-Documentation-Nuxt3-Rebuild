@@ -1,10 +1,9 @@
 <template>
 	<section class="leftSideBarContainer">
       <div class="navTitleContainer">
-        <img src="~/assets/vue_logo.png" class="mainLogo">
         <p class="navTitle">
           <NuxtLink to="/" class="sideBarTitle">
-            Vue Reference
+            Vue<span id="refLogo">Ref</span>
           </NuxtLink>
         </p>
       </div>
@@ -246,7 +245,13 @@
 	height: 40px;
   }
 
+  #refLogo {
+	color: #00c69a;
+  }
+
   .sideBarTitle {
+	font-size: 1.2em;
+	font-weight: 700;
     text-decoration: none;
     color: #34445c;
   }

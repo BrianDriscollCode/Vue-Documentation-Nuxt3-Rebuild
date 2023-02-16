@@ -36,11 +36,12 @@
 import LeftSideBar from "../components/documentation/LeftSideBar.vue";
 import TopBar from "../components/documentation/TopBar.vue";
 //import SearchModal from "~/components/documentation/searchModal.vue";
+
 //vue
 import { ref, defineAsyncComponent } from "vue";
 
 const SearchModal = defineAsyncComponent(() =>
-    import("~/components/documentation/searchModal.vue")
+    import("~~/components/searchModal.vue")
 );
 
 let showModal = ref(false);

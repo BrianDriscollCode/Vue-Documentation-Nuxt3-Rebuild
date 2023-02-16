@@ -34,6 +34,8 @@
 	.textContainer {
         width: 60%;
 		padding-right: 4em;
+		padding-top: 4em;
+		padding-bottom: 4em;
 	}
 
 	.textContainer h1 {
@@ -61,6 +63,7 @@
 	.waveImage {
 		width: 100%;
 		margin-top: auto;
+		margin-bottom: auto;
 		vertical-align: middle;
 	}
 
@@ -72,15 +75,17 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		margin-top: 1em;
 	}
 
 	.cta button {
-		background-color: #00c69a;
+		background: rgb(0,198,154);
+        background: linear-gradient(180deg, rgba(0,198,154,1) 0%, rgba(0,198,154,1) 65%, rgba(0,167,129,1) 100%);
 		color: rgb(55, 55, 55);
 		font-weight: 600;
 		border: none;
 		border-radius: 5px;
-		padding: .5em;
+		padding: .8em;
 		-webkit-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
         -moz-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
         box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
@@ -109,20 +114,6 @@
 		}
 	}
 
-	/* @media only screen and (max-width: 1135px) {
-		.navigationWrapper {
-			width: 90%;
-		}
-
-		.textContainer {
-			width: 50%;
-		}
-
-		.imageContainer {
-			width: 50%;
-		}
-	} */
-
 	@media only screen and (max-width: 1135px) {
 		.imageContainer {
 			position: absolute;
@@ -135,6 +126,7 @@
 			text-align: center;
 			z-index: 3;
 			width: 80%;
+			padding-right: 0;
 		}
 		.cta {
 			justify-content: center;
@@ -147,5 +139,14 @@
 		.textContainer h2 {
 			font-weight: 500;
 		}
+		.waveImage {
+			margin-bottom: 0;
+		}
+
+	@media only screen and (max-width: 1000px) {
+		.imageContainer {
+            width:80%;
+        }
+	}
 	}
 </style>
