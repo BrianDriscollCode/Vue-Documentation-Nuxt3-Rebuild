@@ -22,9 +22,7 @@
 				<a href="https://www.linkedin.com/in/brianrdriscoll/">
                     <img src="~/assets/LinkedIn.png" class="linkedIn"/>
 				</a>
-				<div>
                     <TopBarHamburger class="topHamburger" @click="toggleNavigation" :display="toggleNavigationMinimized" />
-				</div>
 			</div>
 
 		</div>
@@ -156,9 +154,19 @@ function toggleNavigation() {
 			margin-right: 1em;
         }
 		.linkedIn {
-		width: 25px;
-		height: 25px;
-		margin-right: 1em;
+			width: 25px;
+			height: 25px;
+			margin-right: 1em;
+        }
 	}
+
+    @media only screen and (max-width: 500px) {
+		.twitter {
+			display: none;
+		}
+
+		.linkedIn {
+			display: none;
+		}
 	}
 </style>

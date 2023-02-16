@@ -146,5 +146,11 @@ definePageMeta({
 	.featuresContainer h2 {
 		margin-top: 0;
 	}
+
+	@media only screen and (max-width: 600px) {
+        .drop3 {
+			left: 15em;
+		}
+	}
 </style>
 

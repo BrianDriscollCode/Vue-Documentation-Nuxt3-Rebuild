@@ -148,5 +148,21 @@
             width:80%;
         }
 	}
+
+	@media only screen and (max-width: 500px) {
+
+		.textContainer h1 {
+			font-size: 2.8em;
+		}
+		.textContainer h2 {
+			font-size: 1.3em;
+		}
+		.headerWrapper {
+            width: 100%;
+		}
+		.textContainer {
+			width: 100%;
+		}
+	}
 	}
 </style>

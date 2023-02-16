@@ -246,12 +246,12 @@
   }
 
   #refLogo {
+	font-weight: 700;
 	color: #00c69a;
   }
 
   .sideBarTitle {
 	font-size: 1.2em;
-	font-weight: 700;
     text-decoration: none;
     color: #34445c;
   }
