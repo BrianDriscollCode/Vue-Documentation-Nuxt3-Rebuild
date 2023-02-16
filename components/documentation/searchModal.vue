@@ -92,19 +92,8 @@ onMounted(() => {
 }
 
 .searchButton {
-	background: rgb(173, 189, 218);
-	padding-top: 12px;
-	padding-bottom: 12px;
-	-webkit-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
-    -moz-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
-    box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
     list-style-type: none;
-	border-radius: 5px;
 	margin-bottom: 0.8em;
-}
-
-.searchButton:hover {
-    background: rgb(132, 191, 233);
 }
 
 .searchButtonLinkStyling {
@@ -116,8 +105,19 @@ onMounted(() => {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	background-color: rgb(173, 189, 218);
+	-webkit-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
+    -moz-box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
+    box-shadow: 6px 7px 5px -6px rgba(153,153,153,1);
 	padding-left: 1.2em;
 	padding-right: 1.2em;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 5px;
+}
+
+.searchButtonContent:hover {
+    background: rgb(132, 191, 233);
 }
 
 @media only screen and (max-width: 944px) {
