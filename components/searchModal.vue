@@ -129,9 +129,9 @@ onMounted(() => {
 
 
 @media only screen and (max-width: 500px) {
-    .returnContainer {
+	.returnContainer {
 		width: 80%;
-		height: 400px;
+		height: 250px;
 	}
 
 	h3 {
@@ -142,13 +142,17 @@ onMounted(() => {
 		font-size: 0.7em;
 	}
 	.searchButton {
-		padding-top: 6px;
-		padding-bottom: 6px;
 		font-size: 0.8em;
 	}
 
 	.itemPage {
 		display: none;
+	}
+	.searchButtonContent {
+		padding-top: 0;
+		padding-bottom: 0;
+		display: flex;
+		justify-content: center;
 	}
 }
 </style>

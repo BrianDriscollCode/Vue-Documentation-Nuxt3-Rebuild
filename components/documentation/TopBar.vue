@@ -254,4 +254,10 @@ color: white;
 	border-radius: 5px;
     }
 }
+
+@media only screen and (max-width: 450px) {
+	.topBar {
+		justify-content: flex-start;
+	}
+}
 </style>
