@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { defineEmits, onMounted, onBeforeUpdate, ref, defineProps} from "vue";
+import { defineEmits, onMounted, onBeforeUpdate, ref, defineProps } from "vue";
 
 const input = ref(null);
 const emit = defineEmits(["setInput"]);

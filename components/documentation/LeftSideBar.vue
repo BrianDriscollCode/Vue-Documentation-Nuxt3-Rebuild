@@ -100,8 +100,8 @@
           </NuxtLink>
         </li>
         <li class="navItem">
-          <NuxtLink to="documentation/async-components" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Async Components </del>
+          <NuxtLink to="/documentation/intermediate/async-components" class="leftSideLink" @click="$emit('turnOffSideBar')">
+             Async Components
           </NuxtLink>
         </li>
         <li class="navItem">
