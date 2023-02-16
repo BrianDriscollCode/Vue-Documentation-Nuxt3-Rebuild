@@ -20,7 +20,7 @@
                     <img src="~/assets/twitter.png" class="twitter"/>
 				</a>
 				<a href="https://www.linkedin.com/in/brianrdriscoll/">
-                    <img src="~/assets/LinkedIn.png" class="linkedIn"/>
+                    <img src="~/assets/linkedIn.png" class="linkedIn"/>
 				</a>
                     <TopBarHamburger class="topHamburger" @click="toggleNavigation" :display="toggleNavigationMinimized" />
 			</div>
