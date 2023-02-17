@@ -8,9 +8,8 @@
             <div class="waterDroplet drop3"> </div>
 			<div class="waterDroplet drop4"> </div>
 		</div>
-		<div class="featuresContainer">
-            <h2> features </h2>
-		</div>
+		<Features />
+		<Footer />
     </main>
 </template>
 
@@ -18,6 +17,8 @@
 import { definePageMeta } from "~~/.nuxt/imports";
 import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
+import Features from "~/components/home/features.vue";
+import Footer from "~/components/home/footer.vue";
 
 definePageMeta({
     layout: "main-pages"
@@ -137,15 +138,6 @@ definePageMeta({
 		}
 	}
 
-	.featuresContainer {
-		z-index: 10;
-		background-color: bisque;
-		width: 100%;
-	}
-
-	.featuresContainer h2 {
-		margin-top: 0;
-	}
 
 	@media only screen and (max-width: 600px) {
         .drop3 {

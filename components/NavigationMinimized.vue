@@ -12,7 +12,7 @@
 				</Nuxt-link>
 			</span>
 			<span :class="props.display ? 'navLinkContainerMax':'navLinkContainerMin'">
-				<Nuxt-link to="/blog" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
+				<Nuxt-link to="/Blog" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
 					Blog
 				</Nuxt-link>
 			</span>
