@@ -9,7 +9,11 @@
 			<div class="waterDroplet drop4"> </div>
 		</div>
 		<Features />
-		<Footer />
+
+		<div class="footerContainer">
+			<hr class="footerLine"/>
+            <Footer class="footerComponent" />
+		</div>
     </main>
 </template>
 
@@ -18,7 +22,7 @@ import { definePageMeta } from "~~/.nuxt/imports";
 import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
 import Features from "~/components/home/features.vue";
-import Footer from "~/components/home/footer.vue";
+import Footer from "~/components/documentation/FooterBar.vue";
 
 definePageMeta({
     layout: "main-pages"
@@ -138,6 +142,22 @@ definePageMeta({
 		}
 	}
 
+    .footerContainer {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.footerLine {
+		color: black;
+	}
+
+	.footerComponent {
+		margin-left: auto;
+		margin-right: auto;
+		width: 70%;
+	}
 
 	@media only screen and (max-width: 600px) {
         .drop3 {

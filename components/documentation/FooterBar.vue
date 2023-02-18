@@ -36,6 +36,7 @@
   .footerContainer {
       margin-top: 2em;
       padding-bottom: 2em;
+      font-family: 'Montserrat', sans-serif;
   }
 
   .footerWrapper {

@@ -14,7 +14,7 @@
 						</p>
 						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
-                    <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                    <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
 
 				<div class="singleFeatureContainerRight">
@@ -26,7 +26,7 @@
                         </p>
 						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 					</div>
-                    <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                    <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
 
 				<div class="singleFeatureContainerLeft">
