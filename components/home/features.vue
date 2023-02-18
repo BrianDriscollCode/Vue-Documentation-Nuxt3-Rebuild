@@ -3,7 +3,7 @@
 			<div class="featuresWrapper">
 				<div class="featureTitleContainer">
 					<h3 data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> (In development) </h3>
-					<h2 data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Learning  Vue is a process, and we have it <span style="border-bottom: 2px solid #34445c;">mapped out</span> </h2>
+					<h2 data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Learning  Vue is a journey, and we have it <span style="border-bottom: 2px solid #34445c;">mapped out</span> </h2>
 				</div>
 
 				<div class="singleFeatureContainerLeft">
@@ -13,6 +13,7 @@
 							No need to buy an expensive textbook or course, it's all right here so
 							you can be 100% confident you have the reference materials you need!
                         </p>
+						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 					</div>
                     <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
                 </div>
@@ -20,10 +21,11 @@
 				<div class="singleFeatureContainerRight">
 					<div class="vueDocsCopy">
                         <h3> Free Course </h3>
-						<p> Learn the basics of Vue, Vue Router, and more using our free course.
+						<p> Start here. Learn the basics of Vue, Vue Router, and more using our free course.
 							We utilize video learning, practice materials, and coding exercises to
 							get you from a ZERO to making your own single page applications!
 						</p>
+						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
                     <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
                 </div>
@@ -31,13 +33,24 @@
 				<div class="singleFeatureContainerLeft">
 						<div class="vueDocsCopy">
 							<h3> Videos </h3>
-							<p> Tutorials bringing you through the process, step-by-step, showing
-								you how to use Vue features, build well-organized applications, and apply coding-tricks
-								and much more.
+							<p> The VueRef YouTube channel! Tutorials showing you, step-by-step, how to build applications in Vue 3, Nuxt 3, and other technologies
+								in the Vue ecosystem. Known for being quick, step-by-step, and easy-to-follow.
 							</p>
+							<a href="https://www.youtube.com/channel/UC38cBsblgQDI1a8smBcbQNw" target="_blank"><button> Watch Videos </button></a>
 						</div>
 						<img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
 					</div>
+
+					<div class="singleFeatureContainerRight">
+					<div class="vueDocsCopy">
+                        <h3> Blog </h3>
+						<p> If articles are more your thing, we make every video into a detailed article. Read and follow along with the article, or use both resources
+							to make it fit your learning style.
+						</p>
+						<NuxtLink to="/free-course"><button> See Content </button></NuxtLink>
+					</div>
+                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+                </div>
 				</div>
 			</div>
 </template>
@@ -107,6 +120,24 @@
 		z-index: 10;
 		background-color: rgb(255, 255, 255);
 		width: 100%;
+	}
+
+	button {
+		background: rgb(0,198,154);
+        background: linear-gradient(180deg, rgba(0,198,154,1) 0%, rgba(0,198,154,1) 65%, rgba(0,167,129,1) 100%);
+		color: rgb(55, 55, 55);
+		font-weight: 600;
+		border: none;
+		border-radius: 5px;
+		padding: .8em;
+		-webkit-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+        -moz-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+        box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+		transition: background-color .2s;
+	}
+
+	button:hover {
+		background: linear-gradient(180deg, rgb(52, 229, 190) 0%, rgba(0,198,154,1) 65%, rgb(70, 239, 200) 100%);
 	}
 
 	@media only screen and (max-width: 1350px) {
