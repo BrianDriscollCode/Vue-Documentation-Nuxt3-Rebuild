@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         }
     },
     plugins: [
-        {src: "~/plugins/windowSizeListener", ssr: false}
-    ]
+        { src: "~/plugins/windowSizeListener", ssr: false },
+        { src: "~/plugins/aos.js", ssr: false, mode: "client" }
+    ],
 });

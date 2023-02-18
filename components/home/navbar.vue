@@ -16,10 +16,10 @@
             </ul>
 
 			<div class="searchButtonContainer">
-				<a href="https://twitter.com/BrianDrisBuilds">
+				<a href="https://twitter.com/BrianDrisBuilds" target="_blank">
                     <img src="~/assets/twitter.png" class="twitter"/>
 				</a>
-				<a href="https://www.linkedin.com/in/brianrdriscoll/">
+				<a href="https://www.linkedin.com/in/brianrdriscoll/" target="_blank">
                     <img src="~/assets/linkedIn.png" class="linkedIn"/>
 				</a>
                     <TopBarHamburger class="topHamburger" @click="toggleNavigation" :display="toggleNavigationMinimized" />

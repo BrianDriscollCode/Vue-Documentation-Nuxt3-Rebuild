@@ -1,10 +1,10 @@
 <template>
 	<div class="headerWrapper">
 		<div class="textContainer">
-			<span id="inDevelopment"> In development </span>
-            <h1> An Intuitive Guide to the Vue <span id="ecosystem">Ecosystem</span></h1>
-			<h2> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
-			<div class="cta">
+			<span id="inDevelopment" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> In development </span>
+            <h1 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> An Intuitive Guide to the Vue <span id="ecosystem">Ecosystem</span></h1>
+			<h2 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
+			<div class="cta" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500">
 				<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 				<NuxtLink to="/free-course" class="freeCourse"><del>Try our free course ></del></NuxtLink>
 			</div>

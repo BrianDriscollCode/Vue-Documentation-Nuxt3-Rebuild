@@ -35,7 +35,6 @@
 //components
 import LeftSideBar from "../components/documentation/LeftSideBar.vue";
 import TopBar from "../components/documentation/TopBar.vue";
-//import SearchModal from "~/components/documentation/searchModal.vue";
 
 //vue
 import { ref, defineAsyncComponent } from "vue";
