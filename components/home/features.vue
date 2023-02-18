@@ -8,35 +8,35 @@
 
 				<div class="singleFeatureContainerLeft">
 					<div class="vueDocsCopy">
-                        <h3 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Vue 3 Documentation </h3>
-						<p data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Specifically made to support your learning journey.
+                        <h3> Vue 3 Documentation </h3>
+						<p> Specifically made to support your learning journey.
 							No need to buy an expensive textbook or course, it's all right here so
 							you can be 100% confident you have the reference materials you need!
                         </p>
 					</div>
-                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="zoom-in-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
                 </div>
 
 				<div class="singleFeatureContainerRight">
 					<div class="vueDocsCopy">
-                        <h3 data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Free Course </h3>
-						<p data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Learn the basics of Vue, Vue Router, and more using our free course.
+                        <h3> Free Course </h3>
+						<p> Learn the basics of Vue, Vue Router, and more using our free course.
 							We utilize video learning, practice materials, and coding exercises to
 							get you from a ZERO to making your own single page applications!
 						</p>
 					</div>
-                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="zoom-in-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
                 </div>
 
 				<div class="singleFeatureContainerLeft">
 						<div class="vueDocsCopy">
-							<h3 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Videos </h3>
-							<p data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Tutorials bringing you through the process, step-by-step, showing
+							<h3> Videos </h3>
+							<p> Tutorials bringing you through the process, step-by-step, showing
 								you how to use Vue features, build well-organized applications, and apply coding-tricks
 								and much more.
 							</p>
 						</div>
-						<img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="zoom-in-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+						<img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
 					</div>
 				</div>
 			</div>
