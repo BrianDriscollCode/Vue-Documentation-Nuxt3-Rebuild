@@ -164,6 +164,7 @@
 	@media only screen and (max-width: 700px) {
         .featuresContainer {
 			width: 100%;
+			overflow-x: hidden;
 		}
 		.featuresWrapper {
 			width: 90%;
