@@ -168,6 +168,11 @@
 		.featuresWrapper {
 			width: 90%;
 		}
+
+		.featureImage {
+			padding: 0;
+			width: 100%;
+		}
 		.vueDocsCopy {
 		text-align: center;
 		padding: 0;
