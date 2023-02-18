@@ -2,23 +2,10 @@
 	<div class="featuresContainer" >
 			<div class="featuresWrapper">
 				<div class="featureTitleContainer">
-					<h3 data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> (In development) </h3>
-					<h2 data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Learning  Vue is a journey, and we have it <span style="border-bottom: 2px solid #34445c;">mapped out</span> </h2>
+					<h2 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"> Learning  Vue is a journey, and we have it <span style="border-bottom: 2px solid #34445c;">mapped out</span> </h2>
 				</div>
 
 				<div class="singleFeatureContainerLeft">
-					<div class="vueDocsCopy">
-                        <h3> Vue 3 Documentation </h3>
-						<p> Specifically made to support your learning journey.
-							No need to buy an expensive textbook or course, it's all right here so
-							you can be 100% confident you have the reference materials you need!
-                        </p>
-						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
-					</div>
-                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
-                </div>
-
-				<div class="singleFeatureContainerRight">
 					<div class="vueDocsCopy">
                         <h3> Free Course </h3>
 						<p> Start here. Learn the basics of Vue, Vue Router, and more using our free course.
@@ -27,7 +14,19 @@
 						</p>
 						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
-                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+                    <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                </div>
+
+				<div class="singleFeatureContainerRight">
+					<div class="vueDocsCopy">
+                        <h3> Vue 3 Documentation </h3>
+						<p> Specifically made to support your learning journey.
+							No need to buy an expensive textbook or course, it's all right here so
+							you can be 100% confident you have the reference materials you need!
+                        </p>
+						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
+					</div>
+                    <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
 
 				<div class="singleFeatureContainerLeft">
@@ -38,7 +37,7 @@
 							</p>
 							<a href="https://www.youtube.com/channel/UC38cBsblgQDI1a8smBcbQNw" target="_blank"><button> Watch Videos </button></a>
 						</div>
-						<img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+						<img src="~/assets/video.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
 					</div>
 
 					<div class="singleFeatureContainerRight">
@@ -47,9 +46,9 @@
 						<p> If articles are more your thing, we make every video into a detailed article. Read and follow along with the article, or use both resources
 							to make it fit your learning style.
 						</p>
-						<NuxtLink to="/free-course"><button> See Content </button></NuxtLink>
+						<NuxtLink to="/blog"><button> See Content </button></NuxtLink>
 					</div>
-                    <img src="~/assets/vueDocs.jpg" class="vueDocs" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"/>
+                    <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
 				</div>
 			</div>
@@ -77,6 +76,14 @@
 		text-align: center;
 	}
 
+	.featuresContainer {
+		width: 80%;
+	}
+	.planet {
+		width: 150px;
+		height: auto;
+	}
+
 	.featuresWrapper {
 		width: 70%;
 		margin-left: auto;
@@ -96,7 +103,7 @@
 		flex-direction: row-reverse;
 	}
 
-	.vueDocs {
+	.featureImage {
 		padding: 2em;
 		width: 600px;
 		margin-left: auto;
@@ -142,10 +149,10 @@
 
 	@media only screen and (max-width: 1350px) {
         .singleFeatureContainerLeft {
-			flex-direction: column;
+			flex-direction: column-reverse;
        }
        .singleFeatureContainerRight {
-			flex-direction: column;
+			flex-direction: column-reverse;
         }
 
 		.vueDocs {

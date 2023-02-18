@@ -1,10 +1,10 @@
 <template>
 	<div class="headerWrapper">
 		<div class="textContainer">
-			<span id="inDevelopment" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> In development </span>
-            <h1 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> An Intuitive Guide to the Vue <span id="ecosystem">Ecosystem</span></h1>
-			<h2 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500"> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
-			<div class="cta" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="500">
+			<div id="inDevelopment" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"> In development </div>
+            <h1 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"> An Intuitive Guide to the Vue <span id="ecosystem">Ecosystem</span></h1>
+			<h2 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
+			<div class="cta" data-aos="zoom-in" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800">
 				<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 				<NuxtLink to="/free-course" class="freeCourse"><del>Try our free course ></del></NuxtLink>
 			</div>
@@ -23,8 +23,8 @@
 		justify-content: center;
 		flex-direction: row;
 		width: 80%;
-		padding-top: 4em;
-		padding-bottom: 4em;
+		padding-top: 6em;
+		padding-bottom: 6em;
 		margin-left: auto;
 		margin-right: auto;
 		color: white;
@@ -51,6 +51,7 @@
 		border: solid 1px white;
 		padding: 0.3em;
 		border-radius: 5px;
+		display: inline-block;
 	}
 
 	.imageContainer {
@@ -93,7 +94,7 @@
 	}
 
 	.cta button:hover {
-		background-color: #94d6c7;
+		background: linear-gradient(180deg, rgb(52, 229, 190) 0%, rgba(0,198,154,1) 65%, rgb(70, 239, 200) 100%);
 	}
 
 	.cta .freeCourse {
