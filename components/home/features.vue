@@ -148,6 +148,10 @@
 	}
 
 	@media only screen and (max-width: 1350px) {
+
+		.featuresContainer {
+			overflow-x: hidden;
+		}
         .singleFeatureContainerLeft {
 			flex-direction: column-reverse;
        }
@@ -164,7 +168,6 @@
 	@media only screen and (max-width: 700px) {
         .featuresContainer {
 			width: 100%;
-			overflow-x: hidden;
 		}
 		.featuresWrapper {
 			width: 90%;
