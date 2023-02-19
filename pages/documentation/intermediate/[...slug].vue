@@ -3,6 +3,7 @@
 		<div class="mainContent">
 			<main class="mainContentContainer">
 				<ContentRenderer :value="data" />
+				<div class="bottomSpacing"> </div>
 			</main>
 		</div>
 
@@ -125,6 +126,10 @@ for (let i = 0; i < dataChildren.length; i++) {
 .imageContainer {
   display: flex;
   justify-content: center;
+}
+
+.bottomSpacing {
+	padding-top: 2em;
 }
 
 ::-webkit-scrollbar {
