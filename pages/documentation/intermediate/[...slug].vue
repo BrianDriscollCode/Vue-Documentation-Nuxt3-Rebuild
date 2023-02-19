@@ -116,6 +116,7 @@ for (let i = 0; i < dataChildren.length; i++) {
     width: 100%;
     overflow: auto;
     height: 100vh;
+	margin-bottom: 2em;
 }
 
 .mainContentContainer {

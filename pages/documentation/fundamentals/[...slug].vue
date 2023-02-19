@@ -3,7 +3,6 @@
 		<div class="mainContent">
 			<main class="mainContentContainer">
 				<ContentRenderer :value="data" />
-				<FooterBar />
 			</main>
 		</div>
 
@@ -18,7 +17,6 @@
 <script setup>
 import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
 import ArticleNavigation from "~/components/documentation/ArticleNavigation.vue";
-import FooterBar from "~/components/documentation/FooterBar.vue";
 
 definePageMeta({
     layout: "documentation"
@@ -116,12 +114,13 @@ for (let i = 0; i < dataChildren.length; i++) {
     width: 100%;
     overflow: auto;
     height: 100vh;
+	margin-bottom: 2em;
 }
 
 .mainContentContainer {
     width: 65%;
     height: 100vh;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 0em auto;
 }
 
 .imageContainer {

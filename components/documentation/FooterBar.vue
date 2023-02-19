@@ -2,7 +2,7 @@
     <div class="footerContainer">
       <hr>
       <div class="footerWrapper">
-        <div>
+        <div class="links">
           <span>
             <NuxtLink to="/" class="footerLink">
               Home
@@ -26,7 +26,7 @@
         </div>
 
         <div>
-          <span> &#169; All Rights Reserved by Vue Reference  </span>
+          <span> &#169; All Rights Reserved by VueReference  </span>
         </div>
       </div>
     </div>
@@ -34,9 +34,12 @@
 
   <style scoped>
   .footerContainer {
+	background-color: #ffffff;
       margin-top: 2em;
       padding-bottom: 2em;
       font-family: 'Montserrat', sans-serif;
+      width: 100%;
+      color: rgb(51, 51, 51);
   }
 
   .footerWrapper {
@@ -44,16 +47,49 @@
       flex-direction: row;
       justify-content: space-between;
       margin-top: 1em;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
   }
 
   .footerLink {
       text-decoration: none;
       margin-right: 1em;
-      color: #4c6182;
+      color: #282828;
   }
 
   .footerLink:hover {
-      color: #202a39;
+      color: #1abb7d;
   }
+
+  hr {
+	margin: 0;
+  }
+
+  @media only screen and (max-width: 1580px) {
+      .footerWrapper {
+		flex-direction: column;
+		text-align: center;
+      }
+      .links {
+		margin-bottom: 1em;
+      }
+  }
+
+  @media only screen and (max-width: 1350px) {
+     .footerWrapper {
+		flex-direction: column;
+		text-align: center;
+		width: 95%;
+     }
+
+     .links {
+		margin-bottom: 1em;
+     }
+
+     .footerLink {
+		margin-right: .5em;
+     }
+}
 
   </style>

@@ -8,10 +8,12 @@
 				<div class="singleFeatureContainerLeft">
 					<div class="vueDocsCopy">
                         <h3> Free Course </h3>
-						<p> Start here. Learn the basics of Vue, Vue Router, and more using our free course.
+						<div class="featureCopy">
+							<p> Start here. Learn the basics of Vue, Vue Router, and more using our free course.
 							We utilize video learning, practice materials, and coding exercises to
 							get you from a ZERO to making your own single page applications!
-						</p>
+                            </p>
+						</div>
 						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
                     <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
@@ -20,10 +22,12 @@
 				<div class="singleFeatureContainerRight">
 					<div class="vueDocsCopy">
                         <h3> Vue 3 Documentation </h3>
-						<p> Specifically made to support your learning journey.
-							No need to buy an expensive textbook or course, it's all right here so
-							you can be 100% confident you have the reference materials you need!
-                        </p>
+						<div class="featureCopy">
+							<p> Specifically made to support your learning journey.
+								No need to buy an expensive textbook or course, it's all right here so
+								you can be 100% confident you have the reference materials you need!
+							</p>
+                        </div>
 						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 					</div>
                     <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
@@ -32,9 +36,11 @@
 				<div class="singleFeatureContainerLeft">
 						<div class="vueDocsCopy">
 							<h3> Videos </h3>
-							<p> The VueRef YouTube channel! Tutorials showing you, step-by-step, how to build applications in Vue 3, Nuxt 3, and other technologies
-								in the Vue ecosystem. Known for being quick, step-by-step, and easy-to-follow.
-							</p>
+							<div class="featureCopy">
+								<p> The VueRef YouTube channel! Tutorials showing you, step-by-step, how to build applications in Vue 3, Nuxt 3, and other technologies
+									in the Vue ecosystem. Known for being quick, step-by-step, and easy-to-follow.
+								</p>
+                            </div>
 							<a href="https://www.youtube.com/channel/UC38cBsblgQDI1a8smBcbQNw" target="_blank"><button> Watch Videos </button></a>
 						</div>
 						<img src="~/assets/video.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
@@ -43,9 +49,11 @@
 					<div class="singleFeatureContainerRight">
 					<div class="vueDocsCopy">
                         <h3> Blog </h3>
-						<p> If articles are more your thing, we make every video into a detailed article. Read and follow along with the article, or use both resources
-							to make it fit your learning style.
-						</p>
+						<div class="featureCopy">
+							<p> If articles are more your thing, we make every video into a detailed article. Read and follow along with the article, or use both resources
+								to make it fit your learning style.
+							</p>
+                        </div>
 						<NuxtLink to="/blog"><button> See Content </button></NuxtLink>
 					</div>
                     <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
@@ -63,13 +71,14 @@
 		width: 100%;
 		font-family: 'Montserrat', sans-serif;
 		color: rgb(47, 47, 47);
+		background-image: url("waterDrop2.jpg");
 	}
 
 	.featuresWrapper h2 {
 		font-size: 2.3em;
 		padding-top: 2em;
 		margin-top: 0;
-		margin-bottom: 4em;
+		margin-bottom: 2em;
 	}
 
 	.featureTitleContainer {
@@ -111,10 +120,9 @@
 	}
 
 	.vueDocsCopy {
-		text-align: center;
+		text-align: left;
 		padding: 2em;
 	}
-
 	.vueDocsCopy h3 {
 		font-size: 1.4em;
 	}
