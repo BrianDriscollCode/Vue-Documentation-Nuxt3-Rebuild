@@ -14,7 +14,7 @@
 							get you from a ZERO to making your own single page applications!
                             </p>
 						</div>
-						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
+						<NuxtLink to="/free-course"><button> <del>Learn Vue Now!</del> </button></NuxtLink> (in development)
 					</div>
                     <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
@@ -41,7 +41,7 @@
 									in the Vue ecosystem. Known for being quick, step-by-step, and easy-to-follow.
 								</p>
                             </div>
-							<a href="https://www.youtube.com/channel/UC38cBsblgQDI1a8smBcbQNw" target="_blank"><button> Watch Videos </button></a>
+							<a href="https://www.youtube.com/@VueReference" target="_blank"><button> Watch Videos </button></a>
 						</div>
 						<img src="~/assets/video.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
 					</div>
@@ -54,7 +54,7 @@
 								to make it fit your learning style.
 							</p>
                         </div>
-						<NuxtLink to="/blog"><button> See Content </button></NuxtLink>
+						<NuxtLink to="/blog"><button> <del>See Content</del> </button></NuxtLink> (in development)
 					</div>
                     <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>

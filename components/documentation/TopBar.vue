@@ -22,18 +22,18 @@
 						</Nuxt-link>
 					</span>
 					<span class="navLinkContainer">
+						<Nuxt-link to="/documentation" class="navLink">
+							Documentation
+						</Nuxt-link>
+					</span>
+					<span class="navLinkContainer">
 						<Nuxt-link to="/blog" class="navLink">
 							<del> Blog </del>
 						</Nuxt-link>
 					</span>
 					<span class="navLinkContainer">
-						<Nuxt-link to="free-course" class="navLink">
+						<Nuxt-link to="/free-course" class="navLink">
 							<del> Free Course </del>
-						</Nuxt-link>
-					</span>
-					<span class="navLinkContainer">
-						<Nuxt-link to="contact" class="navLink">
-							<del> Contact </del>
 						</Nuxt-link>
 					</span>
 				</div>

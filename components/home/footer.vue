@@ -9,18 +9,18 @@
             </NuxtLink>
           </span>
           <span>
+            <NuxtLink to="/documentation" class="footerLink">
+              Documentation
+            </NuxtLink>
+          </span>
+          <span>
             <NuxtLink to="/blog" class="footerLink">
-              Blog
+              <del>Blog</del>
             </NuxtLink>
           </span>
           <span>
             <NuxtLink to="/free-course" class="footerLink">
-              Free Course
-            </NuxtLink>
-          </span>
-          <span>
-            <NuxtLink to="/contact" class="footerLink">
-              Contact
+              <del>Free Course</del>
             </NuxtLink>
           </span>
         </div>
@@ -59,7 +59,7 @@
   }
 
   .footerLink:hover {
-      color: #202a39;
+      color: #00c872;
   }
 
   hr {

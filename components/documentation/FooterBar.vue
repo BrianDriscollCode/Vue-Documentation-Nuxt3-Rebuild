@@ -9,6 +9,11 @@
             </NuxtLink>
           </span>
           <span>
+            <NuxtLink to="/documentation" class="footerLink">
+              Documentation
+            </NuxtLink>
+          </span>
+          <span>
             <NuxtLink to="/blog" class="footerLink">
               Blog
             </NuxtLink>
@@ -16,11 +21,6 @@
           <span>
             <NuxtLink to="/free-course" class="footerLink">
               Free Course
-            </NuxtLink>
-          </span>
-          <span>
-            <NuxtLink to="/contact" class="footerLink">
-              Contact
             </NuxtLink>
           </span>
         </div>

@@ -12,7 +12,6 @@
 				<li> <NuxtLink to="/documentation" class="navLink"> Documentation </NuxtLink> </li>
 				<li> <NuxtLink to="/blog" class="navLink"> <del>Blog</del> </NuxtLink> </li>
 				<li> <NuxtLink to="/free-course" class="navLink"> <del>Free Course</del> </NuxtLink>  </li>
-				<li> <NuxtLink to="/contact" class="navLink"> <del>Contact</del> </NuxtLink> </li>
             </ul>
 
 			<div class="searchButtonContainer">
