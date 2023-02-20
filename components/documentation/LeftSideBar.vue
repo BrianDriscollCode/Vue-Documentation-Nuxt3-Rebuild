@@ -94,23 +94,13 @@
           </NuxtLink>
         </li>
         <li class="navItem">
-          <NuxtLink to="/documentation/intermediate/attribute-inheritance" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Attribute Inheritance </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
           <NuxtLink to="/documentation/intermediate/async-components" class="leftSideLink" @click="$emit('turnOffSideBar')">
              Async Components
           </NuxtLink>
         </li>
         <li class="navItem">
-          <NuxtLink to="/documentation/intermediate/vue-api-reference" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Vue API Reference </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
           <NuxtLink to="/documentation/intermediate/reactivity-and-state" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Reactivity and State </del>
+            Reactivity and State
           </NuxtLink>
         </li>
         <li class="navItem">
@@ -142,11 +132,6 @@
       <div>
         <h3> Tooling and Pre-Built Components </h3>
         <li class="navItem">
-          <NuxtLink to="documentation/custom-directives" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Custom Directives </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
           <NuxtLink to="documentation/transition" class="leftSideLink" @click="$emit('turnOffSideBar')">
             <del> Transition </del>
           </NuxtLink>
@@ -169,40 +154,6 @@
         <li class="navItem">
           <NuxtLink to="documentation/suspense" class="leftSideLink" @click="$emit('turnOffSideBar')">
             <del> Suspense </del>
-          </NuxtLink>
-        </li>
-      </div>
-
-      <div>
-        <h3> Composition API </h3>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-setup" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Setup </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-core" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Core </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-utilities" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Utilities </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-composition" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Composition </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-misc" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Misc </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
-          <NuxtLink to="documentation/composition-component-instance" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Component Instance </del>
           </NuxtLink>
         </li>
       </div>

@@ -8,6 +8,7 @@
 		</div>
 
 		<div class="articleNavigationContainer">
+			<CheckMark />
 			<ArticleNavigation
 				:new-headers="newHeaders"
 			/>

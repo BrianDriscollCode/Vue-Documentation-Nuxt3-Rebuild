@@ -14,4 +14,8 @@ export default defineNuxtConfig({
         { src: "~/plugins/windowSizeListener", ssr: false },
         { src: "~/plugins/aos.js", ssr: false, mode: "client" }
     ],
+    components: {
+        global: true,
+        dirs: ["~/components/courses"]
+    }
 });
