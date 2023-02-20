@@ -52,7 +52,7 @@ import useWindowSizeListener from "~~/plugins/windowSizeListener";
 import TopBarHamburger from "./TopBarHamburger.vue";
 import NavigationMinimized from "../NavigationMinimized.vue";
 
-let allContent = await useAsyncData("documentation", () => queryContent("documentation").find());
+let allContent = await useAsyncData("documentation", () => queryContent("courses", "fundamentals").find());
 allContent = allContent.data._rawValue;
 
 let pages= [];
