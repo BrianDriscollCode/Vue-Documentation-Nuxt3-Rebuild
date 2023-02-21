@@ -17,5 +17,12 @@ export default defineNuxtConfig({
     components: {
         global: true,
         dirs: ["~/components/courses"]
+    },
+    nitro: {
+        plugins: ["~/server/index.js"]
+    },
+    runtimeConfig: {
+        AWSDB_HOST: process.env.AWSDB_HOST,
+        AWSDB_PASSWORD: process.env.AWSDB_PASSWORD
     }
 });
