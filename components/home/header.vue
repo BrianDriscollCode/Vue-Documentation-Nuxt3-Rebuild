@@ -7,6 +7,7 @@
 			<div class="cta" data-aos="zoom-in" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800">
 				<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 				<NuxtLink to="/free-course" class="freeCourse"><del>Try our free course ></del></NuxtLink>
+                <button @click="getRoute"> Fetch Route </button>
 			</div>
 		</div>
 
@@ -16,6 +17,12 @@
 
 	</div>
 </template>
+
+<script setup>
+async function getRoute() {
+    console.log(await $fetch("/api/checkAccount")); // eslint-disable-line
+}
+</script>
 
 <style scoped>
     .headerWrapper {
