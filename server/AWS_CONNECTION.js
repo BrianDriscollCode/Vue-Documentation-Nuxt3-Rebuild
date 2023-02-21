@@ -10,4 +10,4 @@ const db = postgres({
     database: "vue_reference_test1",
 });
 
-module.exports = db;
+export default db;
