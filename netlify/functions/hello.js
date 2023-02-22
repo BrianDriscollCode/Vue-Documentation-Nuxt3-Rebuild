@@ -6,11 +6,11 @@ exports.handler = async function (event, context) {  // eslint-disable-line
     // const config = useRuntimeConfig();
 
     const db = postgres({
-        host: PGHOST,
-        port: PGPORT,
-        user: PGUSER,
-        password: PGPASSWORD,
-        database: PGDATABASE
+        host: AWSHOST,
+        port: AWSPORT,
+        user: AWSUSER,
+        password: AWSPASSWORD,
+        database: AWSDATABASE
     });
 
     const data = await db`SELECT * FROM account`;
