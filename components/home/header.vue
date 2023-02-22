@@ -6,8 +6,11 @@
 			<h2 data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"> Easy-to-understand materials for beginners to learn the ins-and-outs of Vue 3, Nuxt 3, and other Vue-related technologies</h2>
 			<div class="cta" data-aos="zoom-in" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800">
 				<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
-				<NuxtLink to="/free-course" class="freeCourse"><del>Try our free course ></del></NuxtLink>
+				<NuxtLink to="/free-course" class="freeCourse">
+					Try our free course ->
+				</NuxtLink>
 			</div>
+
 		</div>
 
 		<div class="imageContainer">
@@ -16,6 +19,14 @@
 
 	</div>
 </template>
+
+<script setup>
+
+// console.log("test");
+// const {data} = await $fetch(".netlify/functions/seeAccounts"); // eslint-disable-line
+// console.log(data);
+
+</script>
 
 <style scoped>
     .headerWrapper {
