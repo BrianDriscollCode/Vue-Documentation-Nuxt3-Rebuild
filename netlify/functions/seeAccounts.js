@@ -1,9 +1,6 @@
 
 exports.handler = async function (event, context) {  // eslint-disable-line
     const postgres = require("postgres");
-    // const useRuntimeConfig = require("../../node_modules/nuxt");
-
-    // const config = useRuntimeConfig();
 
     const db = postgres({
         host: process.env.AWSHOST,
@@ -13,7 +10,7 @@ exports.handler = async function (event, context) {  // eslint-disable-line
         database: process.env.AWSDATABASE
     });
 
-    const data = await db`SELECT * FROM account`;
+    const data = await db`SELECT * FROM user_accounts`;
 
     return {
         statusCode: 200,
