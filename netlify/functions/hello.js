@@ -7,7 +7,7 @@ exports.handler = async function (event, context) {  // eslint-disable-line
 
     const db = postgres({
         host: process.env.AWSHOST,
-        port: process.env.AWSPORT,
+        port: 5432,
         user: process.env.AWSUSER,
         password: process.env.AWSPASSWORD,
         database: process.env.AWSDATABASE
