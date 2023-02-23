@@ -75,6 +75,7 @@ async function submitEmail() {
         data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`) // eslint-disable-line
             .then((response) => {
                 //Check if submit failed
+                console.log(response, totalSubmit.value, " -conditionals");
                 if (response === "failure" && totalSubmit.value < 2) {
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
