@@ -28,10 +28,9 @@ exports.handler = async (event, context) => {  // eslint-disable-line
         };
     } catch (error) {
         console.log(error.response.data, "ERROR");
-        let failure = {status: "failure"};
         return {
             statusCode: 200,
-            body: JSON.stringify(failure),
+            body: JSON.stringify({status: "failure"}),
         };
     }
 };
