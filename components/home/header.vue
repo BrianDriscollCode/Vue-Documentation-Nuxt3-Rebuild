@@ -9,7 +9,6 @@
 				<NuxtLink to="/free-course" class="freeCourse">
 					Try our free course ->
 				</NuxtLink>
-				<button @click="sendEmail"> send email </button>
 			</div>
 
 		</div>
@@ -23,9 +22,7 @@
 
 <script setup>
 
-function sendEmail() {
-    $fetch("/.netlify/functions/collectEmailSubscribers?email=bdriscoll307@gmail.com"); // eslint-disable-line
-}
+// y
 
 // console.log("test");
 // const {data} = await $fetch(".netlify/functions/seeAccounts"); // eslint-disable-line
