@@ -73,16 +73,15 @@ async function submitEmail() {
 
         //Post email to email list and get a response
         data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`) // eslint-disable-line
-            .then((response) => {data.value = response; console.log(data.value, totalSubmit.value, " -line 76");})
-            .then(() => {
+            .then((response) => {
                 //Check if submit failed
-                if (data.value === "failure" && totalSubmit.value < 2) {
+                if (response === "failure" && totalSubmit.value < 2) {
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
                     console.log("condition 1");
                 }
                 //Check if user passes 3 submits
-                else if (data.value === "failure" && totalSubmit.value >= 2) {
+                else if (response === "failure" && totalSubmit.value >= 2) {
                     stopFutureSubmit.value = true;
                     componentState.failure = true;
                     console.log("condition 2");
