@@ -8,6 +8,7 @@
 				<h1> Vue 3 Course, 100% Free Forever </h1>
                 <h2> Learn the fundamentals of Vue using video tutorials, coding challenges, and a set learning schedule</h2>
                 <CollectEmail />
+				<p> You will be notified when the course releases! </p>
 			</div>
 		</div>
 		<div>
