@@ -22,9 +22,10 @@ exports.handler = async (event, context) => {  // eslint-disable-line
 
     try {
         const { data } = await axios.post(url, userData, config);
+        console.log(data);
         return {
             statusCode: 200,
-            body: JSON.stringify(data),
+            body: JSON.stringify("failure"),
         };
     } catch (error) {
         console.log(error.response.data, "ERROR");

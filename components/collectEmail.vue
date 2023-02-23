@@ -27,6 +27,7 @@
 
 <script setup>
 import  { reactive, ref } from "vue";
+import { $fetch } from "ofetch";
 
 let submitGranted = ref(false);
 
@@ -51,7 +52,7 @@ let validation = reactive({
 let errorNumber = ref(0);
 let totalSubmit = ref(0);
 let stopFutureSubmit = ref(false);
-//let data = ref();
+let data = ref();
 
 async function submitEmail() {
     //Trip spaces at start and end
@@ -67,70 +68,69 @@ async function submitEmail() {
     }
 
     //Submit email to mail service
-    if (submitGranted.value && !stopFutureSubmit.value) {
-        // Only allow 3 submits before blocking
-        totalSubmit.value += 1;
+    // if (submitGranted.value && !stopFutureSubmit.value) {
+    //     // Only allow 3 submits before blocking
+    //     totalSubmit.value += 1;
 
-        const { data } = await useFetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`); // eslint-disable-line
+    //     const { data } = await useFetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`); // eslint-disable-line
 
-        console.log(data._value);
+    //     console.log(data._value);
 
-        if (data._value === "failure" && totalSubmit.value < 2) {
-            stopFutureSubmit.value = false;
-            componentState.failure = true;
-            console.log("condition 1");
-        }
-        //Check if user passes 3 submits
-        else if (data._value === "failure" && totalSubmit.value >= 2) {
-            stopFutureSubmit.value = true;
-            componentState.failure = true;
-            console.log("condition 2");
-        }
-        //Submit is successful, trigger success state
-        else {
-            componentState.success = true;
-            componentState.failure = false;
-            componentState.form = false;
-            stopFutureSubmit.value = true;
-            console.log("condition 3");
-        }
+    //     if (data._value === "failure" && totalSubmit.value < 2) {
+    //         stopFutureSubmit.value = false;
+    //         componentState.failure = true;
+    //         console.log("condition 1");
+    //     }
+    //     //Check if user passes 3 submits
+    //     else if (data._value === "failure" && totalSubmit.value >= 2) {
+    //         stopFutureSubmit.value = true;
+    //         componentState.failure = true;
+    //         console.log("condition 2");
+    //     }
+    //     //Submit is successful, trigger success state
+    //     else {
+    //         componentState.success = true;
+    //         componentState.failure = false;
+    //         componentState.form = false;
+    //         stopFutureSubmit.value = true;
+    //         console.log("condition 3");
+    //     }
 
-        //Post email to email list and get a response
-        // data.value = await useFetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`) // eslint-disable-line
-        //     .then(response => {
-        //         //Check if submit failed
-        //         console.log(response, totalSubmit.value, " -conditionals");
-        //         if (response === "failure" && totalSubmit.value < 2) {
-        //             stopFutureSubmit.value = false;
-        //             componentState.failure = true;
-        //             console.log("condition 1");
-        //         }
-        //         //Check if user passes 3 submits
-        //         else if (response === "failure" && totalSubmit.value >= 2) {
-        //             stopFutureSubmit.value = true;
-        //             componentState.failure = true;
-        //             console.log("condition 2");
-        //         }
-        //         //Submit is successful, trigger success state
-        //         else {
-        //             componentState.success = true;
-        //             componentState.failure = false;
-        //             componentState.form = false;
-        //             stopFutureSubmit.value = true;
-        //             console.log("condition 3");
-        //         }
+    //Post email to email list and get a response
+    data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
+        .then(response => {
+            //Check if submit failed
+            console.log(response, totalSubmit.value, " -conditionals");
+            if (response === "failure" && totalSubmit.value < 2) {
+                stopFutureSubmit.value = false;
+                componentState.failure = true;
+                console.log("condition 1");
+            }
+            //Check if user passes 3 submits
+            else if (response === "failure" && totalSubmit.value >= 2) {
+                stopFutureSubmit.value = true;
+                componentState.failure = true;
+                console.log("condition 2");
+            }
+            //Submit is successful, trigger success state
+            else {
+                componentState.success = true;
+                componentState.failure = false;
+                componentState.form = false;
+                stopFutureSubmit.value = true;
+                console.log("condition 3");
+            }
 
-        //         console.log(data.value, totalSubmit.value, " -line 96");
-        //     }
-        //     )
-        //     .catch(function(error) {
-        //         console.log(error, " -error");
-        //     });
+            console.log(response, totalSubmit.value, " -line 96");
+        })
+        .catch(function(error) {
+            console.log(error, " -error");
+        });
 
 
-        console.log("Email submit attempted");
-    }
+    console.log("Email submit attempted");
 }
+
 
 function trimData() {
     user_data.name = user_data.name.trim();
