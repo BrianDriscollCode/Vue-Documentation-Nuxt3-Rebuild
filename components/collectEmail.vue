@@ -19,7 +19,7 @@
                     <p v-if="componentState.failure === true"> Email does not exist </p>
 				</div>
 				<p> You information will not be shared. You will only be emailed updates on the course. </p>
-                <button @click.prevent="submitEmail"> Join Waitlist! </button>
+                <button @click="submitEmail"> Join Waitlist! </button>
 			</div>
 		</div>
 	</section>
@@ -97,41 +97,47 @@ async function submitEmail() {
     //     }
 
     //Post email to email list and get a response
-    data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
-        .then(response => {
-            //Check if submit failed
-            console.log(response.status, " -- ", JSON.parse(response), "failure", totalSubmit.value, " -conditionals");
 
-            let status = JSON.parse(response);
-            console.log(status, " -status");
-            if (status.status == "failure" && totalSubmit.value < 2) {
-                stopFutureSubmit.value = false;
-                componentState.failure = true;
-                console.log("condition 1");
-            }
-            //Check if user passes 3 submits
-            else if (status.status == "failure" && totalSubmit.value >= 2) {
-                stopFutureSubmit.value = true;
-                componentState.failure = true;
-                console.log("condition 2");
-            }
-            //Submit is successful, trigger success state
-            else {
-                componentState.success = true;
-                componentState.failure = false;
-                componentState.form = false;
-                stopFutureSubmit.value = true;
-                console.log("condition 3");
-            }
+    if (submitGranted.value && !stopFutureSubmit.value) {
+        // Only allow 3 submits before blocking
+        totalSubmit.value += 1;
 
-            console.log(response.status, totalSubmit.value, " -line 96");
-        })
-        .catch(function(error) {
-            console.log(error, " -error");
-        });
+        data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
+            .then(response => {
+                //Check if submit failed
+                console.log(response.status, " -- ", JSON.parse(response), "failure", totalSubmit.value, " -conditionals");
+
+                let status = JSON.parse(response);
+                console.log(status, " -status");
+                if (status.status == "failure" && totalSubmit.value < 2) {
+                    stopFutureSubmit.value = false;
+                    componentState.failure = true;
+                    console.log("condition 1");
+                }
+                //Check if user passes 3 submits
+                else if (status.status == "failure" && totalSubmit.value >= 2) {
+                    stopFutureSubmit.value = true;
+                    componentState.failure = true;
+                    console.log("condition 2");
+                }
+                //Submit is successful, trigger success state
+                else {
+                    componentState.success = true;
+                    componentState.failure = false;
+                    componentState.form = false;
+                    stopFutureSubmit.value = true;
+                    console.log("condition 3");
+                }
+
+                console.log(response.status, totalSubmit.value, " -line 96");
+            })
+            .catch(function(error) {
+                console.log(error, " -error");
+            });
 
 
-    console.log("Email submit attempted");
+        console.log("Email submit attempted");
+    }
 }
 
 
