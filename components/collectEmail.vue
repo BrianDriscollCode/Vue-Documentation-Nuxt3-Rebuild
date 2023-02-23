@@ -1,6 +1,9 @@
 <template>
 	<section>
-		<div class="email_form">
+        <div class="successResponse" v-if="componentState.success">
+            <h3> You have been added to the waitlist! </h3>
+        </div>
+		<div class="email_form" v-if="componentState.form">
 			<h3> Get on the waitlist to try our course first! </h3>
 			<div>
                 <label> First Name </label>
@@ -8,9 +11,12 @@
                 <label> Email </label>
                 <input v-model="user_data.email" />
 				<div class="validationWarnings">
-					<p v-if="validation.namelength === false && initialSubmit === true"> First name must be at least 2 characters </p>
-                    <p v-if="validation.nameNoSpace === false && initialSubmit === true"> Only first name, no spaces </p>
-					<p v-if="validation.emailContainsAT === false && initialSubmit === true"> Email must contain an @ symbol </p>
+					<p v-if="errorNumber === 1"> First name must be at least 2 characters </p>
+                    <p v-if="errorNumber === 2"> Only first name, no spaces </p>
+					<p v-if="errorNumber === 3"> Email must contain an @ symbol </p>
+                    <p v-if="errorNumber === 4"> Email must contain a .com, .org, etc </p>
+                    <p v-if="errorNumber === 5"> No more submits can be done at this time </p>
+                    <p v-if="componentState.failure === true"> Email does not exist </p>
 				</div>
 				<p> You information will not be shared. You will only be emailed updates on the course. </p>
                 <button @click="submitEmail"> Join Waitlist! </button>
@@ -23,7 +29,12 @@
 import  { reactive, ref } from "vue";
 
 let submitGranted = ref(false);
-let initialSubmit = ref(false);
+
+let componentState = reactive({
+    form: true,
+    failure: false,
+    success: false
+});
 
 let user_data = reactive({
     name: "",
@@ -33,18 +44,65 @@ let user_data = reactive({
 let validation = reactive({
     namelength: false,
     nameNoSpace: false,
-    nameNoInput: false,
     emailContainsAT: false,
-    emailNoInput: false
+    emailContainsPERIOD: false
 });
 
-function submitEmail() {
-    validateForm();
-    console.log("submitEmailRan");
+let errorNumber = ref(0);
+let totalSubmit = ref(0);
+let stopFutureSubmit = ref(false);
+let data = ref();
 
-    if (submitGranted.value) {
-        $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`); // eslint-disable-line
+async function submitEmail() {
+    //Trip spaces at start and end
+    trimData();
+
+    //Validate inputs to be correct EXCEPT email existence
+    validateForm();
+
+    //Block repeated submissions
+    if (stopFutureSubmit.value) {
+        console.log("Email submission blocked");
+        errorNumber.value = 5;
     }
+
+    //Submit email to mail service
+    if (submitGranted.value && !stopFutureSubmit.value) {
+        // Only allow 3 submits before blocking
+        totalSubmit.value += 1;
+
+        //Post email to email list and get a response
+        data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`) // eslint-disable-line
+            .then((response) => data.value = response)
+            .catch(function(error) {
+                console.log(error, " -error");
+            });
+
+        //Check if submit failed
+        if (data.value === "failure" && totalSubmit.value < 2) {
+            stopFutureSubmit.value = false;
+            componentState.failure = true;
+        }
+        //Check if user passes 3 submits
+        else if (data.value === "failure" && totalSubmit.value >= 2) {
+            stopFutureSubmit.value = true;
+            componentState.failure = true;
+        }
+        //Submit is successful, trigger success state
+        else {
+            componentState.success = true;
+            componentState.failure = false;
+            componentState.form = false;
+            stopFutureSubmit.value = true;
+        }
+
+        console.log("Email submit attempted");
+    }
+}
+
+function trimData() {
+    user_data.name = user_data.name.trim();
+    user_data.email = user_data.email.trim();
 }
 
 function validateForm() {
@@ -57,13 +115,13 @@ function validateForm() {
     }
     else
     {
-        initialSubmit.value = true;
+        errorNumber.value = 1;
+        validation.namelength = false;
         return;
     }
 
 
-
-    //Test if has spaces *must have no spaces
+    //Test if has spaces in between *must have no spaces
     let spaceRegex = /\s/;
     if (!spaceRegex.test(user_data.name))
     {
@@ -71,7 +129,8 @@ function validateForm() {
     }
     else
     {
-        initialSubmit.value = true;
+        errorNumber.value = 2;
+        validation.nameNoSpace = false;
         return;
     }
 
@@ -82,19 +141,35 @@ function validateForm() {
     }
     else
     {
-        initialSubmit.value = true;
+        errorNumber.value = 3;
+        validation.emailContainsAT = false;
+        return;
+    }
+
+    //Text for . symbol in email
+    let periodSignRegex = /\./;
+    if (periodSignRegex.test(user_data.email)) {
+        validation.emailContainsPERIOD = true;
+    }
+    else
+    {
+        errorNumber.value = 4;
+        validation.emailContainsPERIOD = false;
         return;
     }
 
     console.log(validation.namelength, validation.nameNoSpace, validation.emailContainsAT);
 
+    //check if all requirements are met before submission
     if
     (
         validation.namelength === true,
         validation.nameNoSpace === true,
-        validation.emailContainsAT === true
+        validation.emailContainsAT === true,
+        validation.emailContainsPERIOD === true
     )
     {
+        errorNumber.value = 0;
         submitGranted.value = true;
         return;
     }
@@ -110,6 +185,10 @@ function validateForm() {
 <style scoped>
 .validationWarnings {
 	color: red;
+}
+
+.successResponse {
+    color: green;
 }
 
 </style>

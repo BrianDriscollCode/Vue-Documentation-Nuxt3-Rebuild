@@ -1,5 +1,5 @@
 
-exports.handler = async function (event, context) {  // eslint-disable-line
+exports.handler = async (event, context) => {  // eslint-disable-line
     const axios = require("axios");
 
     const apiToken = process.env.MAILER_LITE_TOKEN;
@@ -13,24 +13,24 @@ exports.handler = async function (event, context) {  // eslint-disable-line
         }
     };
 
-    console.log(event.queryStringParameters.email, " *****************" ); // eslint-disable-line
-
-    const data = {
+    const userData = {
         "email": event.queryStringParameters.email,
         "fields": {
             "name": event.queryStringParameters.name
         }
     };
 
-    await axios.post(url, data, config)
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-
-    return {
-        statusCode: 200
-    };
+    try {
+        const { data } = await axios.post(url, userData, config);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data),
+        };
+    } catch (error) {
+        console.log(error.response.data, "ERROR");
+        return {
+            statusCode: 200,
+            body: JSON.stringify("failure"),
+        };
+    }
 };
