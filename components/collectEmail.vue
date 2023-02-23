@@ -67,37 +67,7 @@ async function submitEmail() {
         errorNumber.value = 5;
     }
 
-    //Submit email to mail service
-    // if (submitGranted.value && !stopFutureSubmit.value) {
-    //     // Only allow 3 submits before blocking
-    //     totalSubmit.value += 1;
-
-    //     const { data } = await useFetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`); // eslint-disable-line
-
-    //     console.log(data._value);
-
-    //     if (data._value === "failure" && totalSubmit.value < 2) {
-    //         stopFutureSubmit.value = false;
-    //         componentState.failure = true;
-    //         console.log("condition 1");
-    //     }
-    //     //Check if user passes 3 submits
-    //     else if (data._value === "failure" && totalSubmit.value >= 2) {
-    //         stopFutureSubmit.value = true;
-    //         componentState.failure = true;
-    //         console.log("condition 2");
-    //     }
-    //     //Submit is successful, trigger success state
-    //     else {
-    //         componentState.success = true;
-    //         componentState.failure = false;
-    //         componentState.form = false;
-    //         stopFutureSubmit.value = true;
-    //         console.log("condition 3");
-    //     }
-
     //Post email to email list and get a response
-
     if (submitGranted.value && !stopFutureSubmit.value) {
         // Only allow 3 submits before blocking
         totalSubmit.value += 1;
@@ -105,20 +75,18 @@ async function submitEmail() {
         data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
             .then(response => {
                 //Check if submit failed
-                console.log(response.status, " -- ", JSON.parse(response), "failure", totalSubmit.value, " -conditionals");
+                //console.log(response, " -- ", "failure", totalSubmit.value, " -conditionals");
 
                 let status = JSON.parse(response);
                 console.log(status, " -status");
                 if (status.status == "failure" && totalSubmit.value < 2) {
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
-                    console.log("condition 1");
                 }
                 //Check if user passes 3 submits
                 else if (status.status == "failure" && totalSubmit.value >= 2) {
                     stopFutureSubmit.value = true;
                     componentState.failure = true;
-                    console.log("condition 2");
                 }
                 //Submit is successful, trigger success state
                 else {
@@ -126,15 +94,11 @@ async function submitEmail() {
                     componentState.failure = false;
                     componentState.form = false;
                     stopFutureSubmit.value = true;
-                    console.log("condition 3");
                 }
-
-                console.log(response.status, totalSubmit.value, " -line 96");
             })
             .catch(function(error) {
-                console.log(error, " -error");
+                console.log(error, " -error", error.response);
             });
-
 
         console.log("Email submit attempted");
     }
