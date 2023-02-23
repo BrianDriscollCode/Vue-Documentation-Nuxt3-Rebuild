@@ -1,28 +1,28 @@
 <template>
-	<section>
+    <section>
         <div class="successResponse" v-if="componentState.success">
             <h3> You have been added to the waitlist! </h3>
         </div>
-		<div class="email_form" v-if="componentState.form">
-			<h3> Get on the waitlist to try our course first! </h3>
-			<div>
+        <div class="email_form" v-if="componentState.form">
+            <h3> Get on the waitlist to try our course first! </h3>
+            <div>
                 <label> First Name </label>
                 <input v-model="user_data.name" />
                 <label> Email </label>
                 <input v-model="user_data.email" />
-				<div class="validationWarnings">
-					<p v-if="errorNumber === 1"> First name must be at least 2 characters </p>
+                <div class="validationWarnings">
+                    <p v-if="errorNumber === 1"> First name must be at least 2 characters </p>
                     <p v-if="errorNumber === 2"> Only first name, no spaces </p>
-					<p v-if="errorNumber === 3"> Email must contain an @ symbol </p>
+                    <p v-if="errorNumber === 3"> Email must contain an @ symbol </p>
                     <p v-if="errorNumber === 4"> Email must contain a .com, .org, etc </p>
                     <p v-if="errorNumber === 5"> No more submits can be done at this time </p>
                     <p v-if="componentState.failure === true"> Email does not exist </p>
-				</div>
-				<p> You information will not be shared. You will only be emailed updates on the course. </p>
+                </div>
+                <p> You information will not be shared. You will only be emailed updates on the course. </p>
                 <button @click="submitEmail"> Join Waitlist! </button>
-			</div>
-		</div>
-	</section>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup>
@@ -75,18 +75,20 @@ async function submitEmail() {
         data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
             .then(response => {
                 //Check if submit failed
-                //console.log(response, " -- ", "failure", totalSubmit.value, " -conditionals");
+                console.log(response, " -- ", "failure", totalSubmit.value, " -conditionals");
 
                 let status = JSON.parse(response);
                 console.log(status, " -status");
                 if (status.status == "failure" && totalSubmit.value < 2) {
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
+                    console.log("status 1");
                 }
                 //Check if user passes 3 submits
                 else if (status.status == "failure" && totalSubmit.value >= 2) {
                     stopFutureSubmit.value = true;
                     componentState.failure = true;
+                    console.log("status 2");
                 }
                 //Submit is successful, trigger success state
                 else {
@@ -94,6 +96,7 @@ async function submitEmail() {
                     componentState.failure = false;
                     componentState.form = false;
                     stopFutureSubmit.value = true;
+                    console.log("status 3");
                 }
             })
             .catch(function(error) {
@@ -189,7 +192,7 @@ function validateForm() {
 
 <style scoped>
 .validationWarnings {
-	color: red;
+    color: red;
 }
 
 .successResponse {
