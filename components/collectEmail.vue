@@ -19,7 +19,7 @@
                     <p v-if="componentState.failure === true"> Email does not exist </p>
 				</div>
 				<p> You information will not be shared. You will only be emailed updates on the course. </p>
-                <button @click="submitEmail"> Join Waitlist! </button>
+                <button @click.prevent="submitEmail"> Join Waitlist! </button>
 			</div>
 		</div>
 	</section>
