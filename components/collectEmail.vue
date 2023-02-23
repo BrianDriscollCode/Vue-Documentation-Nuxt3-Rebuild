@@ -100,14 +100,14 @@ async function submitEmail() {
     data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
         .then(response => {
             //Check if submit failed
-            console.log(response, totalSubmit.value, " -conditionals");
-            if (response == "failure" && totalSubmit.value < 2) {
+            console.log(response.status, "failure", totalSubmit.value, " -conditionals");
+            if (response.status == "failure" && totalSubmit.value < 2) {
                 stopFutureSubmit.value = false;
                 componentState.failure = true;
                 console.log("condition 1");
             }
             //Check if user passes 3 submits
-            else if (response == "failure" && totalSubmit.value >= 2) {
+            else if (response.status == "failure" && totalSubmit.value >= 2) {
                 stopFutureSubmit.value = true;
                 componentState.failure = true;
                 console.log("condition 2");
@@ -121,7 +121,7 @@ async function submitEmail() {
                 console.log("condition 3");
             }
 
-            console.log(response, totalSubmit.value, " -line 96");
+            console.log(response.status, totalSubmit.value, " -line 96");
         })
         .catch(function(error) {
             console.log(error, " -error");
