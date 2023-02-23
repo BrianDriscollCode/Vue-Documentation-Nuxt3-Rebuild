@@ -100,7 +100,7 @@ async function submitEmail() {
     data.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${user_data.name}&email=${user_data.email}`)
         .then(response => {
             //Check if submit failed
-            console.log(response.status, " -- ", response, "failure", totalSubmit.value, " -conditionals");
+            console.log(response.status, " -- ", JSON.parse(response), "failure", totalSubmit.value, " -conditionals");
             if (response.status == "failure" && totalSubmit.value < 2) {
                 stopFutureSubmit.value = false;
                 componentState.failure = true;
