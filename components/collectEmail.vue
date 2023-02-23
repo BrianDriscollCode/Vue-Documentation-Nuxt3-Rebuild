@@ -101,13 +101,13 @@ async function submitEmail() {
         .then(response => {
             //Check if submit failed
             console.log(response, totalSubmit.value, " -conditionals");
-            if (response === "failure" && totalSubmit.value < 2) {
+            if (response == "failure" && totalSubmit.value < 2) {
                 stopFutureSubmit.value = false;
                 componentState.failure = true;
                 console.log("condition 1");
             }
             //Check if user passes 3 submits
-            else if (response === "failure" && totalSubmit.value >= 2) {
+            else if (response == "failure" && totalSubmit.value >= 2) {
                 stopFutureSubmit.value = true;
                 componentState.failure = true;
                 console.log("condition 2");
