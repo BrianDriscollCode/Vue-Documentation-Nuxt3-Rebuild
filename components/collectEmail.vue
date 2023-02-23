@@ -76,7 +76,7 @@ async function submitEmail() {
             .then(response => {
                 //Check if submit failed
                 console.log(response, " -- ", "failure", totalSubmit.value, " -conditionals");
-                console.log(JSON.parge(response));
+                console.log(JSON.parse(response));
 
                 let status = JSON.parse(response);
                 console.log(status, " -status");
