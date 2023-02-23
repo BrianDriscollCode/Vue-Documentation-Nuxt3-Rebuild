@@ -77,7 +77,6 @@ async function submitEmail() {
                 //Check if submit failed
 
                 let status = JSON.parse(response);
-                console.log(status, " -status");
                 if (status.status == "failure" && totalSubmit.value < 2) {
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
@@ -161,8 +160,6 @@ function validateForm() {
         validation.emailContainsPERIOD = false;
         return;
     }
-
-    console.log(validation.namelength, validation.nameNoSpace, validation.emailContainsAT);
 
     //check if all requirements are met before submission
     if
