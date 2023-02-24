@@ -83,12 +83,12 @@ async function submitEmail() {
                 //Check if submit failed
 
                 let status = JSON.parse(response);
-                if (status.status == "failure" && totalSubmit.value < 2) { //on deploy change back to status.status with parse
+                if (status.status == "failure" && totalSubmit.value < 2) { //on deploy change back to status.status with parse, in dev make response.status
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
                 }
                 //Check if user passes 3 submits
-                else if (status.status == "failure" && totalSubmit.value >= 2) { //on deploy change back to status.status with parse
+                else if (status.status == "failure" && totalSubmit.value >= 2) { //on deploy change back to status.status with parse, in dev make response.status
                     stopFutureSubmit.value = true;
                     componentState.failure = true;
                 }
