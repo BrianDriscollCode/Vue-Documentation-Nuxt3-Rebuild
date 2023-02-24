@@ -5,13 +5,13 @@
                     :display="toggleNavigationMinimized"
         />
 		<div class="navigationWrapper">
-            <p> Vue<span id="logoName">Ref</span> </p>
+            <NuxtLink to="/" class="logoTitle"><p> Vue<span id="logoName">Ref</span> </p></NuxtLink>
 
             <ul class="navigationList">
 				<li> <NuxtLink to="/" class="navLink"> Home </NuxtLink> </li>
 				<li> <NuxtLink to="/documentation" class="navLink"> Documentation </NuxtLink> </li>
 				<li> <NuxtLink to="/blog" class="navLink"> <del>Blog</del> </NuxtLink> </li>
-				<li> <NuxtLink to="/free-course" class="navLink"> <del>Free Course</del> </NuxtLink>  </li>
+				<li> <NuxtLink to="/free-course" class="navLink"> Free Course </NuxtLink>  </li>
             </ul>
 
 			<div class="searchButtonContainer">
@@ -41,7 +41,11 @@ function toggleNavigation() {
 </script>
 
 <style scoped>
-    .navigationContainer {
+    .logoTitle {
+		text-decoration: none;
+        color: white;
+	}
+	.navigationContainer {
 		width: 100%;
 		font-family: 'Montserrat', sans-serif;
 	}

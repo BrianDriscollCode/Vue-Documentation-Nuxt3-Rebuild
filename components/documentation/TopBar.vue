@@ -33,7 +33,7 @@
 					</span>
 					<span class="navLinkContainer">
 						<Nuxt-link to="/free-course" class="navLink">
-							<del> Free Course </del>
+							Free Course
 						</Nuxt-link>
 					</span>
 				</div>

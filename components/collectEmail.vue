@@ -30,15 +30,17 @@
 </template>
 
 <script setup>
-import  { reactive, ref } from "vue";
+import  { reactive, ref, defineEmits } from "vue";
 import { $fetch } from "ofetch";
+
+const emit = defineEmits(["successEvent"]);
 
 let submitGranted = ref(false);
 
 let componentState = reactive({
     form: true,
     failure: false,
-    success: false
+    success: false,
 });
 
 let user_data = reactive({
@@ -81,12 +83,12 @@ async function submitEmail() {
                 //Check if submit failed
 
                 let status = JSON.parse(response);
-                if (status.status == "failure" && totalSubmit.value < 2) {
+                if (status.status == "failure" && totalSubmit.value < 2) { //on deploy change back to status.status with parse
                     stopFutureSubmit.value = false;
                     componentState.failure = true;
                 }
                 //Check if user passes 3 submits
-                else if (status.status == "failure" && totalSubmit.value >= 2) {
+                else if (status.status == "failure" && totalSubmit.value >= 2) { //on deploy change back to status.status with parse
                     stopFutureSubmit.value = true;
                     componentState.failure = true;
                 }
@@ -96,6 +98,8 @@ async function submitEmail() {
                     componentState.failure = false;
                     componentState.form = false;
                     stopFutureSubmit.value = true;
+
+                    emit("successEvent");
                 }
             })
             .catch(function(error) {
@@ -197,14 +201,18 @@ input {
 	height: 3em;
 	width: 100%;
 	border-radius: 5px;
+	font-size: 1.3em;
+	padding-top: 0;
+	padding-bottom: 0;
+	text-indent: 1em;
 }
 
 .inputWrapper {
-	padding-bottom: 2em;
+	padding-bottom: 1.8em;
 }
 
 button {
-	width: 80%;
+	width: 100%;
 	height: 5em;
 	background: rgb(0,198,154);
 	background: linear-gradient(180deg, rgba(0,198,154,1) 0%, rgba(0,198,154,1) 65%, rgba(0,167,129,1) 100%);
@@ -217,6 +225,7 @@ button {
 	-moz-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
 	box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
 	transition: background-color .2s;
+	margin-bottom: 2em;
 }
 
 button:hover {
@@ -254,7 +263,9 @@ h3 {
 }
 
 .successResponse {
-    color: green;
+	text-align: center;
+    color: rgb(0, 255, 115);
 }
+
 
 </style>

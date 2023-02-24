@@ -14,7 +14,7 @@
 							get you from a ZERO to making your own single page applications!
                             </p>
 						</div>
-						<NuxtLink to="/free-course"><button> <del>Learn Vue Now!</del> </button></NuxtLink> (in development)
+						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
                     <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
                 </div>
