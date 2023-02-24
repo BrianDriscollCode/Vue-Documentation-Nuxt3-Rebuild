@@ -1,15 +1,19 @@
 <template>
-    <section>
+    <section class="collectEmailContainer">
         <div class="successResponse" v-if="componentState.success">
             <h3> You have been added to the waitlist! </h3>
         </div>
         <div class="email_form" v-if="componentState.form">
             <h3> Get on the waitlist to try our course first! </h3>
-            <div>
-                <label> First Name </label>
-                <input v-model="user_data.name" />
-                <label> Email </label>
-                <input v-model="user_data.email" />
+            <div class="inner_form">
+				<div class="inputWrapper">
+                    <label> First Name </label>
+                    <input v-model="user_data.name" />
+				</div>
+				<div class="inputWrapper">
+                    <label> Email </label>
+                    <input v-model="user_data.email" />
+				</div>
                 <div class="validationWarnings">
                     <p v-if="errorNumber === 1"> First name must be at least 2 characters </p>
                     <p v-if="errorNumber === 2"> Only first name, no spaces </p>
@@ -18,7 +22,7 @@
                     <p v-if="errorNumber === 5"> No more submits can be done at this time </p>
                     <p v-if="componentState.failure === true"> Email does not exist </p>
                 </div>
-                <p> You information will not be shared. You will only be emailed updates on the course. </p>
+                <p class="disclaimer"> You information will not be shared. You will only be emailed updates on the course. </p>
                 <button @click="submitEmail"> Join Waitlist! </button>
             </div>
         </div>
@@ -184,6 +188,67 @@ function validateForm() {
 </script>
 
 <style scoped>
+
+label {
+	display: block;
+}
+
+input {
+	height: 3em;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.inputWrapper {
+	padding-bottom: 2em;
+}
+
+button {
+	width: 80%;
+	height: 5em;
+	background: rgb(0,198,154);
+	background: linear-gradient(180deg, rgba(0,198,154,1) 0%, rgba(0,198,154,1) 65%, rgba(0,167,129,1) 100%);
+	color: rgb(55, 55, 55);
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+	padding: .8em;
+	-webkit-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+	-moz-box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+	box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
+	transition: background-color .2s;
+}
+
+button:hover {
+    background: linear-gradient(180deg, rgb(92, 242, 210) 0%, rgb(34, 190, 156) 65%, rgb(22, 224, 177) 100%);
+}
+
+h3 {
+	font-size: 1.8em;
+}
+
+.disclaimer {
+	width: 100%;
+	margin-left: auto;
+	margin-top: 0;
+	padding-bottom: 1em;
+}
+
+.email_form {
+	margin-left: auto;
+	margin-right: auto !important;
+	width: 80%;
+	text-align: center;
+}
+.innerForm {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.collectEmailContainer {
+	/* background-color: antiquewhite; */
+
+}
 .validationWarnings {
     color: red;
 }

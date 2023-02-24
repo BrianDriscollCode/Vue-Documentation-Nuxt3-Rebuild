@@ -3,12 +3,32 @@
 		<div class="headerContainer">
             <NavBar />
 		</div>
+		<video class="background_video" autoplay muted loop >
+            <source src="~/assets/ocean_videoV2.mp4" type="video/mp4" >
+		</video>
 		<div class="heroBanner">
             <div class="heroWrapper">
-				<h1> Vue 3 Course, 100% Free Forever </h1>
-                <h2> Learn the fundamentals of Vue using video tutorials, coding challenges, and a set learning schedule</h2>
-                <CollectEmail />
-				<p> You will be notified when the course releases! </p>
+				<div class="titleWrapper">
+					<h1> Vue 3 Fundamentals Course, 100% Free Forever </h1>
+				</div>
+				<div class="descriptionSection">
+					<div class="description">
+						<div class="descriptionWrapper">
+							<h2> Learn the easy way! Explanations that stick and learn concepts that last. Built for learners, by learners, turning students into Vue Developers!</h2>
+                            <ul>
+                                <li class="listItem"> Video tutorials that show you each concept and take you every step of the way</li>
+                                <li class="listItem"> Coding challenges to practice your skills and ingrain concepts </li>
+                                <li class="listItem"> Gamified learning to motivate you to keep going. Compete against others! </li>
+                                <li class="listItem"> A course built on fundamental learning principles so you learn efficiently and retain</li>
+                            </ul>
+						</div>
+					</div>
+					<div class="userInfoContainer">
+						<div class="userInfoWrapper">
+                            <CollectEmail />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div>
@@ -25,13 +45,86 @@ import FeaturesSection from "../components/free-course-page/featuresSection.vue"
 </script>
 
 <style scoped>
+.headerContainer {
+	position: fixed;
+	z-index: 3;
+}
 .heroBanner {
-	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+    width: 100%;
+	height: 100vh;
+	background-color: rgba(1,1,1, 0.7);
+	z-index: 2;
+	position: absolute;
 }
 
 .heroWrapper {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
+	color: white;
+	padding-top: 6em;
 }
+
+.background_video {
+    width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+ul {
+	padding-left: 1em;
+}
+
+.titleWrapper {
+	text-align: center;
+}
+.descriptionSection {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	margin-top: 4em;
+}
+
+.description {
+	font-size: 1.5em;
+	width:60%;
+	margin-right: 2em;
+	border: 1px solid white;
+	background-color: rgba(1,1,1, 0.7);
+	border-radius: 5px;
+}
+
+.descriptionWrapper {
+	padding: 2em;
+}
+
+.userInfoContainer {
+	background-color: #34445c;
+	border-radius: 5px;
+	width: 40%;
+}
+
+.listItem {
+	padding-top: 1.2em;
+}
+.userInfoWrapper {
+    padding: 1em;
+}
+
 </style>
