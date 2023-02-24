@@ -14,7 +14,7 @@
                 <div class="descriptionSection">
                     <div class="description">
                         <div class="descriptionWrapper">
-                            <h2> Learn the easy way! Explanations that stick and learn concepts that last. Built for learners, by learners, turning students into Vue Developers!</h2>
+                            <h2> Learn the easy way! Explanations that stick. Concepts that last. Built for learners, by learners, turning students into Vue Developers!</h2>
                             <ul>
                                 <li class="listItem"> Video tutorials that show you each concept and take you every step of the way</li>
                                 <li class="listItem"> Coding challenges to practice your skills and ingrain concepts </li>
