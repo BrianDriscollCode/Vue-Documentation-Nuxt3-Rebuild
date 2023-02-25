@@ -9,16 +9,18 @@
         </div>
         <section class="contentContainer">
             <div class="grid-container">
-                <div v-for="item in articles" :key="item" class="grid-wrapper">
-                    <div class="grid-item">
-                        <img :src="item.image.src" class="cardImage">
-                        <div class="cardContent">
-                            <h3> {{ item.title }}</h3>
-                            <p> {{ item.description }} </p>
-                            <NuxtLink :to="item._path" class="readLink"> Read more... </NuxtLink>
+                <NuxtLink v-for="item in articles" :key="item" :to="item._path">
+                    <div class="grid-wrapper">
+                        <div class="grid-item">
+                            <img :src="item.image.src" class="cardImage">
+                            <div class="cardContent">
+                                <h3> {{ item.title }}</h3>
+                                <p> {{ item.description }} </p>
+                                <NuxtLink :to="item._path" class="readLink"> Read more... </NuxtLink>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </NuxtLink>
             </div>
             <div class="categoriesContainer">
                 <h3>categories</h3>
