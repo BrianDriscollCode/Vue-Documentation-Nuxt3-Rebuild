@@ -23,13 +23,12 @@
 </template>
 
 <script setup>
-import { useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
+import { useRoute } from "~~/.nuxt/imports";
 import { computed } from "vue";
 import NavBar from "~/components/home/navbar.vue";
 import Footer from "~/components/home/footer.vue";
 
 const route = useRoute();
-const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
 
 const routeArray = computed(() => {
     let temp = route.fullPath.split("/");

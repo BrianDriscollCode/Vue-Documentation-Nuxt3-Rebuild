@@ -10,24 +10,31 @@
 </template>
 
 <script setup>
-import { useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
+import { useAsyncData, queryContent, useRoute, onMounted } from "~~/.nuxt/imports";
+import { computed, ref } from "vue";
 
 const route = useRoute();
-const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
+const dataChildren = ref([]);
 
-let newHeaders = []; //passed as prop to "ArticleNavigation" component
-let dataChildren = data._rawValue.body.children;
+onMounted(async () => {
+    const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
+    dataChildren.value = data._rawValue.body.children;
+});
 
-//Find titles and push to "newHeaders" array
-for (let i = 0; i < dataChildren.length; i++) {
-    if (
-        dataChildren[i].tag == "h2" ||
-        dataChildren[i].tag == "h3"
-    )
-    {
-        newHeaders.push(dataChildren[i].children[0].value);
+const newHeaders = computed(() => {
+    let tempArray = [];
+    for (let i = 0; i < dataChildren.value.length; i++) {
+        if (
+            dataChildren.value[i].tag == "h2" ||
+            dataChildren.value[i].tag == "h3"
+        )
+        {
+            tempArray.push(dataChildren.value[i].children[0].value);
+        }
     }
-}
+    return tempArray;
+});
+//Find titles and push to "newHeaders" array
 
 function convertText(htmlId) {
     const newId = htmlId.trim().replace(/\s/g, "-").replace(/\./, "").replace(/:/, "").toLowerCase();
