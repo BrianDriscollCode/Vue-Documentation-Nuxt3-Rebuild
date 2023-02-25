@@ -45,6 +45,8 @@ import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 
 let allContent = await useAsyncData("blog", () => queryContent("blog").find());
 let articles = allContent.data._rawValue;
+console.log(allContent);
+console.log(articles);
 
 </script>
 
