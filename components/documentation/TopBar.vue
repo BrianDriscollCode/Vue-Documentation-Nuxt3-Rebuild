@@ -54,6 +54,7 @@ import NavigationMinimized from "../NavigationMinimized.vue";
 
 let allContent = await useAsyncData("documentation", () => queryContent("documentation").find());
 allContent = allContent.data._rawValue;
+console.log(allContent);
 
 let pages= [];
 let allHeaders = [];
