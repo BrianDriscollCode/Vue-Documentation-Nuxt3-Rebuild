@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     ],
     components: {
         global: true,
-        dirs: ["~/components/courses"]
+        dirs: ["~/components/courses", "~/components/blog"]
     },
     css: [
         "~/layouts/global.css"

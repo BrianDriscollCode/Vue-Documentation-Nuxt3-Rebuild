@@ -18,15 +18,10 @@
 </template>
 
 <script setup>
-import { definePageMeta } from "~~/.nuxt/imports";
 import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
 import Features from "~/components/home/features.vue";
 import Footer from "~/components/home/footer.vue";
-
-definePageMeta({
-    layout: "main-pages"
-});
 
 </script>
 
