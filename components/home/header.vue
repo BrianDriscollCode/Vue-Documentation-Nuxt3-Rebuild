@@ -36,7 +36,7 @@
 		justify-content: center;
 		flex-direction: row;
 		width: 80%;
-		padding-top: 6em;
+		padding-top: 4em;
 		padding-bottom: 6em;
 		margin-left: auto;
 		margin-right: auto;

@@ -16,7 +16,7 @@
 						</div>
 						<NuxtLink to="/free-course"><button> Learn Vue Now! </button></NuxtLink>
 					</div>
-                    <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                    <img src="~/assets/studentLearning.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="400"/>
                 </div>
 
 				<div class="singleFeatureContainerRight">
@@ -30,7 +30,7 @@
                         </div>
 						<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 					</div>
-                    <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                    <img src="~/assets/vueRefBook.png" class="featureImage" data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="400"/>
                 </div>
 
 				<div class="singleFeatureContainerLeft">
@@ -43,7 +43,7 @@
                             </div>
 							<a href="https://www.youtube.com/@VueReference" target="_blank"><button> Watch Videos </button></a>
 						</div>
-						<img src="~/assets/video.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+						<img src="~/assets/video.jpg" class="featureImage" data-aos="fade-left" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="400"/>
 					</div>
 
 					<div class="singleFeatureContainerRight">
@@ -56,7 +56,7 @@
                         </div>
 						<NuxtLink to="/blog"><button> <del>See Content</del> </button></NuxtLink> (in development)
 					</div>
-                    <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800"/>
+                    <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="400"/>
                 </div>
 				</div>
 			</div>

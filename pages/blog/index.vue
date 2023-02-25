@@ -25,10 +25,10 @@
             <div class="categoriesContainer">
                 <h3>categories</h3>
                 <ul>
-                    <li> All </li>
-                    <li> Vue 3 Fundamentals </li>
-                    <li> Nuxt </li>
-                    <li> Pinia </li>
+                    <li> All ({{ all }}) </li>
+                    <li> Vue ({{ vueArticlesAmount }}) </li>
+                    <li> Nuxt ({{ nuxtArticlesAmount }})</li>
+                    <li> Pinia ({{ piniaArticlesAmount }})</li>
                 </ul>
             </div>
         </section>
@@ -44,12 +44,48 @@
 import NavBar from "~/components/home/navbar.vue";
 import Footer from "~/components/home/footer.vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
+import { computed } from "vue";
 
 
 let allContent = await useAsyncData("blog", () => queryContent("blog").find());
 let articles = allContent.data._rawValue;
 console.log(allContent);
 console.log(articles);
+
+const all = computed(() => {
+    return articles.length;
+});
+
+const vueArticlesAmount = computed(() => {
+    let tempArray = [];
+    for (let item in articles) {
+        if (articles[item].category == "Vue") {
+            tempArray.push(articles[item]);
+        }
+    }
+    return tempArray.length;
+});
+
+const nuxtArticlesAmount = computed(() => {
+    let tempArray = [];
+    for (let item in articles) {
+        if (articles[item].category == "Nuxt") {
+            tempArray.push(articles[item]);
+        }
+    }
+    return tempArray.length;
+});
+
+const piniaArticlesAmount = computed(() => {
+    let tempArray = [];
+    for (let item in articles) {
+        if (articles[item].category == "Pinia") {
+            tempArray.push(articles[item]);
+        }
+    }
+    return tempArray.length;
+});
+
 
 </script>
 
