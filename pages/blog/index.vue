@@ -9,8 +9,8 @@
         </div>
         <section class="contentContainer">
             <div class="grid-container">
-                <NuxtLink v-for="item in articles" :key="item" :to="item._path">
-                    <div class="grid-wrapper">
+                <div v-for="item in articles" :key="item" class="grid-wrapper">
+                    <NuxtLink :to="item._path" class="boxLink">
                         <div class="grid-item">
                             <img :src="item.image.src" class="cardImage">
                             <div class="cardContent">
@@ -19,12 +19,13 @@
                                 <NuxtLink :to="item._path" class="readLink"> Read more... </NuxtLink>
                             </div>
                         </div>
-                    </div>
-                </NuxtLink>
+                    </NuxtLink>
+                </div>
             </div>
             <div class="categoriesContainer">
                 <h3>categories</h3>
                 <ul>
+                    <li> All </li>
                     <li> Vue 3 Fundamentals </li>
                     <li> Nuxt </li>
                     <li> Pinia </li>
@@ -102,7 +103,13 @@ console.log(articles);
 
 .grid-item {
     width: 100%;
-    grid-template-rows: [first] auto [line2] auto [line3] auto;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.boxLink {
+   text-decoration: none;
+   color: black;
 }
 
 .categoriesContainer {
