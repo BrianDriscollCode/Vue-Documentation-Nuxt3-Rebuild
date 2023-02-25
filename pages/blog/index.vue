@@ -9,7 +9,7 @@
         </div>
         <section class="contentContainer">
             <div class="grid-container">
-                <NuxtLink v-for="item in articles" :key="item" class="grid-wrapper" :to="item._path">
+                <div v-for="item in articles" :key="item" class="grid-wrapper">
                     <div class="grid-item">
                         <img :src="item.image.src" class="cardImage">
                         <div class="cardContent">
@@ -18,7 +18,7 @@
                             <NuxtLink :to="item._path" class="readLink"> Read more... </NuxtLink>
                         </div>
                     </div>
-                </NuxtLink>
+                </div>
             </div>
             <div class="categoriesContainer">
                 <h3>categories</h3>
