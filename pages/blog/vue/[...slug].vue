@@ -6,7 +6,10 @@
 
         <div class="contentContainer">
             <div class="contentWrapper">
-                <span> blog  >  vue  >  building-your-first-vue-application </span>
+                <span v-for="(slug, index) in buildSlugs" :key="slug">
+                        <NuxtLink :to="slug"> {{ routeArrayNoSlash[index] }} </NuxtLink>
+                        <span class="seperator">{{ buildSlugs[buildSlugs.length - 1] == slug ? "": ">" }}</span>
+                </span>
                 <hr id="topLine"/>
                 <ContentRenderer :value="data" />
                 <div class="bottomSpacing"> </div>
@@ -21,6 +24,7 @@
 
 <script setup>
 import { useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
+import { computed } from "vue";
 import NavBar from "~/components/home/navbar.vue";
 import Footer from "~/components/home/footer.vue";
 
@@ -28,6 +32,39 @@ const route = useRoute();
 const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
 
 console.log(route.fullPath);
+
+const routeArray = computed(() => {
+    let temp = route.fullPath.split("/");
+    temp = temp.filter(route => route !== "");
+    let slash = "/";
+    for (let item in temp) {
+        slash += temp[item];
+        temp[item] = slash;
+        slash = "/";
+    }
+
+    return temp;
+});
+
+const routeArrayNoSlash = computed(() => {
+    let temp = route.fullPath.split("/");
+    temp = temp.filter(route => route !== "");
+
+    return temp;
+});
+
+console.log(routeArray.value, " -RouteArray");
+
+const buildSlugs = computed(() => {
+    let temp = [];
+    let builder = "";
+    for (let item in routeArray.value) {
+        console.log(routeArray.value[item]);
+        builder += routeArray.value[item];
+        temp.push(builder);
+    }
+    return temp;
+});
 </script>
 
 <style scoped>
@@ -48,6 +85,11 @@ console.log(route.fullPath);
         width: 60%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .seperator {
+        margin-left: 0.8em;
+        margin-right: 0.8em;
     }
 
 :deep(h1) {
