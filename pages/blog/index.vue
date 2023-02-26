@@ -21,42 +21,56 @@
             <div class="categoriesContainer">
                 <h3>categories</h3>
                 <ul>
-                    <li> All ({{ all }}) </li>
-                    <li> Vue ({{ vueArticlesAmount }}) </li>
-                    <li> Nuxt ({{ nuxtArticlesAmount }})</li>
-                    <li> Pinia ({{ piniaArticlesAmount }})</li>
+                    <li @click="filterByCategory('All')" class="categoryPicker"> All ({{ all }}) </li>
+                    <li @click="filterByCategory('Vue')" class="categoryPicker"> Vue ({{ vueArticlesAmount }}) </li>
+                    <li @click="filterByCategory('Nuxt')" class="categoryPicker"> Nuxt ({{ nuxtArticlesAmount }})</li>
+                    <li @click="filterByCategory('Pinia')" class="categoryPicker"> Pinia ({{ piniaArticlesAmount }})</li>
                 </ul>
             </div>
         </section>
 
-        <div class="footerContainer">
-            <hr class="footerLine"/>
-            <Footer />
-        </div>
+        <Footer />
     </main>
 </template>
 
 <script setup>
 import NavBar from "~/components/home/navbar.vue";
-import Footer from "~/components/home/footer.vue";
+import Footer from "~/components/blog/footer.vue";
 import ArticleCard from "~/components/blog/articleCard.vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
-import { computed } from "vue";
+import { computed, ref, reactive } from "vue";
 
 let allContent = await useAsyncData("blog", () => queryContent("blog").find());
-let articles = allContent.data._rawValue;
+let articles = ref(allContent.data._rawValue);
 console.log(allContent);
 console.log(articles);
 
+let blogState = reactive({
+    currentCategory: "All",
+    entryAmount: allContent.data._rawValue.length
+});
+
+function filterByCategory(category) {
+    if (category == "All") {
+        articles.value = allContent.data._rawValue;
+    } else {
+        articles.value = allContent.data._rawValue.filter(article => article.category === category);
+        blogState.currentCategory = category;
+        blogState.entryAmount = articles.value.length;
+    }
+
+    console.log(blogState.currentCategory, blogState.entryAmount);
+}
+
 const all = computed(() => {
-    return articles.length;
+    return allContent.data._rawValue.length;
 });
 
 const vueArticlesAmount = computed(() => {
     let tempArray = [];
-    for (let item in articles) {
-        if (articles[item].category == "Vue") {
-            tempArray.push(articles[item]);
+    for (let item in allContent.data._rawValue) {
+        if (allContent.data._rawValue[item].category == "Vue") {
+            tempArray.push(allContent.data._rawValue[item]);
         }
     }
     return tempArray.length;
@@ -64,9 +78,9 @@ const vueArticlesAmount = computed(() => {
 
 const nuxtArticlesAmount = computed(() => {
     let tempArray = [];
-    for (let item in articles) {
-        if (articles[item].category == "Nuxt") {
-            tempArray.push(articles[item]);
+    for (let item in allContent.data._rawValue) {
+        if (allContent.data._rawValue[item].category == "Nuxt") {
+            tempArray.push(allContent.data._rawValue[item]);
         }
     }
     return tempArray.length;
@@ -74,9 +88,9 @@ const nuxtArticlesAmount = computed(() => {
 
 const piniaArticlesAmount = computed(() => {
     let tempArray = [];
-    for (let item in articles) {
-        if (articles[item].category == "Pinia") {
-            tempArray.push(articles[item]);
+    for (let item in allContent.data._rawValue) {
+        if (allContent.data._rawValue[item].category == "Pinia") {
+            tempArray.push(allContent.data._rawValue[item]);
         }
     }
     return tempArray.length;
@@ -85,7 +99,15 @@ const piniaArticlesAmount = computed(() => {
 
 </script>
 
-<style>
+<style scoped>
+.mainContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 100vh;
+    height: 100%;
+}
 
 .titleContainer {
     text-align: center;
@@ -100,16 +122,16 @@ const piniaArticlesAmount = computed(() => {
     width: 1300px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 6em;
 }
 
 
 
 .grid-container {
     display: grid;
-    grid-template-columns: [first] auto [line2] auto [line3] auto;
+    grid-template-columns: [first] 33.33% [line2] 33.33% [line3] 33.33%;
     /* background-color: #2196F3; */
-    width: 1300px;
-    margin-left: auto;
+    width: 85%;
     margin-right: auto;
     column-gap: 1em;
     row-gap: 1em
@@ -127,7 +149,9 @@ const piniaArticlesAmount = computed(() => {
 
 
 .categoriesContainer {
+    padding-right: 1em;
     padding-left: 1em;
+
 }
 
 .categoriesContainer ul {
@@ -138,4 +162,66 @@ const piniaArticlesAmount = computed(() => {
     list-style-type: none;
 }
 
+.categoryPicker:hover {
+    cursor: pointer;
+}
+@media screen and (max-width: 1350px) {
+    .titleContainer {
+        width: 90%
+    }
+    .contentContainer {
+        width: 90%;
+        margin-bottom: 8em;
+    }
+
+}
+
+@media screen and (max-width: 1250px) {
+    .grid-container {
+        grid-template-columns: [first] 50% [line2] 50%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .categoriesContainer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .titleContainer {
+        width: 97%
+    }
+    .contentContainer {
+        width: 97%;
+    }
+
+}
+
+@media screen and (max-width: 860px) {
+    .grid-container {
+        grid-template-columns: [first] 100%;
+    }
+    .categoriesContainer {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contentContainer {
+        flex-direction: column-reverse;
+        margin-bottom: 10em;
+    }
+    .grid-container {
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .categoriesContainer {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+}
 </style>

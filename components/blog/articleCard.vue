@@ -29,8 +29,12 @@ defineProps({
         text-decoration: none;
         color: black;
     }
+
+    h3 {
+        margin-top: 0.3em;
+    }
     .image {
-        width: 400px;
+        width: 100%;
     }
 
     .articleDescription {
@@ -38,13 +42,20 @@ defineProps({
         position: relative;
     }
     .articleCard {
-        height: 100%;
+        height: 415px;
         display: grid;
-        grid-template-rows: [first] 50% [second] 50%;;
+        grid-template-rows: [first] 50% [second] 50%;
     }
 
     .readLink {
         position: absolute;
         bottom: 10px;
+    }
+
+    @media screen and (max-width: 1250px) {
+        .articleCard {
+            grid-template-rows: [first] auto [second] auto;
+            height: 100%;
+        }
     }
 </style>
