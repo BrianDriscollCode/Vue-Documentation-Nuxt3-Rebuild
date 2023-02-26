@@ -54,7 +54,7 @@
 								to make it fit your learning style.
 							</p>
                         </div>
-						<NuxtLink to="/blog"><button> <del>See Content</del> </button></NuxtLink> (in development)
+						<NuxtLink to="/blog"><button> See Content </button></NuxtLink> (in development)
 					</div>
                     <img src="~/assets/blog.jpg" class="featureImage" data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-duration="400"/>
                 </div>

@@ -28,7 +28,7 @@
 					</span>
 					<span class="navLinkContainer">
 						<Nuxt-link to="/blog" class="navLink">
-							<del> Blog </del>
+							Blog
 						</Nuxt-link>
 					</span>
 					<span class="navLinkContainer">

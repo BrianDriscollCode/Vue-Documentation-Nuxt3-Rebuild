@@ -15,12 +15,12 @@
           </span>
           <span>
             <NuxtLink to="/blog" class="footerLink">
-              <del>Blog</del>
+              Blog
             </NuxtLink>
           </span>
           <span>
             <NuxtLink to="/free-course" class="footerLink">
-              <del>Free Course</del>
+              Free Course
             </NuxtLink>
           </span>
         </div>
