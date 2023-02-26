@@ -10,7 +10,7 @@
             <ul class="navigationList">
 				<li> <NuxtLink to="/" class="navLink"> Home </NuxtLink> </li>
 				<li> <NuxtLink to="/documentation" class="navLink"> Documentation </NuxtLink> </li>
-				<li> <NuxtLink to="/blog" class="navLink"> <del>Blog</del> </NuxtLink> </li>
+				<li> <NuxtLink to="/blog" class="navLink"> Blog </NuxtLink> </li>
 				<li> <NuxtLink to="/free-course" class="navLink"> Free Course </NuxtLink>  </li>
             </ul>
 
