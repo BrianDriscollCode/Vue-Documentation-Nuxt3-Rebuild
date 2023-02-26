@@ -10,16 +10,12 @@
         <section class="contentContainer">
             <div class="grid-container">
                 <div v-for="item in articles" :key="item" class="grid-wrapper">
-                    <NuxtLink :to="item._path" class="boxLink">
-                        <div class="grid-item">
-                            <img :src="item.image.src" class="cardImage">
-                            <div class="cardContent">
-                                <h3> {{ item.title }}</h3>
-                                <p> {{ item.description }} </p>
-                                <NuxtLink :to="item._path" class="readLink"> Read more... </NuxtLink>
-                            </div>
-                        </div>
-                    </NuxtLink>
+                    <ArticleCard
+                        :articleImage="item.image.src"
+                        :articleTitle="item.title"
+                        :articleLink="item._path"
+                        :articleDescription="item.description"
+                    />
                 </div>
             </div>
             <div class="categoriesContainer">
@@ -43,9 +39,9 @@
 <script setup>
 import NavBar from "~/components/home/navbar.vue";
 import Footer from "~/components/home/footer.vue";
+import ArticleCard from "~/components/blog/articleCard.vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 import { computed } from "vue";
-
 
 let allContent = await useAsyncData("blog", () => queryContent("blog").find());
 let articles = allContent.data._rawValue;
@@ -106,18 +102,7 @@ const piniaArticlesAmount = computed(() => {
     margin-right: auto;
 }
 
-.articleCard {
-    width: 450px;
-}
 
-.cardImage {
-    width:100%;
-    border-radius: 5px 5px 0px 0px;
-}
-
-.cardContent {
-    padding: 1em;
-}
 
 .grid-container {
     display: grid;
@@ -131,22 +116,15 @@ const piniaArticlesAmount = computed(() => {
 }
 
 .grid-wrapper {
-    background-color: rgb(154, 223, 255);
+    display: grid;
+    height: 100%;
+    background: rgb(133,215,254);
+    background: linear-gradient(135deg, rgba(133,215,254,1) 0%, rgba(154,223,255,1) 70%, rgba(97,199,246,1) 100%);
     border-radius: 5px;
     text-decoration: none;
     color: black;
 }
 
-.grid-item {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.boxLink {
-   text-decoration: none;
-   color: black;
-}
 
 .categoriesContainer {
     padding-left: 1em;
@@ -158,10 +136,6 @@ const piniaArticlesAmount = computed(() => {
 
 .categoriesContainer ul li {
     list-style-type: none;
-}
-
-.readLink {
-    text-decoration: none;
 }
 
 </style>
