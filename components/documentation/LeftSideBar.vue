@@ -104,11 +104,6 @@
           </NuxtLink>
         </li>
         <li class="navItem">
-          <NuxtLink to="/documentation/intermediate/working-inline-the-template" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Working Inline the Template </del>
-          </NuxtLink>
-        </li>
-        <li class="navItem">
           <NuxtLink to="/documentation/intermediate/shared-state-solution" class="leftSideLink" @click="$emit('turnOffSideBar')">
             <del> Shared State Solution </del>
           </NuxtLink>
@@ -118,12 +113,12 @@
       <div>
         <h3> Reusability </h3>
         <li class="navItem">
-          <NuxtLink to="documentation/composables" class="leftSideLink" @click="$emit('turnOffSideBar')">
-            <del> Composables </del>
+          <NuxtLink to="/documentation/intermediate/composables" class="leftSideLink" @click="$emit('turnOffSideBar')">
+            Composables
           </NuxtLink>
         </li>
         <li class="navItem">
-          <NuxtLink to="documentation/custome-directive" class="leftSideLink" @click="$emit('turnOffSideBar')">
+          <NuxtLink to="/documentation/intermediate/custom-directive" class="leftSideLink" @click="$emit('turnOffSideBar')">
             <del> Custom Directive </del>
           </NuxtLink>
         </li>

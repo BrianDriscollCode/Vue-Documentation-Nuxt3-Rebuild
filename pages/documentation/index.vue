@@ -24,6 +24,7 @@ definePageMeta({
 });
 const route = useRoute();
 const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
+console.log(data._rawValue.body, "-********BODY");
 
 let newHeaders = []; //passed as prop to "ArticleNavigation" component
 let dataChildren = data._rawValue.body.children;
@@ -130,6 +131,10 @@ for (let i = 0; i < dataChildren.length; i++) {
 
 .bottomSpacing {
 	padding-top: 2em;
+}
+
+.lastElement {
+	padding-bottom: 2em;
 }
 
 ::-webkit-scrollbar {
