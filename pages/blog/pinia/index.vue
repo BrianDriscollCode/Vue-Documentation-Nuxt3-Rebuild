@@ -5,6 +5,9 @@
         </div>
         <div class="titleContainer">
             <h1> Articles (All TEMP ARTICLES) </h1>
+			<div class="blogLink">
+				<NuxtLink to="/blog"> ...back to blog </NuxtLink>
+			</div>
             <hr />
         </div>
         <section class="contentContainer">
@@ -21,10 +24,7 @@
             <div class="categoriesContainer">
                 <h3>categories</h3>
                 <ul>
-                    <li @click="filterByCategory('All')" class="categoryPicker"> All ({{ all }}) </li>
-                    <li @click="filterByCategory('Vue')" class="categoryPicker"> Vue ({{ vueArticlesAmount }}) </li>
-                    <li @click="filterByCategory('Nuxt')" class="categoryPicker"> Nuxt ({{ nuxtArticlesAmount }})</li>
-                    <li @click="filterByCategory('Pinia')" class="categoryPicker"> Pinia ({{ piniaArticlesAmount }})</li>
+                    <li class="categoryPicker"> Pinia ({{ piniaArticlesAmount }})</li>
                 </ul>
             </div>
         </section>
@@ -41,52 +41,13 @@ import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 import { computed, ref, reactive } from "vue";
 
 let allContent = await useAsyncData("blog", () => queryContent("blog").find());
-let articles = ref(allContent.data._rawValue);
-console.log(allContent);
-console.log(articles);
 
 let blogState = reactive({
-    currentCategory: "All",
+    currentCategory: "Pinia",
     entryAmount: allContent.data._rawValue.length
 });
 
-function filterByCategory(category) {
-    if (category == "All") {
-        articles.value = allContent.data._rawValue;
-    } else {
-        articles.value = allContent.data._rawValue.filter(article => article.category === category);
-        blogState.currentCategory = category;
-        blogState.entryAmount = articles.value.length;
-    }
-
-    console.log(blogState.currentCategory, blogState.entryAmount);
-}
-
-const all = computed(() => {
-    return allContent.data._rawValue.length;
-});
-
-const vueArticlesAmount = computed(() => {
-    let tempArray = [];
-    for (let item in allContent.data._rawValue) {
-        if (allContent.data._rawValue[item].category == "Vue") {
-            tempArray.push(allContent.data._rawValue[item]);
-        }
-    }
-    return tempArray.length;
-});
-
-const nuxtArticlesAmount = computed(() => {
-    let tempArray = [];
-    for (let item in allContent.data._rawValue) {
-        if (allContent.data._rawValue[item].category == "Nuxt") {
-            tempArray.push(allContent.data._rawValue[item]);
-        }
-    }
-    return tempArray.length;
-});
-
-
+let articles = ref(allContent.data._rawValue.filter(article => article.category === blogState.currentCategory));
 
 const piniaArticlesAmount = computed(() => {
     let tempArray = [];
@@ -102,6 +63,9 @@ const piniaArticlesAmount = computed(() => {
 </script>
 
 <style scoped>
+.blogLink {
+	text-align: left;
+}
 .mainContainer {
     display: flex;
     position: relative;
@@ -142,18 +106,11 @@ const piniaArticlesAmount = computed(() => {
 .grid-wrapper {
     display: grid;
     height: 100%;
-    background-color: rgb(225, 246, 255);
-    /* background: linear-gradient(135deg, rgba(133,215,254,1) 0%, rgba(154,223,255,1) 70%, rgba(97,199,246,1) 100%); */
-    border-radius: 15px;
-    border: 3px solid rgb(218, 238, 250);
+    background: rgb(133,215,254);
+    background: linear-gradient(135deg, rgba(133,215,254,1) 0%, rgba(154,223,255,1) 70%, rgba(97,199,246,1) 100%);
+    border-radius: 5px;
     text-decoration: none;
     color: black;
-    transition: border 0.2s, box-shadow 0.2s;
-}
-
-.grid-wrapper:hover {
-    border: 3px solid rgb(0, 255, 157);
-    transition: border 0.2s, box-shadow 0.2s;;
 }
 
 

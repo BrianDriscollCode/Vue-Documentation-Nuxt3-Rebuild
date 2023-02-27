@@ -27,7 +27,7 @@ defineProps({
 
     .articleLink {
         text-decoration: none;
-        color: black;
+        color: rgb(31, 31, 31);
     }
 
     h3 {
@@ -35,6 +35,7 @@ defineProps({
     }
     .image {
         width: 100%;
+		border-radius: 10px 10px 0 0;
     }
 
     .articleDescription {
@@ -48,6 +49,7 @@ defineProps({
     }
 
     .readLink {
+		color:rgb(11, 73, 84);
         position: absolute;
         bottom: 10px;
     }
