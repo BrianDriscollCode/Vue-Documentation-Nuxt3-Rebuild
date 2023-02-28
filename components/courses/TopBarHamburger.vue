@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<img src="~/assets/hamburgerWhite.png" class="hamburgerImage" :style="props.display ? 'display: none': 'display: block'" />
-		<img src="~/assets/close.png" class="hamburgerImage" :style="props.display ? 'display: block': 'display: none'" />
+		<img src="~/assets/hamburgerWhiteV2.png" class="hamburgerImage" :style="props.display ? 'display: none': 'display: block'" />
+		<img src="~/assets/closeV2.png" class="hamburgerImage" :style="props.display ? 'display: block': 'display: none'" />
 	</div>
 </template>
 
