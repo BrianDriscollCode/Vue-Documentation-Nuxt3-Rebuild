@@ -1,4 +1,5 @@
-exports.handler = async function (event, context) {  // eslint-disable-line
+
+export default eventHandler(async () => { // eslint-disable-line
     const postgres = require("postgres");
 
     const db = postgres({
@@ -15,4 +16,4 @@ exports.handler = async function (event, context) {  // eslint-disable-line
         statusCode: 200,
         body: JSON.stringify({data})
     };
-};
+});
