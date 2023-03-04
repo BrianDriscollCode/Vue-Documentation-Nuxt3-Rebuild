@@ -3,7 +3,8 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
     modules: [
         "@nuxt/content",
-        "@pinia/nuxt"
+        "@pinia/nuxt",
+        "@nuxtjs/supabase"
     ],
     content: {
         highlight: {
@@ -20,5 +21,5 @@ export default defineNuxtConfig({
     },
     css: [
         "~/layouts/global.css"
-    ]
+    ],
 });
