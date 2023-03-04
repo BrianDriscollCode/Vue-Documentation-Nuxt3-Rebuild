@@ -1,6 +1,6 @@
+import postgres from "postgres";
 
 export default eventHandler(async () => { // eslint-disable-line
-    const postgres = require("postgres");
 
     const db = postgres({
         host: process.env.AWSHOST,
