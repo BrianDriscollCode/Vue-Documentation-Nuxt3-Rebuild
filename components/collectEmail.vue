@@ -254,10 +254,7 @@ h3 {
 	flex-direction: column;
 	text-align: center;
 }
-.collectEmailContainer {
-	/* background-color: antiquewhite; */
 
-}
 .validationWarnings {
     color: red;
 }
