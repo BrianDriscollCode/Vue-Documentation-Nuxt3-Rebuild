@@ -8,7 +8,7 @@
             <div class="contentWrapper">
                 <span v-for="(slug, index) in buildSlugs" :key="slug">
                         <NuxtLink :to="slug"> {{ routeArrayNoSlash[index] }} </NuxtLink>
-                        <span class="seperator">{{ buildSlugs[buildSlugs.length - 1] == slug ? "": ">" }}</span>
+                        <span class="seperator">{{ buildSlugs[buildSlugs.length - 1] == slug ? "": "&#8594;" }}</span>
                 </span>
                 <hr id="topLine"/>
                 <ContentRenderer :value="data" />

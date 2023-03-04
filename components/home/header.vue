@@ -7,7 +7,7 @@
 			<div class="cta" data-aos="zoom-in" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-duration="800">
 				<NuxtLink to="/documentation"><button> See Documentation </button></NuxtLink>
 				<NuxtLink to="/free-course" class="freeCourse">
-					Try our free course ->
+					Try our free course &#8594;
 				</NuxtLink>
 			</div>
 
