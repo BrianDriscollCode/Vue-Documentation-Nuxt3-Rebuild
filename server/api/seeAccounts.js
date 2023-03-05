@@ -10,6 +10,8 @@ export default eventHandler(async () => { // eslint-disable-line
         database: process.env.SUPANAME
     });
 
+    console.log("test");
+
     const data = await db`SELECT * FROM user_accounts`;
 
     return {
