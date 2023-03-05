@@ -6,7 +6,7 @@ exports.handler = async function (event, context) {  // eslint-disable-line
         host: process.env.SUPAHOST,
         port: 5432,
         user: process.env.SUPAUSER,
-        password: process.env.SUPAPASSWORD,
+        password: process.env.SUPAPASSWORD + "#",
         database: process.env.SUPANAME
     });
 
