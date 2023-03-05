@@ -8,6 +8,7 @@
             <div class="waterDroplet drop3"> </div>
 			<div class="waterDroplet drop4"> </div>
 		</div>
+		{{ user }}
 		<Features />
 
 		<div class="footerContainer">
@@ -18,10 +19,14 @@
 </template>
 
 <script setup>
+import { useSupabaseUser } from "~~/.nuxt/imports";
 import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
 import Features from "~/components/home/features.vue";
 import Footer from "~/components/home/footer.vue";
+
+
+const user = useSupabaseUser();
 
 </script>
 
