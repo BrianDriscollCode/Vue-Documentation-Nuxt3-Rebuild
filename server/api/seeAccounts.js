@@ -3,11 +3,11 @@ import postgres from "postgres";
 export default eventHandler(async () => { // eslint-disable-line
 
     const db = postgres({
-        host: process.env.AWSHOST,
+        host: process.env.SUPAHOST,
         port: 5432,
-        user: process.env.AWSUSER,
-        password: process.env.AWSPASSWORD,
-        database: process.env.AWSDATABASE
+        user: process.env.SUPAUSER,
+        password: process.env.SUPAPASSWORD,
+        database: process.env.SUPANAME
     });
 
     const data = await db`SELECT * FROM user_accounts`;
