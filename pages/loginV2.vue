@@ -14,7 +14,7 @@ import { useSupabaseAuthClient } from "~~/.nuxt/imports";
 
 const client = useSupabaseAuthClient();
 //const user = useSupabaseUser();
-// const router = useRouter();
+//const router = useRouter();
 
 const login = async (provider) => {
     const { error } = await client.auth.signInWithOAuth({ provider });
@@ -44,7 +44,7 @@ async function signOut() {
 
 async function print() {
     await $fetch("/api/seeAccounts")
-        .then((res) => console.log(res))
+        .then((res) => console.log(JSON.parse(res)))
         .catch(function(error) {
             console.log(error);
         });
