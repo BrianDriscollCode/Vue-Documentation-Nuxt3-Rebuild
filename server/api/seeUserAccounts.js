@@ -16,6 +16,6 @@ export default eventHandler(async () => { // eslint-disable-line
 
     return {
         statusCode: 200,
-        body: JSON.stringify({data})
+        body: JSON.stringify(data)
     };
 });

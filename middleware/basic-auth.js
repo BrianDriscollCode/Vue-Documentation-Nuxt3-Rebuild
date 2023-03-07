@@ -3,9 +3,8 @@ import { useSupabaseUser, navigateTo, defineNuxtRouteMiddleware } from "~~/.nuxt
 
 export default defineNuxtRouteMiddleware(() => {
     const user = useSupabaseUser();
-
     if (!user.value) {
-        return navigateTo("/unauthorized");
+        return navigateTo("/auth/unauthorized");
     }
 
 });

@@ -21,7 +21,8 @@ import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/i
 import ArticleNavigation from "~/components/courses/ArticleNavigation.vue";
 
 definePageMeta({
-    layout: "courses"
+    layout: "courses",
+    middleware: "basic-auth"
 });
 const route = useRoute();
 const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
