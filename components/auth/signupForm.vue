@@ -1,6 +1,6 @@
 <template>
     <h1> Sign Up </h1>
-	<label> First Name </label>
+    <label> First Name </label>
     <input v-model="firstName">
     <label> Email </label>
     <input v-model="email"/>
@@ -22,6 +22,13 @@ const login = async () => {
     const { data, error } = await client.auth.signUp({
         email: email.value,
         password: passcode.value,
+        is_super_admin: true,
+        options: {
+            data: {
+                first_name: firstName.value,
+                account_type: "basic"
+            }
+        }
     });
 
     if (error) {
