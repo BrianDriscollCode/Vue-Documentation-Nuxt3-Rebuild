@@ -4,8 +4,16 @@ export default defineNuxtConfig({
     modules: [
         "@nuxt/content",
         "@pinia/nuxt",
-        "@nuxtjs/supabase"
+        "@nuxtjs/supabase",
+        "@nuxtjs/apollo"
     ],
+    apollo: {
+        clients: {
+            default: {
+                httpEndpoint: "http://localhost:3000/api/graphql"
+            }
+        }
+    },
     content: {
         highlight: {
             theme: "one-dark-pro"

@@ -8,7 +8,9 @@
             <div class="waterDroplet drop3"> </div>
             <div class="waterDroplet drop4"> </div>
         </div>
-        {{ user }}
+		<p v-if="loading"> Loading... </p>
+		{{ data }}
+		<button @click="seeData"> SEE DATA </button>
         <Features />
 
         <div class="footerContainer">
@@ -20,53 +22,37 @@
 
 <script setup>
 // import { watch } from "~~/.nuxt/imports";
-import { useSupabaseUser } from "~~/.nuxt/imports";
+//import { useSupabaseUser } from "~~/.nuxt/imports";
 import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
 import Features from "~/components/home/features.vue";
 import Footer from "~/components/home/footer.vue";
 import { $fetch } from "ofetch";
 
+import { gql } from "~~/.nuxt/imports";
+import { useAsyncQuery } from "~~/.nuxt/imports";
 
-const user = useSupabaseUser();
-let DB = $fetch("/api/seeAccounts")
+const query = gql`
+    {
+		user {
+			first_name
+		}
+	}
+`;
+
+const { data, loading } = useAsyncQuery(query);
+
+function seeData() {
+    console.log(data);
+}
+
+//const user = useSupabaseUser();
+let DB = $fetch("/api/seeUserAccounts")
     .then(res => console.log(JSON.parse(res.body)));
 
 console.log(DB);
-console.log(user.value);
-// let userObject;
-// let userInfo;
+console.log(data);
 
-// watch((user) => {
-//     if (user) {
-//         userObject = user._object.$ssupabase_user;
-
-//         userInfo = {
-//             id: userObject.id,
-//             name: userObject.user_metadata.name,
-//             picture: userObject.user_metadata.picture,
-//             email: userObject.user_metadata.email,
-//         };
-//     }
-// });
-
-// console.log(userObject, userInfo);
-
-// if (user) {
-//     userObject = user._object.$ssupabase_user;
-
-//     if (userObject) {
-//         userInfo = {
-//             id: userObject.id,
-//             name: userObject.user_metadata.name,
-//             picture: userObject.user_metadata.picture,
-//             email: userObject.user_metadata.email,
-//         };
-//     }
-
-//     console.log(userObject);
-//     console.log(userInfo);
-// }
 
 </script>
 
