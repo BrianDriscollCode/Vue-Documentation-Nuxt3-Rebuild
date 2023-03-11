@@ -17,13 +17,13 @@
 				</Nuxt-link>
 			</span>
 			<span :class="props.display ? 'navLinkContainerMax':'navLinkContainerMin'">
-				<Nuxt-link to="free-course" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
+				<Nuxt-link to="/free-course" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
 					Free Course
 				</Nuxt-link>
 			</span>
 			<span :class="props.display ? 'navLinkContainerMax':'navLinkContainerMin'">
-				<Nuxt-link to="contact" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
-					Contact
+				<Nuxt-link to="/login" class="navLinkMin" :style="props.display ? 'opacity: 1; height: 50px; pointerEvents: auto': 'opacity: 0; height: 0px; pointerEvents: none'">
+					Login
 				</Nuxt-link>
 			</span>
         </div>

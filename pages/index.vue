@@ -27,18 +27,12 @@ import Header from "~/components/home/header.vue";
 import NavBar from "~/components/home/navbar.vue";
 import Features from "~/components/home/features.vue";
 import Footer from "~/components/home/footer.vue";
-import { $fetch } from "ofetch";
+// import { $fetch } from "ofetch";
 
-import { gql } from "~~/.nuxt/imports";
+import { all_users } from "@/graphql/getUserInfo/queries/allUsers.js";
 import { useAsyncQuery } from "~~/.nuxt/imports";
 
-const query = gql`
-    {
-		user {
-			first_name
-		}
-	}
-`;
+let query = all_users();
 
 const { data, loading } = useAsyncQuery(query);
 
@@ -47,10 +41,10 @@ function seeData() {
 }
 
 //const user = useSupabaseUser();
-let DB = $fetch("/api/seeUserAccounts")
-    .then(res => console.log(JSON.parse(res.body)));
+// let DB = $fetch("/api/seeUserAccounts")
+//     .then(res => console.log(JSON.parse(res.body)));
 
-console.log(DB);
+// console.log(DB);
 console.log(data);
 
 

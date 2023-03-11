@@ -15,6 +15,7 @@
             </ul>
 
 			<div class="searchButtonContainer">
+				<NuxtLink to="/login" class="loginLinks"> Login </NuxtLink>
 				<a href="https://twitter.com/BrianDrisBuilds" target="_blank">
                     <img src="~/assets/twitter.png" class="twitter"/>
 				</a>
@@ -93,6 +94,17 @@ function toggleNavigation() {
 		justify-content: center;
 		align-items: center;
 	}
+
+	.loginLinks {
+        color: white;
+		margin-right: 1em;
+		text-decoration: none;
+	}
+
+	.loginLinks:hover {
+		color : #00c69a;
+	}
+
 	.twitter {
 		width: 20px;
 		height: 20px;
@@ -161,6 +173,9 @@ function toggleNavigation() {
 			height: 25px;
 			margin-right: 1em;
         }
+		.loginLinks {
+			display: none;
+		}
 	}
 
     @media only screen and (max-width: 500px) {

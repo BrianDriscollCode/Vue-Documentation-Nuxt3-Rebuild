@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {  // eslint-disable-line
         database: process.env.SUPANAME
     });
 
-    const data = await db`SELECT * FROM user_accounts`;
+    const user_data = await db`SELECT * FROM user_accounts`;
 
     const UserType = new GraphQLObjectType({
         name: "User",
@@ -35,14 +35,13 @@ export default defineEventHandler(async (event) => {  // eslint-disable-line
         })
     });
 
-
     const schema = new GraphQLSchema({
         query: new GraphQLObjectType({
             name: "Query",
             fields: {
                 user: {
                     type: new GraphQLList(UserType),
-                    resolve: () => data
+                    resolve: () => user_data
                 },
                 ping: {
                     type: GraphQLBoolean,
