@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import NavBar from "~/components/home/navbar.vue";
+import NavBar from "~/components/main-pages/navbar.vue";
 import Footer from "~/components/blog/footer.vue";
 import ArticleCard from "~/components/blog/articleCard.vue";
 import { useAsyncData, queryContent } from "~~/.nuxt/imports";

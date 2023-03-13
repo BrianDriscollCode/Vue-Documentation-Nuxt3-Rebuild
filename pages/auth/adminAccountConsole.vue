@@ -4,13 +4,13 @@
 	<button @click="seeAuthAccounts"> See Auth Accounts </button>
     <button @click="seeUserAccounts"> See User Accounts </button>
 	<button @click="showCurrentUser"> Show Current User </button>
-	<Login />
+	<LoginForm />
 	<signupFormVue />
 
 </template>
 
 <script setup>
-import Login from "../login.vue";
+import LoginForm from "@/components/auth/loginForm.vue";
 import signupFormVue from "~~/components/auth/signupForm.vue";
 import { definePageMeta } from "~~/.nuxt/imports";
 import { useSupabaseUser } from "~~/.nuxt/imports";

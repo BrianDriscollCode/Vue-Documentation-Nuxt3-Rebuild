@@ -25,8 +25,8 @@
 <script setup>
 import { useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
 import { computed } from "vue";
-import NavBar from "~/components/home/navbar.vue";
-import Footer from "~/components/home/footer.vue";
+import NavBar from "~/components/main-pages/navbar.vue";
+import Footer from "~/components/main-pages/footer.vue";
 
 const route = useRoute();
 const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());

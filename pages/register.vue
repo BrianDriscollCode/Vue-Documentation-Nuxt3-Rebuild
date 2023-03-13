@@ -7,3 +7,7 @@
 <script setup>
 import signupForm from "~~/components/auth/signupForm.vue";
 </script>
+
+<style scoped>
+
+</style>

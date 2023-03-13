@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import NavBar from "../components/home/navbar.vue";
+import NavBar from "../components/main-pages/navbar.vue";
 import CollectEmail from "../components/collectEmail.vue";
 import FeaturesSection from "../components/free-course-page/featuresSection.vue";
 import { ref } from "vue";

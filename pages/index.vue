@@ -9,8 +9,6 @@
             <div class="waterDroplet drop4"> </div>
         </div>
 		<p v-if="loading"> Loading... </p>
-		{{ data }}
-		<button @click="seeData"> SEE DATA </button>
         <Features />
 
         <div class="footerContainer">
@@ -21,33 +19,18 @@
 </template>
 
 <script setup>
-// import { watch } from "~~/.nuxt/imports";
-//import { useSupabaseUser } from "~~/.nuxt/imports";
-import Header from "~/components/home/header.vue";
-import NavBar from "~/components/home/navbar.vue";
-import Features from "~/components/home/features.vue";
-import Footer from "~/components/home/footer.vue";
-// import { $fetch } from "ofetch";
+import Header from "~/components/main-pages/header.vue";
+import NavBar from "~/components/main-pages/navbar.vue";
+import Features from "~/components/main-pages/features.vue";
+import Footer from "~/components/main-pages/footer.vue";
 
-import { all_users } from "@/graphql/getUserInfo/queries/allUsers.js";
-import { useAsyncQuery } from "~~/.nuxt/imports";
+//***Temporarily saving code for graphQL calls */
+// import { all_users } from "@/graphql/getUserInfo/queries/allUsers.js";
+// import { useAsyncQuery } from "~~/.nuxt/imports";
 
-let query = all_users();
+// let query = all_users();
 
-const { data, loading } = useAsyncQuery(query);
-
-function seeData() {
-    console.log(data);
-}
-
-//const user = useSupabaseUser();
-// let DB = $fetch("/api/seeUserAccounts")
-//     .then(res => console.log(JSON.parse(res.body)));
-
-// console.log(DB);
-console.log(data);
-
-
+// const { data, loading } = useAsyncQuery(query);
 </script>
 
 <style>
