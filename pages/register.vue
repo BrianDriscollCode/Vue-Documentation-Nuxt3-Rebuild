@@ -1,6 +1,18 @@
 <template>
+	<div class="logoContainer">
+		<span>
+			<span class="vueLogo">Vue</span>
+			<span class="refLogo">Ref</span>
+		</span>
+	</div>
     <main>
-        <signupForm />
+		<div class="leftContainer">
+            <signupForm />
+		</div>
+		<div class="rightContainer">
+			<!-- <img class="image" src="~/assets/background_person_programming.jpg"> -->
+		</div>
+
 	</main>
 </template>
 
@@ -9,5 +21,52 @@ import signupForm from "~~/components/auth/signupForm.vue";
 </script>
 
 <style scoped>
+.logoContainer {
+	position: absolute;
+	padding: 1em;
+	font-size: 1.3em;
+}
 
+.vueLogo {
+    color: #34445c;
+	font-weight: 600;
+}
+
+.refLogo {
+    color: rgb(0,198,154);
+	font-weight: 600;
+}
+
+main {
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(246, 249, 255);
+}
+.leftContainer {
+    width:65%;
+	display: flex;
+	align-items: center;
+}
+
+.rightContainer {
+	width: 35%;
+	background-color: aquamarine;
+	background-image: url('~/assets/background_person_programming.jpg');
+	background-size: cover;
+}
+
+.image {
+	height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+	.rightContainer {
+		display: none;
+	}
+
+	.leftContainer {
+		width: 100%;
+	}
+}
 </style>
