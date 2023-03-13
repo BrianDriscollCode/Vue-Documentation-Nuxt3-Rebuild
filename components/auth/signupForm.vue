@@ -13,8 +13,9 @@
 			<label> Password </label>
             <input v-model="passcode" type="password"/>
 		</div>
-		<p> By signing up you are agreeing our terms and service </p>
+		<p> By signing up you are agreeing our <NuxtLink to="/terms" class="homeLink"> terms and service </NuxtLink> </p>
 		<button @click="login"> Start Learning Now! </button>
+        <NuxtLink to="/" class="homeLink"> Go back home... </NuxtLink>
 	</div>
 </template>
 
@@ -106,5 +107,20 @@ button {
 	box-shadow: 4px 3px 6px -2px rgba(158,156,158,1);
 	transition: background-color .2s;
 	margin-bottom: 1em;
+}
+
+button:hover {
+	background: rgb(136, 255, 229);
+	background: linear-gradient(180deg, rgb(112, 255, 224) 0%, rgb(101, 251, 218) 65%, rgb(106, 200, 178) 100%);
+}
+
+.homeLink {
+	margin-top: 1em;
+	color: rgb(220, 220, 255);
+	text-decoration: none;
+}
+
+.homeLink:hover {
+    color: rgb(0, 255, 157);
 }
 </style>

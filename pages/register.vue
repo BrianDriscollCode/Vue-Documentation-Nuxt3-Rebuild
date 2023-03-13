@@ -1,9 +1,11 @@
 <template>
 	<div class="logoContainer">
-		<span>
-			<span class="vueLogo">Vue</span>
-			<span class="refLogo">Ref</span>
-		</span>
+		<NuxtLink to="/" class="logoLink">
+			<span>
+				<span class="vueLogo">Vue</span>
+				<span class="refLogo">Ref</span>
+            </span>
+        </NuxtLink>
 	</div>
     <main>
 		<div class="leftContainer">
@@ -37,6 +39,10 @@ import signupForm from "~~/components/auth/signupForm.vue";
 	font-weight: 600;
 }
 
+.logoLink {
+	text-decoration: none;
+}
+
 main {
 	height: 100vh;
 	display: flex;
@@ -51,8 +57,8 @@ main {
 
 .rightContainer {
 	width: 35%;
-	background-color: aquamarine;
-	background-image: url('~/assets/background_person_programming.jpg');
+	background-color: rgb(255, 255, 255);
+	background-image: url('~/assets/background_person_programming1.jpg');
 	background-size: cover;
 }
 
