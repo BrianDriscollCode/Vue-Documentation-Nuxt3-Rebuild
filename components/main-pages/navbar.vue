@@ -16,7 +16,7 @@
 
             <div class="searchButtonContainer">
                 <NuxtLink to="/login" class="loginLinks" v-if="!user"> Login </NuxtLink>
-                <NuxtLink to="/" class="loginLinks" v-else> {{ user.user_metadata.first_name }} </NuxtLink>
+                <NuxtLink to="/login" class="loginLinks" v-else> {{ user.user_metadata.first_name }} </NuxtLink>
                 <a href="https://twitter.com/BrianDrisBuilds" target="_blank">
                     <img src="~/assets/twitter.png" class="twitter"/>
                 </a>
@@ -31,19 +31,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import NavigationMinimized from "~/components/NavigationMinimized.vue";
 import TopBarHamburger from "../documentation/TopBarHamburger.vue";
 import { useSupabaseUser } from "~~/.nuxt/imports";
 
 const user = useSupabaseUser();
-let userExists = ref(false);
+console.log(user);
 
-onMounted(() => {
-    if (user.value) {
-        userExists.value = true;
-    }
-});
 
 let toggleNavigationMinimized = ref(false);
 

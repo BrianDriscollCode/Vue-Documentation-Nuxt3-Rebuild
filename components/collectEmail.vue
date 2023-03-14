@@ -37,18 +37,18 @@ const emit = defineEmits(["successEvent"]);
 
 let submitGranted = ref(false);
 
-let componentState = reactive({
+const componentState = reactive({
     form: true,
     failure: false,
     success: false,
 });
 
-let user_data = reactive({
+const user_data = reactive({
     name: "",
     email: ""
 });
 
-let validation = reactive({
+const validation = reactive({
     namelength: false,
     nameNoSpace: false,
     emailContainsAT: false,

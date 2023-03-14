@@ -4,23 +4,25 @@
         <div class="inputContainer">
             <div>
                 <label> First Name </label>
-                <span class="validationTextInvisible"> Test </span>
             </div>
-            <input v-model="firstName" />
+            <input v-model="user_data.firstName" />
+            <span :class="errorNumber === 1 ? 'validationTextShow': 'validationTextInvisible'"> First name needs to be longer than 2 characters </span>
+            <span :class="errorNumber === 2 ? 'validationTextShow': 'validationTextInvisible'"> Only first name with no spaces </span>
         </div>
         <div class="inputContainer">
             <div>
                 <label> Email </label>
-                <span class="validationTextInvisible"> Test </span>
             </div>
-            <input v-model="email"/>
+            <input v-model="user_data.email"/>
+            <span :class="errorNumber === 3 ? 'validationTextShow': 'validationTextInvisible'"> Email need an @provider </span>
+            <span :class="errorNumber === 4 ? 'validationTextShow': 'validationTextInvisible'"> Email need an ending (i.e. .com/.org/.net) </span>
         </div>
         <div class="inputContainer">
             <div>
                 <label> Password </label>
-                <span class="validationTextInvisible"> Test </span>
             </div>
-            <input v-model="passcode" type="password"/>
+            <input v-model="user_data.password" type="password"/>
+            <span class="validationTextInvisible"> Email needs an @provider </span>
         </div>
         <p class="termsDescription"> By signing up you are agreeing to our <NuxtLink to="/terms" class="homeLink"> terms and service </NuxtLink> </p>
         <button @click="createAccount"> Start Learning Now! </button>
@@ -34,9 +36,12 @@ import { $fetch } from "ofetch";
 import { navigateTo } from "~~/.nuxt/imports";
 
 const client = useSupabaseAuthClient();
-let email = ref("");
-let passcode = ref("");
-let firstName = ref("");
+const user_data = reactive({
+    email: "",
+    password: "",
+    firstName: ""
+});
+
 let mailerLiteData = ref("");
 
 const componentState = reactive({
@@ -46,13 +51,21 @@ const componentState = reactive({
 
 
 const createAccount = async () => {
+    validateForm();
+    console.log(errorNumber.value);
+
+    if (!submitGranted.value) {
+        console.log("submit not granted");
+        return;
+    }
+
     const { data, error } = await client.auth.signUp({
-        email: email.value,
-        password: passcode.value,
+        email: user_data.email,
+        password: user_data.password,
         is_super_admin: true,
         options: {
             data: {
-                first_name: firstName.value,
+                first_name: user_data.firstName,
                 account_type: "basic"
             }
         }
@@ -68,8 +81,8 @@ const createAccount = async () => {
     mailerLiteData.value = await $fetch("/api/createAccount", {
         method: "post",
         body: {
-            name: firstName.value,
-            email: email.value
+            name: user_data.firstName,
+            email: user_data.email,
         }
     })
         .then(response => {
@@ -96,6 +109,88 @@ const createAccount = async () => {
         navigateTo("/");
     }
 };
+
+const validationState = reactive({
+    nameLength: false,
+    nameNoSpace: false,
+    emailContainsAT: false,
+    emailContainsPERIOD: false
+});
+
+let submitGranted = ref(false);
+let errorNumber = ref(0);
+
+function trimData() {
+    user_data.firstName = user_data.firstName.trim();
+    user_data.email = user_data.email.trim();
+}
+function validateForm() {
+    trimData();
+
+    if (user_data.firstName.length >= 2)
+    {
+        validationState.nameLength = true;
+    }
+    else
+    {
+        errorNumber.value = 1;
+        validationState.nameLength = false;
+        return;
+    }
+
+    //Test if has spaces in between *must have no spaces
+    let spaceRegex = /\s/;
+    if (!spaceRegex.test(user_data.firstName))
+    {
+        console.log("true name no space");
+        validationState.nameNoSpace = true;
+    }
+    else
+    {
+        errorNumber.value = 2;
+        validationState.nameNoSpace = false;
+        return;
+    }
+
+    let atSignRegex = /@/;
+    if (atSignRegex.test(user_data.email))
+    {
+        validationState.emailContainsAT = true;
+    }
+    else
+    {
+        errorNumber.value = 3;
+        validationState.emailContainsAT = false;
+        return;
+    }
+
+    //Text for . symbol in email
+    let periodSignRegex = /\./;
+    if (periodSignRegex.test(user_data.email)) {
+        validationState.emailContainsPERIOD = true;
+    }
+    else
+    {
+        errorNumber.value = 4;
+        validationState.emailContainsPERIOD = false;
+        return;
+    }
+
+    //check if all requirements are met before submission
+    if
+    (
+        validationState.nameLength === true,
+        validationState.nameNoSpace === true,
+        validationState.emailContainsAT === true,
+        validationState.emailContainsPERIOD === true
+
+    )
+    {
+        errorNumber.value = 0;
+        submitGranted.value = true;
+        return;
+    }
+}
 
 
 </script>
@@ -124,10 +219,11 @@ label {
 
 .validationTextInvisible {
     margin-top: 0;
-    opacity: 0;
+    display: none;
 }
 
 .validationTextShow {
+    display: inline;
     margin-top: 0;
     opacity: 1;
     color: rgb(255, 0, 0);
