@@ -20,7 +20,7 @@
 
 <script setup>
 import { useSupabaseAuthClient } from "~~/.nuxt/imports";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { $fetch } from "ofetch";
 
 const client = useSupabaseAuthClient();
@@ -28,6 +28,11 @@ let email = ref("");
 let passcode = ref("");
 let firstName = ref("");
 let mailerLiteData = ref("");
+
+const componentState = reactive({
+    authAccount: false,
+    mailerAccount: false
+});
 
 
 const createAccount = async () => {
@@ -41,7 +46,12 @@ const createAccount = async () => {
                 account_type: "basic"
             }
         }
-    });
+    })
+        .then (res => {
+            if (res) {
+                componentState.authAccount = true;
+            }
+        });
 
     if (error) {
         console.log(error);
@@ -51,7 +61,8 @@ const createAccount = async () => {
     mailerLiteData.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${firstName.value}&email=${email.value}`)
         .then(response => {
             let status = JSON.parse(response);
-            console.log(status.status);
+            componentState.mailerAccount = true;
+            console.log(status);
         });
 
     console.log(data, "Login Success");
