@@ -2,18 +2,27 @@
     <div class="formContainer">
         <h1> Get Course Access Today! </h1>
         <div class="inputContainer">
-            <label> First Name </label>
+            <div>
+                <label> First Name </label>
+                <span class="validationTextInvisible"> Test </span>
+            </div>
             <input v-model="firstName" />
         </div>
         <div class="inputContainer">
-            <label> Email </label>
+            <div>
+                <label> Email </label>
+                <span class="validationTextInvisible"> Test </span>
+            </div>
             <input v-model="email"/>
         </div>
         <div class="inputContainer">
-            <label> Password </label>
+            <div>
+                <label> Password </label>
+                <span class="validationTextInvisible"> Test </span>
+            </div>
             <input v-model="passcode" type="password"/>
         </div>
-        <p> By signing up you are agreeing to our <NuxtLink to="/terms" class="homeLink"> terms and service </NuxtLink> </p>
+        <p class="termsDescription"> By signing up you are agreeing to our <NuxtLink to="/terms" class="homeLink"> terms and service </NuxtLink> </p>
         <button @click="createAccount"> Start Learning Now! </button>
     </div>
 </template>
@@ -22,6 +31,7 @@
 import { useSupabaseAuthClient } from "~~/.nuxt/imports";
 import { ref, reactive } from "vue";
 import { $fetch } from "ofetch";
+import { navigateTo } from "~~/.nuxt/imports";
 
 const client = useSupabaseAuthClient();
 let email = ref("");
@@ -46,28 +56,47 @@ const createAccount = async () => {
                 account_type: "basic"
             }
         }
-    })
-        .then (res => {
-            if (res) {
-                componentState.authAccount = true;
-            }
-        });
+    });
 
     if (error) {
         console.log(error);
         return alert("Something went wrong");
     }
 
-    mailerLiteData.value = await $fetch(`/.netlify/functions/collectEmailSubscribers?name=${firstName.value}&email=${email.value}`)
+    let tempData;
+
+    mailerLiteData.value = await $fetch("/api/createAccount", {
+        method: "post",
+        body: {
+            name: firstName.value,
+            email: email.value
+        }
+    })
         .then(response => {
-            let status = JSON.parse(response);
+            let status = response;
+            tempData = JSON.parse(status.body);
             componentState.mailerAccount = true;
-            console.log(status);
         });
 
     console.log(data, "Login Success");
-    console.log(mailerLiteData.value, "Email list subscribe");
+    console.log(tempData, "Email Subscription Success");
+
+    if (data)
+    {
+        componentState.authAccount = true;
+    }
+
+    if (tempData)
+    {
+        componentState.mailerAccount = true;
+    }
+
+    if (componentState.authAccount && componentState.mailerAccount)
+    {
+        navigateTo("/");
+    }
 };
+
 
 </script>
 
@@ -93,6 +122,17 @@ label {
     padding-bottom: 0.5em;
 }
 
+.validationTextInvisible {
+    margin-top: 0;
+    opacity: 0;
+}
+
+.validationTextShow {
+    margin-top: 0;
+    opacity: 1;
+    color: rgb(255, 0, 0);
+}
+
 input {
     height: 2.3em;
     border-radius: 5px;
@@ -110,7 +150,7 @@ input {
 }
 
 p {
-    margin-top: 0;
+    margin-top: 0em;
 }
 
 button {
