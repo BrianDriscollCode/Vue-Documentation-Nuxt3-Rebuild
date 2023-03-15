@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="checkBoxContainer">
 		<input type="checkbox" @click="event => logToStorage(event)" :checked="checked"/>
         {{ props.text }}
 
@@ -31,3 +31,9 @@ function logToStorage(value) {
 }
 
 </script>
+
+<style scoped>
+.checkBoxContainer {
+	margin-bottom: 1em;
+}
+</style>

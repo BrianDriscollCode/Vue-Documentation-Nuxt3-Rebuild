@@ -73,7 +73,7 @@ const createAccount = async () => {
 
     if (error) {
         console.log(error);
-        return alert("Something went wrong");
+        return alert("Invaid account information, try again");
     }
 
     let tempData;

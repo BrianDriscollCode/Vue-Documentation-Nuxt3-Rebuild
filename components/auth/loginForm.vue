@@ -37,7 +37,7 @@ const login = async () => {
 
     if (error) {
         console.log(error);
-        return alert("Something went wrong");
+        return alert("Invalid login, try again");
     }
 
     console.log(data, "Login Success");
