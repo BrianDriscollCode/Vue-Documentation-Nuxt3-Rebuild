@@ -21,7 +21,7 @@
 			@click="turnOffSideBar"
         />
 		<div class="tempBar">
-            <img src="~/assets/hamburger.png" class="hamburger" @click="useShowSideBar">
+            <img src="~/assets/hamburger.png" class="hamburger" @click="toggleSideBar">
 		</div>
 
         <div class="content" @click="turnOffSideBar">
@@ -47,7 +47,6 @@ let showSideBar = ref(false);
 
 function toggleModal(calledHeaders) {
     showModal.value = true;
-    console.log("show modal", showModal);
     headers = calledHeaders;
     setTimeout(() => {
         modalInput.value.focus();
@@ -59,15 +58,14 @@ function toggleModalOff() {
 }
 
 function setInput(input) {
-    console.log("run set input");
     modalInput = input;
 }
 
-function useShowSideBar() {
+function toggleSideBar() {
     showSideBar.value = !showSideBar.value;
-    console.log("show side bar", showSideBar);
 }
 
+//When screen size is small, side bar click off
 function turnOffSideBar () {
     if (showSideBar.value === true) {
         showSideBar.value = false;

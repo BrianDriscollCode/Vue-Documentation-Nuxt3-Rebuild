@@ -24,8 +24,7 @@ let props = defineProps({
 });
 
 function logToStorage(value) {
-    let checkBox = value.target.value === "on" ? true: false;
-
+    let checkBox = value.target.checked ? true: false;
     localStorage.setItem(props.identifier, checkBox);
     checked.value = checkBox;
 }
