@@ -29,7 +29,4 @@ export default eventHandler(async (event) => { // eslint-disable-line
             body: JSON.stringify(error.message)
         };
     }
-
-
-    
 });

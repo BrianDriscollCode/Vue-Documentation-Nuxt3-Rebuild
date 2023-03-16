@@ -1,24 +1,18 @@
 import { defineStore } from "pinia";
-import { useAsyncData, queryContent } from "~~/.nuxt/imports";
 
-//const { data } = await useAsyncData("documentation", () => queryContent().find());
-
-export const useContentStore = defineStore("test", {
-    state: () => ({
-        message: "hello",
-        content: null
-    }),
-
+export const useCourseCompletionStore = defineStore("completionStore", {
+    state: () => {
+        return {
+            completionStatus: {},
+        };
+    },
     actions: {
-        async getContent() {
-            try {
-                this.content = await useAsyncData("documentation", () => queryContent().find());
-                console.log("contentStore used");
-            }
-            catch (error) {
-                console.log("error");
-                return error;
-            }
+        changeCompletionStatus(newCompletionStatus) {
+            this.completionStatus = newCompletionStatus;
+        },
+        seeCompletionStatus() {
+            console.log(this.completionStatus);
+            return this.completionStatus;
         }
     }
 });

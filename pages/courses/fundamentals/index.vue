@@ -14,7 +14,7 @@
                 <p> This is an explanation of the 1st module. </p>
                 <ProgressBar :width="moduleTwoProgress" />
                 <div class="bottomSpacing"> </div>
-                <button @click="checkCurrentCompletionObject"> Check Completion Object </button>
+                <button @click="seeStore"> Check Completion Object </button>
             </main>
         </div>
 
@@ -33,10 +33,13 @@ import ArticleNavigation from "~/components/courses/ArticleNavigation.vue";
 import ProgressBar from "~~/components/courses/ProgressBar.vue";
 import { $fetch } from "ofetch";
 import { useSupabaseUser } from "~~/.nuxt/imports";
+import { ref } from "vue";
+import { useCourseCompletionStore } from "~~/stores/contentStore";
 
+const completionStore = useCourseCompletionStore();
 const user = useSupabaseUser();
-let moduleOneProgress = 70;
-let moduleTwoProgress = 10;
+let moduleOneProgress = ref(0);
+let moduleTwoProgress = ref(0);
 
 let completionObject;
 
@@ -48,16 +51,17 @@ definePageMeta({
 let newHeaders = ["Fundamentals Course", "Module 1", "Module 2"]; //passed as prop to "ArticleNavigation" component
 
 
-function checkModuleCompletion() {
-    $fetch("/api/checkModuleCompletion", {
+async function checkModuleCompletion() {
+    await $fetch("/api/checkModuleCompletion", {
         method: "post",
         body: {
             user: user.value.id
         }
     })
         .then(res => {
-            if (res.statusCode === 500)
+            if (res.body == "[]")
             {
+                console.log("res");
                 $fetch("/api/insertModuleCompletion", {
                     method: "post",
                     body: {
@@ -69,6 +73,9 @@ function checkModuleCompletion() {
             {
                 completionObject = JSON.parse(res.body);
                 completionObject = completionObject[0].module_progress[0];
+                completionStore.changeCompletionStatus(completionObject);
+                console.log(completionObject);
+                checkCurrentCompletionObject();
             }
             else
             {
@@ -77,11 +84,57 @@ function checkModuleCompletion() {
         });
 }
 
-checkModuleCompletion();
+if (completionStore.completionStatus !== {}) {
+    checkModuleCompletion();
+}
+
 
 function checkCurrentCompletionObject() {
-    console.log(completionObject);
+    console.log(completionObject.module1);
+
+    let numberOfProperties = 0;
+    let sectionsCompleted = 0;
+
+    for (let item in completionObject.module1) {
+        numberOfProperties += 1;
+
+        if (completionObject.module1[item] == true) {
+            sectionsCompleted += 1;
+        }
+    }
+
+    moduleOneProgress.value = Math.round((sectionsCompleted / numberOfProperties) * 100);
+
+    numberOfProperties = 0;
+    sectionsCompleted = 0;
+    for (let item in completionObject.module2) {
+        numberOfProperties += 1;
+
+        if (completionObject.module2[item] == true) {
+            sectionsCompleted += 1;
+        }
+    }
+
+    moduleTwoProgress.value = Math.round((sectionsCompleted / numberOfProperties) * 100);
 }
+
+function seeStore() {
+    completionStore.seeCompletionStatus();
+}
+
+// async function editCompletionTable() {
+//     completionObject.module1 = true;
+
+//     await $fetch("/api/editModuleCompletion", {
+//         method: "post",
+//         body: {
+//             user: user.value.id
+//         }
+//     })
+//         .then(res => console.log(res));
+// }
+
+//checkCurrentCompletionObject();
 </script>
 
 <style scoped>

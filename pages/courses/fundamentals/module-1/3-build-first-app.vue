@@ -2,13 +2,12 @@
 	<section class="contentWrapper">
 		<div class="mainContent">
 			<main class="mainContentContainer">
-				<ContentRenderer :value="data" />
+				<h1> Build Your First Application </h1>
 				<div class="bottomSpacing"> </div>
 			</main>
 		</div>
 
 		<div class="articleNavigationContainer">
-			<CheckMark />
 			<ArticleNavigation
 				:new-headers="newHeaders"
 			/>
@@ -17,30 +16,13 @@
 </template>
 
 <script setup>
-import { definePageMeta, useAsyncData, queryContent, useRoute } from "~~/.nuxt/imports";
+import { definePageMeta } from "~~/.nuxt/imports";
 import ArticleNavigation from "~/components/courses/ArticleNavigation.vue";
 
 definePageMeta({
     layout: "courses",
     middleware: "basic-auth"
 });
-const route = useRoute();
-const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
-
-let newHeaders = []; //passed as prop to "ArticleNavigation" component
-let dataChildren = data._rawValue.body.children;
-
-//Find titles and push to "newHeaders" array
-for (let i = 0; i < dataChildren.length; i++) {
-    if (
-        dataChildren[i].tag == "h1" ||
-		dataChildren[i].tag == "h2" ||
-        dataChildren[i].tag == "h3"
-    )
-    {
-        newHeaders.push(dataChildren[i].children[0].value);
-    }
-}
 
 </script>
 

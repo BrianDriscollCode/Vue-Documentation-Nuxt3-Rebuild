@@ -2,6 +2,7 @@
     <h1> Database handler </h1>
     <button @click="checkCompletionTable"> Check Completion </button>
     <button @click="insertCompletionTable"> Insert Completion </button>
+
 </template>
 
 <script setup>
@@ -33,4 +34,14 @@ async function insertCompletionTable() {
     })
         .then(res => console.log(res));
 }
+
+// async function editCompletionTable() {
+//     await $fetch("/api/editModuleCompletion", {
+//         method: "post",
+//         body: {
+//             user: user.value.id
+//         }
+//     })
+//         .then(res => console.log(res));
+// }
 </script>
