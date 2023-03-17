@@ -66,7 +66,9 @@ async function checkModuleCompletion() {
                     body: {
                         user: user.value.id
                     }
-                });
+                })
+                    .then(res => console.log(res))
+                    .catch(res => console.log(res));
             }
             else if (res.statusCode === 200)
             {
@@ -80,7 +82,8 @@ async function checkModuleCompletion() {
             {
                 console.log("No idea");
             }
-        });
+        })
+        .catch(error => console.log(error));
 }
 
 if (completionStore.completionStatus !== {}) {
