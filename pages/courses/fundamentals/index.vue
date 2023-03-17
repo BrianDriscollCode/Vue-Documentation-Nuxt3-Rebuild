@@ -67,8 +67,8 @@ async function checkModuleCompletion() {
                         user: user.value.id
                     }
                 })
-                    .then(res => console.log(res))
-                    .catch(res => console.log(res));
+                    .then(checkModuleCompletion())
+                    .catch(res => console.log(res, " -[] error"));
             }
             else if (res.statusCode === 200)
             {
@@ -83,7 +83,7 @@ async function checkModuleCompletion() {
                 console.log("No idea");
             }
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error, "-catch error"));
 }
 
 if (completionStore.completionStatus !== {}) {

@@ -21,13 +21,13 @@ export default eventHandler(async (event) => { // eslint-disable-line
             '[{
                 "module1":
                     {
-                        "section_1": true,
+                        "section_1": false,
                         "section_2": false
                     },
                 "module2":
                     {
-                        "section_1": true,
-                        "section_2": true,
+                        "section_1": false,
+                        "section_2": false,
                         "section_3": false
                     },
                 "module3":

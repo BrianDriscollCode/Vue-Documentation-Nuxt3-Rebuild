@@ -58,7 +58,7 @@ async function seeUserAccounts() {
     await $fetch("/api/seeUserAccounts", {
         method: "post",
         body: {
-            user: "name"
+            user: user.value.id,
         }
     })
         .then((res) => console.log(JSON.parse(res.body)));
