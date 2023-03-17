@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",
+    "@stackblitz/sdk": "^1.8.2",
     "@supabase/supabase-js": "^2.10.0",
     "@vue/apollo-composable": "^4.0.0-beta.4",
     "aos": "^2.3.4",

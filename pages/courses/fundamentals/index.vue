@@ -28,11 +28,10 @@
 </template>
 
 <script setup>
-import { definePageMeta } from "~~/.nuxt/imports";
+import { definePageMeta, useSupabaseUser } from "~~/.nuxt/imports";
 import ArticleNavigation from "~/components/courses/ArticleNavigation.vue";
 import ProgressBar from "~~/components/courses/ProgressBar.vue";
 import { $fetch } from "ofetch";
-import { useSupabaseUser } from "~~/.nuxt/imports";
 import { ref } from "vue";
 import { useCourseCompletionStore } from "~~/stores/contentStore";
 

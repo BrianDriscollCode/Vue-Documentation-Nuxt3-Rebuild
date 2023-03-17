@@ -1,7 +1,7 @@
 <template>
 	<div class="border">
+		<span class="percentage"> {{ width }}%</span>
         <div class="grey" :style="{width: `${width}%`}">
-            <div> {{ width }}%</div>
         </div>
     </div>
 </template>
@@ -19,6 +19,10 @@ defineProps({
 </script>
 
 <style scoped>
+.percentage {
+    position: absolute;
+	left: 50%;
+}
 .border {
 	border: 1px solid rgb(144, 144, 144);
 	width: 100%;

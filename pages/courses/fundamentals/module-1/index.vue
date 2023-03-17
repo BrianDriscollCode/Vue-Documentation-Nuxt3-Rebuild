@@ -1,26 +1,26 @@
 <template>
-	<section class="contentWrapper">
-		<div class="mainContent">
-			<main class="mainContentContainer">
-				<h1> Module 1 - The Learning Process </h1>
-				<p> Welcome to the 1st module of the Vue 3 fundamentals
-					course! This module is meant to explain how we
-					envision your journey through our education platform
-					and how to use Vue Reference to complete your courses.
-				</p>
-				<p>
-					You see, we did not create this course to just spoonfeed
-					you technology information. Rather, we seek to elevate
-					education to the next level! That means creating courses
-					that not only teach you concepts and technical skills,
-					but courses that embody the foremost research in learning.
-				</p>
+    <section class="contentWrapper">
+        <div class="mainContent">
+            <main class="mainContentContainer">
+                <h1> Module 1 - The Learning Process </h1>
+                <p> Welcome to the 1st module of the Vue 3 fundamentals
+                    course! This module is meant to explain how we
+                    envision your journey through our education platform
+                    and how to use Vue Reference to complete your courses.
+                </p>
+                <p>
+                    You see, we did not create this course to just spoonfeed
+                    you technology information. Rather, we seek to elevate
+                    education to the next level! That means creating courses
+                    that not only teach you concepts and technical skills,
+                    but courses that embody the foremost research in learning.
+                </p>
 
-				<p> Start your journey now! </p>
+                <p> Start your journey now!!! </p>
 
-				<h2> Section 1: Getting started </h2>
+                <h2> Section 1: Getting started </h2>
 
-				<NuxtLink to="/courses/fundamentals/module-1/1-getting-started"> Getting Started </NuxtLink>
+                <NuxtLink to="/courses/fundamentals/module-1/1-getting-started"> Getting Started </NuxtLink>
 
                 <CheckMark identifier="module_1_question_1" text="Did you learn about how we will be using both VS code and coding tests to give you a breadth of experience?"> </CheckMark>
 
@@ -28,43 +28,47 @@
 
                 <CheckMark identifier="module_1_question_3" text="Did we show you how to mark sections of the modules as complete?"> </CheckMark>
 
-				<NuxtLink to="/courses/fundamentals/module-1/2-how-to-learn"> How to Learn </NuxtLink>
+                <NuxtLink to="/courses/fundamentals/module-1/2-how-to-learn"> How to Learn </NuxtLink>
 
-				<CheckMark identifier="module_1_question_4" text="Was it made clear that learning new concepts is only 20% of the process while building applications and solving problems is 80% of the process?"> </CheckMark>
+                <CheckMark identifier="module_1_question_4" text="Was it made clear that learning new concepts is only 20% of the process while building applications and solving problems is 80% of the process?"> </CheckMark>
 
                 <CheckMark identifier="module_1_question_5" text="Do you understand the power of taking breaks? Not only while coding, but by taking longer breaks spanning days and even a week or two?"> </CheckMark>
 
-				<NuxtLink to="/courses/fundamentals/module-1/3-build-first-app"> Build Your First Application </NuxtLink>
+                <NuxtLink to="/courses/fundamentals/module-1/3-build-first-app"> Build Your First Application </NuxtLink>
 
-				<CheckMark identifier="module_1_question_6" text="Did you install VS Code?"> </CheckMark>
+                <CheckMark identifier="module_1_question_6" text="Did you install VS Code?"> </CheckMark>
 
                 <CheckMark identifier="module_1_question_7" text="Did you use NPM to install Vue?"> </CheckMark>
 
                 <CheckMark identifier="module_1_question_8" text="Did you build your first component?"> </CheckMark>
 
-				<button> Mark section 1 as complete </button>
+                <button @click="set_module1_section1_Completion"> Mark section 1 as complete </button>
 
-				<h2> Section 2: Trying out the Code Tester </h2>
+                <h2> Section 2: Trying out the Code Tester </h2>
 
-				<CheckMark identifier="module_1_question_9" text="Did you complete the coding test?"> </CheckMark>
+                <CheckMark identifier="module_1_question_9" text="Did you complete the coding test?"> </CheckMark>
 
-                <button> Mark section 2 as complete </button>
-				<div class="bottomSpacing"> </div>
-			</main>
-		</div>
+                <button @click="set_module1_section2_Completion"> Mark section 2 as complete </button>
+                <div class="bottomSpacing"> </div>
+            </main>
+        </div>
 
-		<div class="articleNavigationContainer">
-			<CheckMark />
-			<ArticleNavigation
-				:new-headers="newHeaders"
-			/>
-		</div>
+        <div class="articleNavigationContainer">
+            <CheckMark />
+            <ArticleNavigation
+                :new-headers="newHeaders"
+            />
+        </div>
     </section>
 </template>
 
 <script setup>
 import { definePageMeta } from "~~/.nuxt/imports";
 import ArticleNavigation from "~/components/courses/ArticleNavigation.vue";
+import { useSupabaseUser } from "~~/.nuxt/imports";
+import { $fetch } from "ofetch";
+
+const user = useSupabaseUser();
 
 definePageMeta({
     layout: "courses",
@@ -73,6 +77,35 @@ definePageMeta({
 
 let newHeaders = ["test"];
 
+function set_module1_section1_Completion() {
+
+
+    console.log(user.value.id);
+    $fetch("/api/editModuleCompletion", {
+        method: "post",
+        body: {
+            user: user.value.id,
+            module: "module1",
+            section: "section_1"
+        }
+    })
+        .then(res => console.log(res));
+}
+
+function set_module1_section2_Completion() {
+
+
+    console.log(user.value.id);
+    $fetch("/api/editModuleCompletion", {
+        method: "post",
+        body: {
+            user: user.value.id,
+            module: "module1",
+            section: "section_2"
+        }
+    })
+        .then(res => console.log(res));
+}
 
 </script>
 
@@ -107,30 +140,30 @@ let newHeaders = ["test"];
 }
 
 :deep(code) {
-	width: 100%;
-	font-size: 15px;
+    width: 100%;
+    font-size: 15px;
 }
 
 :deep(h2 a) {
-	color: rgb(14, 13, 13);
+    color: rgb(14, 13, 13);
     text-decoration: none;
 }
 
 :deep(h3 a) {
-	color: rgb(14, 13, 13);
+    color: rgb(14, 13, 13);
     text-decoration: none;
 }
 
 :deep(h4 a) {
-	color: rgb(14, 13, 13);
+    color: rgb(14, 13, 13);
     text-decoration: none;
 }
 
 :deep(img) {
-	display: block;
+    display: block;
     margin-left: auto;
-	margin-right: auto;
-	width: 60%;
+    margin-right: auto;
+    width: 60%;
 }
 .contentWrapper {
     margin: 0 auto 0 auto;
@@ -163,11 +196,11 @@ let newHeaders = ["test"];
 }
 
 .bottomSpacing {
-	padding-top: 2em;
+    padding-top: 2em;
 }
 
 .lastElement {
-	padding-bottom: 2em;
+    padding-bottom: 2em;
 }
 
 ::-webkit-scrollbar {
@@ -200,23 +233,23 @@ let newHeaders = ["test"];
     width: 100%;
     height: 100vh;
     }
-	.articleNavigationContainer {
-		display: none;
-	}
+    .articleNavigationContainer {
+        display: none;
+    }
     .mainContentContainer {
-		width: 80%;
-	}
+        width: 80%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
-	:deep(img) {
-		width: 100%;
-	}
+    :deep(img) {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
-	.mainContentContainer {
-		width: 95%;
-	}
+    .mainContentContainer {
+        width: 95%;
+    }
 }
 </style>

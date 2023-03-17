@@ -11,33 +11,19 @@ export default eventHandler(async (event) => { // eslint-disable-line
         password: process.env.SUPAPASSWORD,
         database: process.env.SUPANAME
     });
-
     let data;
+    let jsonBObject = "{0, "  + body.module + "," + body.section + "}";
+    console.log(jsonBObject);
 
     try
     {
-        data = await db`INSERT INTO course_001_module_completion(id, module_progress)
-                       VALUES (${body.user},
-            '[{
-                "module1":
-                    {
-                        "section_1": true,
-                        "section_2": false
-                    },
-                "module2":
-                    {
-                        "section_1": true,
-                        "section_2": true,
-                        "section_3": false
-                    },
-                "module3":
-                    {
-                        "section_1": false,
-                        "section_2": false,
-                        "section_3": false
-                    }
-            }]
-        ')`;
+        data = await db`UPDATE course_001_module_completion
+		SET module_progress = jsonb_set(
+		  module_progress::jsonb,
+		  ${jsonBObject},
+		  'true'::jsonb
+		)::json
+		WHERE id = ${body.user};`;
         return {
             statusCode: 200,
             body: JSON.stringify(data)
@@ -52,3 +38,14 @@ export default eventHandler(async (event) => { // eslint-disable-line
         };
     }
 });
+
+
+//Example of the edit query
+
+// UPDATE course_001_module_completion
+// SET module_progress = jsonb_set(
+//   module_progress::jsonb,
+//   '{0,module1,section_1}',
+//   'false'::jsonb
+// )::json
+// WHERE id = ${body.user};
