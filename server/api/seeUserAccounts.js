@@ -1,7 +1,10 @@
 import postgres from "postgres";
+import { readBody } from "h3";
 
-export default eventHandler(async () => { // eslint-disable-line
+export default eventHandler(async (event) => { // eslint-disable-line
 
+    const body = await readBody(event);
+    console.log(body.user);
     const db = postgres({
         host: process.env.SUPAHOST,
         port: 5432,

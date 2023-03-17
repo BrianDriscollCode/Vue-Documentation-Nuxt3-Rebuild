@@ -11,38 +11,32 @@ export default eventHandler(async (event) => { // eslint-disable-line
         password: process.env.SUPAPASSWORD,
         database: process.env.SUPANAME
     });
-    //let data;
+    let data;
     let jsonBObject = "{0, "  + body.module + "," + body.section + "}";
     console.log(jsonBObject);
 
-    // try
-    // {
-    //     data = await db`UPDATE course_001_module_completion
-    // 	SET module_progress = jsonb_set(
-    // 	  module_progress::jsonb,
-    // 	  ${jsonBObject},
-    // 	  'true'::jsonb
-    // 	)::json
-    // 	WHERE id = ${body.user};`;
-    //     return {
-    //         statusCode: 200,
-    //         body: JSON.stringify(data)
-    //     };
-    // }
-    // catch(error)
-    // {
-    //     console.log(error.message);
-    //     return {
-    //         statusCode: 500,
-    //         body: error.message
-    //     };
-    // }
-    const data = await db`SELECT * FROM user_accounts`;
-
-    return {
-        statusCode: 200,
-        body: JSON.stringify(data)
-    };
+    try
+    {
+        data = await db`UPDATE course_001_module_completion
+		SET module_progress = jsonb_set(
+		  module_progress::jsonb,
+		  ${jsonBObject},
+		  'true'::jsonb
+		)::json
+		WHERE id = ${body.user};`;
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data)
+        };
+    }
+    catch(error)
+    {
+        console.log(error.message);
+        return {
+            statusCode: 500,
+            body: error.message
+        };
+    }
 });
 
 
