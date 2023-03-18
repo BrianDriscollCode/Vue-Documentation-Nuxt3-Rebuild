@@ -5,7 +5,7 @@ export default defineNuxtConfig({
         "@nuxt/content",
         "@pinia/nuxt",
         "@nuxtjs/supabase",
-        "@nuxtjs/apollo"
+        "@nuxtjs/apollo",
     ],
     apollo: {
         clients: {
