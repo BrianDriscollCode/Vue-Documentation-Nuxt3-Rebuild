@@ -34,5 +34,6 @@ function logToStorage(value) {
 <style scoped>
 .checkBoxContainer {
 	margin-bottom: 1em;
+	margin-top: 1em;
 }
 </style>

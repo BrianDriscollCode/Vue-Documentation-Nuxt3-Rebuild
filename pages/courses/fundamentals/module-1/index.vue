@@ -20,7 +20,7 @@
 
                 <h2> Section 1: Getting started </h2>
 
-                <NuxtLink to="/courses/fundamentals/module-1/1-getting-started"> Getting Started </NuxtLink>
+                <NuxtLink class="lessonLink" to="/courses/fundamentals/module-1/1-getting-started"> Getting Started </NuxtLink>
 
                 <CheckMark identifier="module_1_question_1" text="Did you learn about how we will be using both VS code and coding tests to give you a breadth of experience?"> </CheckMark>
 
@@ -28,13 +28,13 @@
 
                 <CheckMark identifier="module_1_question_3" text="Did we show you how to mark sections of the modules as complete?"> </CheckMark>
 
-                <NuxtLink to="/courses/fundamentals/module-1/2-how-to-learn"> How to Learn </NuxtLink>
+                <NuxtLink class="lessonLink" to="/courses/fundamentals/module-1/2-how-to-learn"> How to Learn </NuxtLink>
 
                 <CheckMark identifier="module_1_question_4" text="Was it made clear that learning new concepts is only 20% of the process while building applications and solving problems is 80% of the process?"> </CheckMark>
 
                 <CheckMark identifier="module_1_question_5" text="Do you understand the power of taking breaks? Not only while coding, but by taking longer breaks spanning days and even a week or two?"> </CheckMark>
 
-                <NuxtLink to="/courses/fundamentals/module-1/3-build-first-app"> Build Your First Application </NuxtLink>
+                <NuxtLink class="lessonLink" to="/courses/fundamentals/module-1/3-build-first-app"> Build Your First Application </NuxtLink>
 
                 <CheckMark identifier="module_1_question_6" text="Did you install VS Code?"> </CheckMark>
 
@@ -46,6 +46,7 @@
 
                 <h2> Section 2: Trying out the Code Tester </h2>
 
+				<NuxtLink class="lessonLink" to="/courses/fundamentals/module-1/4-first-code-test"> First Code Test </NuxtLink>
                 <CheckMark identifier="module_1_question_9" text="Did you complete the coding test?"> </CheckMark>
 
                 <button @click="set_module1_section2_Completion"> Mark section 2 as complete </button>
@@ -201,6 +202,10 @@ function set_module1_section2_Completion() {
 
 .lastElement {
     padding-bottom: 2em;
+}
+
+.lessonLink {
+	margin-bottom: 1em;
 }
 
 ::-webkit-scrollbar {
