@@ -23,8 +23,8 @@
                 <ul>
                     <li @click="filterByCategory('All')" class="categoryPicker"> All ({{ all }}) </li>
                     <li @click="filterByCategory('Vue')" class="categoryPicker"> Vue ({{ vueArticlesAmount }}) </li>
-                    <li @click="filterByCategory('Nuxt')" class="categoryPicker"> Nuxt ({{ nuxtArticlesAmount }})</li>
-                    <li @click="filterByCategory('Pinia')" class="categoryPicker"> Pinia ({{ piniaArticlesAmount }})</li>
+                    <!-- <li @click="filterByCategory('Nuxt')" class="categoryPicker"> Nuxt ({{ nuxtArticlesAmount }})</li>
+                    <li @click="filterByCategory('Pinia')" class="categoryPicker"> Pinia ({{ piniaArticlesAmount }})</li> -->
                 </ul>
             </div>
         </section>
@@ -76,27 +76,27 @@ const vueArticlesAmount = computed(() => {
     return tempArray.length;
 });
 
-const nuxtArticlesAmount = computed(() => {
-    let tempArray = [];
-    for (let item in allContent.data._rawValue) {
-        if (allContent.data._rawValue[item].category == "Nuxt") {
-            tempArray.push(allContent.data._rawValue[item]);
-        }
-    }
-    return tempArray.length;
-});
+// const nuxtArticlesAmount = computed(() => {
+//     let tempArray = [];
+//     for (let item in allContent.data._rawValue) {
+//         if (allContent.data._rawValue[item].category == "Nuxt") {
+//             tempArray.push(allContent.data._rawValue[item]);
+//         }
+//     }
+//     return tempArray.length;
+// });
 
 
 
-const piniaArticlesAmount = computed(() => {
-    let tempArray = [];
-    for (let item in allContent.data._rawValue) {
-        if (allContent.data._rawValue[item].category == "Pinia") {
-            tempArray.push(allContent.data._rawValue[item]);
-        }
-    }
-    return tempArray.length;
-});
+// const piniaArticlesAmount = computed(() => {
+//     let tempArray = [];
+//     for (let item in allContent.data._rawValue) {
+//         if (allContent.data._rawValue[item].category == "Pinia") {
+//             tempArray.push(allContent.data._rawValue[item]);
+//         }
+//     }
+//     return tempArray.length;
+// });
 
 
 </script>
