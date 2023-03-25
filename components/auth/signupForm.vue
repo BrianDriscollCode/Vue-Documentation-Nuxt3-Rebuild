@@ -1,6 +1,6 @@
 <template>
     <div class="formContainer">
-        <h1> Get Course Access Today! </h1>
+        <h1> Courses Coming Soon! </h1>
         <div class="inputContainer">
             <div>
                 <label> First Name </label>
@@ -25,7 +25,7 @@
             <span class="validationTextInvisible"> Email needs an @provider </span>
         </div>
         <p class="termsDescription"> By signing up you are agreeing to our <NuxtLink to="/terms" class="homeLink"> terms and service </NuxtLink> </p>
-        <button @click="createAccount"> Start Learning Now! </button>
+        <button @click="createAccount"> Start Learning Now! (coming soon) </button>
     </div>
 </template>
 
