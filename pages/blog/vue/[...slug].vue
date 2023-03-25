@@ -169,6 +169,13 @@ const buildSlugs = computed(() => {
 	width: 60%;
 }
 
+:deep(screenshot) {
+	display: block;
+    margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
 :deep(.iframeWrapper) {
     position: relative;
   display: block;
