@@ -8,7 +8,7 @@
             <div class="waterDroplet drop3"> </div>
             <div class="waterDroplet drop4"> </div>
         </div>
-		<p v-if="loading"> Loading... </p>
+		<p v-if="loading"> Loading.... </p>
         <Features />
 
         <div class="footerContainer">
