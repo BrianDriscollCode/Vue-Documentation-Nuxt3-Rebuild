@@ -4,7 +4,7 @@
             <NavBar />
         </div>
         <div class="titleContainer">
-            <h1> Articles (All TEMP ARTICLES) </h1>
+            <h1> Articles </h1>
             <hr />
         </div>
         <section class="contentContainer">
