@@ -43,7 +43,7 @@ import Footer from "~/components/main-pages/footer.vue";
         font-family: 'Montserrat', sans-serif;
         margin: 0;
     }
-    .mainPageContaner {
+    .mainPageContainer {
         margin: 0;
     }
 

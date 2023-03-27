@@ -16,7 +16,7 @@
 
             <div class="searchButtonContainer">
                 <NuxtLink to="/login" class="loginLinks" v-if="!user"> Login </NuxtLink>
-                <NuxtLink to="/login" class="loginLinks" v-else> {{ user.user_metadata.first_name }} </NuxtLink>
+                <NuxtLink to="/account" class="loginLinks" v-else> {{ user.user_metadata.first_name }} </NuxtLink>
                 <a href="https://twitter.com/BrianDrisBuilds" target="_blank">
                     <img src="~/assets/twitter.png" class="twitter"/>
                 </a>
