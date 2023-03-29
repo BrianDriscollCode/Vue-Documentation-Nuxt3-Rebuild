@@ -50,6 +50,7 @@ definePageMeta({
 let newHeaders = ["Fundamentals Course", "Module 1", "Module 2"]; //passed as prop to "ArticleNavigation" component
 
 
+//Fetch module completion data from Supabase and store in Pinia Store
 async function checkModuleCompletion() {
     await $fetch("/api/checkModuleCompletion", {
         method: "post",
@@ -60,40 +61,49 @@ async function checkModuleCompletion() {
         .then(res => {
             if (res.body == "[]")
             {
-                console.log("res");
+                //If empty, create an entry into the course_001 database
                 $fetch("/api/insertModuleCompletion", {
                     method: "post",
                     body: {
                         user: user.value.id
                     }
                 })
+                    //After entry created, we recall this function
                     .then(checkModuleCompletion())
                     .catch(res => console.log(res, " -[] error"));
             }
+            //On success, get parse body, extract current module,
+            //store completionStatus in Pinia, and run calculation
+            //wtih checkCurrentCompletionObject()
             else if (res.statusCode === 200)
             {
                 completionObject = JSON.parse(res.body);
                 completionObject = completionObject[0].module_progress[0];
                 completionStore.changeCompletionStatus(completionObject);
-                console.log(completionObject);
+                //Full completion object with all modules
+                //console.log(completionObject);
                 checkCurrentCompletionObject();
             }
             else
             {
-                console.log("No idea");
+                console.log("Something broke, all hell has broken loose!");
             }
         })
         .catch(error => console.log(error, "-catch error"));
 }
 
+//Run the completion check is a status is already found
 if (completionStore.completionStatus !== {}) {
     checkModuleCompletion();
 }
 
 
-function checkCurrentCompletionObject() {
-    console.log(completionObject.module1);
 
+function checkCurrentCompletionObject() {
+    //Check a specific module
+    //console.log(completionObject.module1);
+
+    //Running calculations to fill first progress bar
     let numberOfProperties = 0;
     let sectionsCompleted = 0;
 
@@ -107,8 +117,10 @@ function checkCurrentCompletionObject() {
 
     moduleOneProgress.value = Math.round((sectionsCompleted / numberOfProperties) * 100);
 
+    //Running calculations to fill second progress bar
     numberOfProperties = 0;
     sectionsCompleted = 0;
+
     for (let item in completionObject.module2) {
         numberOfProperties += 1;
 

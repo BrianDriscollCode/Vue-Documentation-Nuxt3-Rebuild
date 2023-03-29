@@ -22,9 +22,11 @@ import ArticleNavigation from "~/components/documentation/ArticleNavigation.vue"
 definePageMeta({
     layout: "documentation"
 });
+
+//Querying content using Nuxt Content Module
 const route = useRoute();
 const { data } = await useAsyncData("content-${route.path}", () => queryContent().where({ _path: route.path }).findOne());
-console.log(data._rawValue.body, "-********BODY");
+
 
 let newHeaders = []; //passed as prop to "ArticleNavigation" component
 let dataChildren = data._rawValue.body.children;

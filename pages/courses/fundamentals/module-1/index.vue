@@ -78,10 +78,10 @@ definePageMeta({
 
 let newHeaders = ["test"];
 
+//Calls when user completes a section and pushes to DB
+//Stores for progress bar persistence on main course page
 function set_module1_section1_Completion() {
 
-
-    console.log(user.value.id);
     $fetch("/api/editModuleCompletion", {
         method: "post",
         body: {
@@ -93,10 +93,10 @@ function set_module1_section1_Completion() {
         .then(res => console.log(res));
 }
 
+//Calls when user completes a section and pushes to DB
+//Stores for progress bar persistence on main course page
 function set_module1_section2_Completion() {
 
-
-    console.log(user.value.id);
     $fetch("/api/editModuleCompletion", {
         method: "post",
         body: {

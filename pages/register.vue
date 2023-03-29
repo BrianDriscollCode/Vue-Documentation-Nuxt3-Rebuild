@@ -9,10 +9,11 @@
 	</div>
     <main>
 		<div class="leftContainer">
+			<!-- All logic in component -->
             <signupForm />
 		</div>
 		<div class="rightContainer">
-			<!-- <img class="image" src="~/assets/background_person_programming.jpg"> -->
+			<!-- Image loaded in CSS -->
 		</div>
 
 	</main>

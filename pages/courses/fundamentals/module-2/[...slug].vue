@@ -8,6 +8,7 @@
 		</div>
 
 		<div class="articleNavigationContainer">
+			<!-- Handle local storage for check marks -->
 			<CheckMark />
 			<ArticleNavigation
 				:new-headers="newHeaders"

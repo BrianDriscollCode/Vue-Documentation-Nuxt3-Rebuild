@@ -62,10 +62,12 @@ function filterByCategory(category) {
     console.log(blogState.currentCategory, blogState.entryAmount);
 }
 
+//Calculating amount of articles in categories "All"
 const all = computed(() => {
     return allContent.data._rawValue.length;
 });
 
+//Calculating amount of articles in categories "Vue"
 const vueArticlesAmount = computed(() => {
     let tempArray = [];
     for (let item in allContent.data._rawValue) {

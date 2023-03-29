@@ -23,14 +23,6 @@ import Header from "~/components/main-pages/header.vue";
 import NavBar from "~/components/main-pages/navbar.vue";
 import Features from "~/components/main-pages/features.vue";
 import Footer from "~/components/main-pages/footer.vue";
-
-//***Temporarily saving code for graphQL calls */
-// import { all_users } from "@/graphql/getUserInfo/queries/allUsers.js";
-// import { useAsyncQuery } from "~~/.nuxt/imports";
-
-// let query = all_users();
-
-// const { data, loading } = useAsyncQuery(query);
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
 	<div id="navbar">
-		<navbar />
+		<Navbar />
 	</div>
 	<div class="mainContainer">
 		<main class="main">
@@ -21,19 +21,35 @@
 			</section>
 			<section class="coursesContainer">
 				<div class="coursesWrapper">
-					<h2> Courses </h2>
+					<h2> Your Courses </h2>
 					<section class="coursesList">
 						<div class="course">
-							<h3> Vue 3 Beginner</h3>
+							<div class="titleContainer">
+								<h3> Vue 3 Beginner</h3>
+							</div>
+							<img src="auth-vue3-supabase_v4.jpg" class="images" />
+							<p class="description"> This course will show you the fundamentals of Vue 3 and how to build Single-page applications.</p>
 						</div>
 						<div class="course">
-							<h3> Vue 3 Full Course</h3>
+							<div class="titleContainer">
+								<h3> Vue 3 Full Course</h3>
+							</div>
+							<img src="auth-vue3-supabase_v4.jpg" class="images" />
+							<p class="description"> This course will show you the fundamentals of Vue 3 and how to build Single-page applications.</p>
 						</div>
 						<div class="course">
-							<h3> Nuxt 3 Beginner</h3>
+							<div class="titleContainer">
+								<h3> Nuxt 3 Beginner</h3>
+							</div>
+							<img src="auth-vue3-supabase_v4.jpg" class="images" />
+							<p class="description"> This course will show you the fundamentals of Vue 3 and how to build Single-page applications.</p>
 						</div>
 						<div class="course">
-							<h3> Nuxt 3 Beginner</h3>
+							<div class="titleContainer">
+								<h3> Nuxt 3 Full Course</h3>
+							</div>
+							<img src="auth-vue3-supabase_v4.jpg" class="images" />
+							<p class="description"> This course will show you the fundamentals of Vue 3 and how to build Single-page applications.</p>
 						</div>
 
 					</section>
@@ -41,13 +57,15 @@
 			</section>
         </main>
 	</div>
+	<Footer />
 
 </template>
 
 <script setup>
-import navbar from "~~/components/main-pages/navbar.vue";
+import Navbar from "~~/components/main-pages/navbar.vue";
+import Footer from "@/components/main-pages/footer.vue";
 import { useSupabaseAuthClient, useSupabaseUser } from "~~/.nuxt/imports";
-import { definePageMeta } from "~~/.nuxt/imports";
+import { definePageMeta, navigateTo } from "~~/.nuxt/imports";
 
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
@@ -66,11 +84,15 @@ async function signOut() {
     }
 
     console.log("Signout success");
+    navigateTo("/");
 }
 
 </script>
 
 <style scoped>
+h2 {
+	text-align: center;
+}
 .mainContainer {
 	justify-content: center;
 	width: 100%;
@@ -83,6 +105,10 @@ async function signOut() {
 	margin-left: auto;
 	margin-right: auto;
 	width: 75%;
+}
+
+.titleContainer {
+	text-align: center;
 }
 
 .accountContainer {
@@ -141,7 +167,6 @@ h2 {
 	margin-top: 0;
 }
 .coursesContainer {
-	text-align: center;
 	background-color: rgb(249, 255, 255);
 	width: 80%;
 	padding: 1em;
@@ -162,11 +187,24 @@ padding: 1em;
 }
 
 .course {
-	width: 300px;
-	height: 400px;
-	background-color: antiquewhite;
+	width: 250px;
+	height: 350px;
+	background-color: rgb(203, 255, 245);
+	border: 2px solid rgb(158, 158, 158);
 	margin: 1em;
-	border-radius: 10px;
+
+}
+
+.course:hover {
+	border: 2px solid rgb(0, 255, 213);
+}
+
+.course p {
+	height: 100%;
+	padding: 1em;
+}
+.images {
+	width: 100%;
 }
 
 #navbar {
