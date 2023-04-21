@@ -15,6 +15,7 @@ export default eventHandler(async (event) => { // eslint-disable-line
     let jsonBObject = "{0, "  + body.module + "," + body.section + "}";
     console.log(jsonBObject);
 
+    // Takes the course completion JSON and edits it
     try
     {
         data = await db`UPDATE course_001_module_completion

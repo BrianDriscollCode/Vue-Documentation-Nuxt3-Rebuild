@@ -25,8 +25,8 @@
             </div>
         </div>
         <div class="rightSection">
-            <iframe src="https://stackblitz.com/edit/vue-ccktzc?devToolsHeight=33&embed=1&file=src/App.vue&hideExplorer=1" v-if="!completed"></iframe>
-            <iframe src="https://stackblitz.com/edit/vue-bwsz7c?embed=1&file=src/App.vue&hideExplorer=1" v-else> </iframe>
+            <iframe src="https://stackblitz.com/edit/vue3-script-setup-with-vite-myjzcb?embed=1&file=src/App.vue" v-if="!completed"></iframe>
+            <iframe src="https://stackblitz.com/edit/vue3-script-setup-with-vite-sy8ste?embed=1&file=src/App.vue" v-else> </iframe>
         </div>
     </section>
 </template>
