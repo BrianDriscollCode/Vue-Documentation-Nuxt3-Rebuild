@@ -27,4 +27,7 @@ Link: https://vuereference.com/
 7. GraphQL (for learning purposes)
 8. Pinia
 
+### Final thoughts
+
+This was a great project to implement several technologies to work together to accomplish business tasks. For example, being able to create account on supabase while also subscribing user's via email. I have moved on to other projects that are taking up my time, so the functionality of this project may not work anymore in relation to supabase (as I am utilizing my free resources elsewhere for new, improved projects). But besides account validation and creation, everything else should work.
 
